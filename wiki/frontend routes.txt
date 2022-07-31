@@ -1,0 +1,61 @@
+## Home Page '/'
+This page displays the splash page.\
+**Navigation Bar:**
+* Logo
+* Download
+* Safety
+* How To Use
+* About Rena
+* Login (Live Modal)
+* Sign Up (Live Modal)
+* Logout (When user is logged-in)
+* Demo User 
+
+ 
+## Profile Page '/profile'
+This page displays the user's information and the user's member information in joined servers.
+
+**Link:**
+ * /servers
+
+**API:**
+ * GET /users
+ * PUT /users (profile pic)
+ * GET /members/:memberId
+ * PUT /members/:memberId (name and profile pic)
+
+## Server Page '/server' 
+This page displays all the servers joined by the logged-in user. 
+
+**Link:**
+ * /server/:serverId
+ * /profile
+
+**API:**
+ * GET /server
+ * POST /server (Live Modal)
+
+## Server Detail Page '/server/:serverId'
+This page displays one server details with all the channels
+
+**Link:**
+ * /server/:serverId/channId\
+
+**API:**
+ * PUT /servers/:serverId
+ * DELETE /servers/:serverId
+ * GET /channels
+ * GET /channels/:channId
+ * POST /channels/:channId
+ * PUT /channels/:channId
+ * DELETE /channels/:channId
+
+## Channels Detail Page '/server/:serverId/channels'
+This page displays one channel's message page.
+
+**Link:**
+ * /server/:serverId/channId\
+
+**API:**
+ * GET /channels/:channId/messages
+ * POST /channels/:channId/messages

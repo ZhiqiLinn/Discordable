@@ -1,0 +1,33 @@
+# User
+* `POST /api/users` - sign up a new user
+* `GET /api/users/:userId` - display user's profile (including servers and saved)
+
+# Session
+* `POST /api/session` - log in to user's account
+* `DELETE /api/session` - log out to user's account
+* `GET /api/session` - restore session user
+* `Get /api/demouser` - log in as demo user
+
+# Server
+* `GET /api/servers` - read all servers
+* `GET /api/servers/:serverId` - read a specific server information
+* `POST /api/servers` - create a new server
+* `PUT /api/servers/:serverId` - update server information
+* `DELETE /api/servers/:serverId` - delete server
+
+ 
+# Channels
+* `GET /api/servers/:serverId/channels` - get all channels for a specific server
+* `POST /api/channels` - create a channel for a server
+* `PUT /api/channels/:channId` - edit a channel (owner only)
+* `DELETE /api/channels/:channId` - delete a review (owner only)
+
+
+ONE user has MANY servers -- ONE server only BELONGS TO ONE owner
+ONE user be MANY members -- ONE member only BELONGS TO to ONE user
+ONE server has MANY members --  ONE member only BELONGS TO to ONE server
+ONE server has MANY channels -- ONE channel only BELONGS TO to ONE server
+ONE server has MANY roles -- ONE role only BELONGS TO to ONE server
+ONE role has MANY members --  ONE member has only ONE role
+ONE channel has MANY messages -- ONE message only BELONGS TO to ONE channel
+ONE member has MANY messages -- ONE message only BELONGS TO to ONE member
