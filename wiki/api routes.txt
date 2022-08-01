@@ -26,6 +26,18 @@
 * `GET /api/messages` - get all messages for a specific channel
 * `POST /api/messages` - send a message in a channel
 
+# Members
+* `GET /api/members` - get all members from a server
+* `GET /api/members/:memberId` - get one member from a server
+* `POST /api/members` - create a member profile when joining a server
+* `PUT /api/members` - edit a member profile 
+* `DELTE /api/members` - delete a member profile when leaving a server
+
+# Roles
+* `GET /api/roles` - get all roles for a server
+* `POST /api/roles` - create a role for a server
+* `put /api/roles` - edit a role for a server
+* `DELETE /api/roles` - delete a role for a server
 
 ONE user has MANY servers -- ONE server only BELONGS TO ONE owner
 ONE user be MANY members -- ONE member only BELONGS TO to ONE user
