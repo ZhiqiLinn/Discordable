@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms.validators import DataRequired, IntegerField, TextAreaField
+from wtforms import StringField, IntegerField, TextAreaField
+from wtforms.validators import DataRequired
 
 class CreateServerForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])

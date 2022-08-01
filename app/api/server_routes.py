@@ -31,9 +31,9 @@ def create_one_server():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_server = Server(
-            name=form.data['bane'],
-            user_id=form.data['user_id']
-            profile_pic=form.data['profile_pic']
+            name=form.data['name'],
+            user_id=form.data['user_id'],
+            profile_pic=form.data['profile_pic'],
             default_role=form.data['default_role']
         )
         db.session.add(new_server)
