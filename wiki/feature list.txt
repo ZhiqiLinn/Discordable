@@ -1,0 +1,28 @@
+## # Logged-in users 
+* Users have the ability to sign up, log in and log out
+* Users without an account are able to sign up as a Demo user to preview the site's features
+* Logged-out users are not allowed to access any discord feature except the home page.
+* Logged-in users are directed to the home page.
+
+## # Feature 1: Server
+* Logged-in users have the ability to create, read, edit and delete their own server
+
+## # Feature 1: Message channel
+* Logged-in users have the ability to create, read, edit and delete their channel in the server
+* Logged-in users have the ability to send messages in the channel live chat
+
+
+## # Bonus Feature 3: Roles
+* Server Owner has the ability to assign role to individual member in the server.
+
+## # Bonus Feature 4: User Profile & Member Profile
+* Logged-in users have the ability to view user profile and member profile for each individual server.
+* Logged-in users have the ability to modify user profile and member profile for each individual server.
+
+## # Bonus Feature 5: Direct Message 
+* Logged-in users have the ability to send private direct message to another user.
+
+
+
+
+

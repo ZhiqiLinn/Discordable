@@ -1,0 +1,85 @@
+
+![image](https://user-images.githubusercontent.com/90532956/182042229-db74f257-9446-4e87-9fe6-137fa981596a.png)
+
+
+## Users 
+| Column Name  | Data Type | Details  |
+| ------------- | ------------- | ------------- |
+| id  | String  | not null, primary key | 
+| username |  String(30)  | not null, unique|
+| profilePic |  String  | not null|
+| email |  String  | null,unique|
+| password |  String(50)  | not null |
+| hashedPassword |  String(50)  | not null |
+| createdAt | timeStamp  | not null |
+| updatedAt |  timeStamp   | not null |
+
+* One user can **hasMany** servers
+* One user can **hasMany** member profile
+* One user can **hasMany** messages
+
+
+
+## Servers
+| Column Name | Data Type | Details  
+-- | -- | --
+id | integer | not null, primary key
+name | string | not null
+server_pic | url | not null
+default_role | string | not null
+owner_id | integer | not null
+
+* One server can only **belongsTo** one user
+* One server can **hasMany** channels
+* One server can **hasMany** members
+* One server can **hasMany** roles
+
+
+## Channels
+| Column Name | Data Type | Details  
+-- | -- | --
+id | integer | not null, primary key
+name | string | not null
+server_id | integer | not null
+
+* One channel can only **belongsTo** one server
+* One channel can **hasMany** messages
+
+## Messages
+| Column Name | Data Type | Details  
+-- | -- | --
+id | integer | not null, primary key
+message | string | not null
+member_id | integer | not null
+channel_id | integer | not null
+
+* One message can only **belongsTo** one channel
+* One message can only **belongsTo** one member
+
+## Members
+| Column Name | Data Type | Details  
+-- | -- | --
+id | integer | not null, primary key
+server_nickname | string | not null
+user_id | integer | not null
+role_id | integer | not null
+server_id | integer | not null
+
+* One member can only **belongsTo** one user
+* One member can only **belongsTo** one server
+* One member can only **belongsTo** one role
+* One member can **hasMany** messages
+
+
+## Roles
+| Column Name | Data Type | Details  
+-- | -- | --
+id | integer | not null, primary key
+title| string | not null
+color| string | not null
+server_id | integer | not null
+
+* One role can only **belongsTo** one server
+* One role can **hasMany** members
+
+

@@ -15,12 +15,16 @@
 * `PUT /api/servers/:serverId` - update server information
 * `DELETE /api/servers/:serverId` - delete server
 
- 
+
 # Channels
 * `GET /api/servers/:serverId/channels` - get all channels for a specific server
 * `POST /api/channels` - create a channel for a server
 * `PUT /api/channels/:channId` - edit a channel (owner only)
 * `DELETE /api/channels/:channId` - delete a review (owner only)
+
+# Messages
+* `GET /api/messages` - get all messages for a specific channel
+* `POST /api/messages` - send a message in a channel
 
 
 ONE user has MANY servers -- ONE server only BELONGS TO ONE owner

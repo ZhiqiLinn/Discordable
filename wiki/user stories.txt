@@ -1,0 +1,102 @@
+# Users
+
+### Sign Up
+
+* As an unregistered and unauthorized user, I want to be able to sign up for the website via a sign-up form.
+  * When I'm on the `/signup` page:
+    * I would like to be able to enter my email, username, and preferred password on a clearly laid out form.
+    * I would like the website to log me in upon successful completion of the sign-up form.
+      * So that I can seamlessly access the site's functionality
+* When I enter invalid data on the sign-up form:
+  * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password).
+  * So that I can try again without needing to refill forms I entered valid data into.
+
+### Log in
+
+* As a registered and unauthorized user, I want to be able to log in to the website via a log-in form.
+  * When I'm on the `/login` page:
+    * I would like to be able to enter my email and password on a clearly laid out form.
+    * I would like the website to log me in upon successful completion of the log-up form.
+      * So that I can seamlessly access the site's functionality
+* When I enter invalid data on the log-up form:
+  * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password).
+    * So that I can try again without needing to refill forms I entered valid data into.
+
+### Demo User
+
+* As an unregistered and unauthorized user, I would like an easy-to-find and clear button on both the `/signup` and `/login` pages to allow me to visit the site as a guest without signing up or logging in.
+  * When I'm on either the `/signup` or `/login` pages:
+    * I can click on a Demo User button to log in and allow me access as a normal user.
+      * So that I can test the site's features and functionality without needing to stop and enter credentials.
+
+### Log Out
+
+* As a logged-in user, I want to log out via an easy-to-find log-out button on the navigation bar.
+  * While on any page of the site:
+    * I can log out of my account and be redirected to `/`.
+      * So that I can easily log out to keep my information secure.
+  * Logged out user won't be able to access any servers or channels
+
+# Server
+
+### Create New Server
+
+* As a logged-in user, I want to be able to:
+  * When I'm on `/server`
+    * I can create a new server
+
+### View Server
+
+* As a logged-in user, I want to be able to:
+  * When I'm on `/servers/:serverId`
+    * I can view servers that I created or joined.
+    * I can view the individual server information
+    * I can view the channels created in the individual server
+    * I can view the members joined to the individual server
+
+      
+### Update and Delete Server
+
+* As a logged-in user, I want to be able to:
+  * When I'm on `/servers/:serverId`
+    * I can edit my own server's details
+    * I can delete my own server when I no longer want it.
+
+# Channel
+
+### Create New Channel
+
+* As a logged-in user, I want to be able to:
+  * When I'm on `/Server/:serverId`
+    * I can create a new channel
+
+### View Channel
+
+* As a logged-in user, I want to be able to:
+  * When I'm on `/channels/:channelId`
+    * I can view channels that I created for the server
+    * I can view the individual channel information
+    * I can view the members joined to the individual channel
+    * I can view the messages sent by the members in the channel
+
+      
+### Update and Delete Channel
+
+* As a logged-in user, I want to be able to:
+  * When I'm on `/channels/:chanId`
+    * I can edit channel's details
+    * I can delete channel when I no longer want it.
+
+# Message
+
+### View Messages
+
+* As a logged-in user, I want to be able to:
+  * When I'm on `/server/:serverId/:channId`
+    * I can view all the messages posted in this channel by members
+
+### Send Messages
+
+* As a logged-in user, I want to be able to:
+  * When I'm on `/server/:serverId/:channId`
+    * I can send messages to the channel.

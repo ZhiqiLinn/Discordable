@@ -15,47 +15,54 @@ This page displays the splash page.\
 ## Profile Page '/profile'
 This page displays the user's information and the user's member information in joined servers.
 
-**Link:**
- * /servers
-
 **API:**
- * GET /users
- * PUT /users (profile pic)
- * GET /members/:memberId
- * PUT /members/:memberId (name and profile pic)
+ * `GET /api/users`
+ * `PUT /api/users` (Profile pic)
+ * `GET /api/members/:memberId`
+ * `PUT /api/members/:memberId` (Name and profile pic)
 
 ## Server Page '/server' 
 This page displays all the servers joined by the logged-in user. 
 
 **Link:**
- * /server/:serverId
- * /profile
+ * `/server/:serverId`
+ * `/profile`
 
 **API:**
- * GET /server
- * POST /server (Live Modal)
+ * `GET /api/server`
+ * `POST /api/server` (Live Modal)
+ * `GET /api/members`
+ * `POST /api/members/:memberId` (Create member profile when joining a server)
+ * `PUT /api/members/:memberId` (Edit member profile in the server)
+ * `Delete /api/members/:memberId` (Remove member from the server)
+
 
 ## Server Detail Page '/server/:serverId'
 This page displays one server details with all the channels
 
 **Link:**
- * /server/:serverId/channId\
+ * `/server/:serverId/channId`
 
-**API:**
- * PUT /servers/:serverId
- * DELETE /servers/:serverId
- * GET /channels
- * GET /channels/:channId
- * POST /channels/:channId
- * PUT /channels/:channId
- * DELETE /channels/:channId
+**API:**`
+ * `GET /api/servers/:serverId`
+ * `PUT /api/servers/:serverId`
+ * `DELETE /api/servers/:serverId`
+> Channels
+ * `GET /api/channels`
+ * `GET /api/channels/:channId`
+ * `POST /api/channels/:channId`
+ * `PUT /api/channels/:channId`
+ * `DELETE /api/channels/:channId`
+> Roles
+ * `GET /api/roles/`
+ * `GET /api/roles/:roleId`
+ * `POST /api/roles/:roleId`
+ * `PUT /api/roles/:roleId`
+ * `DELETE /api/roles/:roleId`
 
-## Channels Detail Page '/server/:serverId/channels'
+## Channels Detail Page '/server/:serverId/:channId'
 This page displays one channel's message page.
 
-**Link:**
- * /server/:serverId/channId\
-
 **API:**
- * GET /channels/:channId/messages
- * POST /channels/:channId/messages
+ * `GET /api/messages`
+ * `POST /api/messages`
