@@ -12,8 +12,7 @@ const ServersPage = () => {
 
     return(
         <div>
-            <h1>hiii</h1>
-
+            <h1>WELCOME, PLEASE SELECT YOUR SERVER</h1>
         </div>
         
     )

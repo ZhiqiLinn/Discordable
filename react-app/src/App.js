@@ -12,6 +12,7 @@ import { getAllMessagesForChannelThunk } from './store/messages';
 import ServersPage from './components/ServersPage';
 import ServerDetailPage from './components/ServerDetailPage';
 import ServerSideBar from './components/ServersPage/ServerSideBar';
+import ServerProfilePage from './components/ServerProfilePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,9 +44,12 @@ function App() {
         </ProtectedRoute>
       </Switch>
 
-      
-      <ServerSideBar />
+
+          <ServerSideBar />
         <Switch>
+          <ProtectedRoute path='/servers/:serverId/profile' exact={true} >
+            <ServerProfilePage />
+          </ProtectedRoute>
           <ProtectedRoute path='/servers/:serverId' exact={true} >
             <ServerDetailPage />
           </ProtectedRoute>
