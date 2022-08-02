@@ -48,7 +48,7 @@ def update_one_server(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         curr_server = Server.query.get(id)
-        curr_server.name=form.data['bane'],
+        curr_server.name=form.data['name'],
         curr_server.user_id=form.data['user_id'],
         curr_server.profile_pic=form.data['profile_pic'],
         curr_server.default_role=form.data['default_role']
