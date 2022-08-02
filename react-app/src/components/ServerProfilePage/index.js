@@ -40,12 +40,12 @@ const ServerProfilePage = () => {
                 <div>
                     <button onClick={openOverview}>Overview</button>
                 </div>
-                <div>
+                {/* <div>
                     <button>Roles</button>
                 </div>
                 <div>
                     <button>Members</button>
-                </div>
+                </div> */}
                 <div>
                     <button onClick={openDeletePage}>Delete Server 🗑️</button>
                 </div>
@@ -58,7 +58,7 @@ const ServerProfilePage = () => {
                 }
             { showDeleteServer && 
                 <div>
-                    < DeleteServerForm />
+                    < DeleteServerForm serverId={serverId}/>
                 </div>
                 }
         </>
