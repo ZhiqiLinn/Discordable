@@ -21,6 +21,11 @@ const NavBar = () => {
           <SignupLiveModal />
         </li>
         <li>
+          <NavLink to='/servers' exact={true} activeClassName='active'>
+            Server
+          </NavLink>
+        </li>
+        <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
           </NavLink>

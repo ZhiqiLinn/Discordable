@@ -10,15 +10,13 @@ import { getAllServersThunk } from './store/server';
 import { getAllChannelsThunk } from './store/channel';
 import { getAllMessagesForChannelThunk } from './store/messages';
 import ServersPage from './components/ServersPage';
+import ServerDetailPage from './components/ServerDetailPage';
+import ServerSideBar from './components/ServersPage/ServerSideBar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllServersThunk())
-    dispatch(getAllChannelsThunk())
 
-  })
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
@@ -40,13 +38,21 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/servers' exact={true} >
-          <ServersPage />
-        </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
+
+      
+      <ServerSideBar />
+        <Switch>
+          <ProtectedRoute path='/servers/:serverId' exact={true} >
+            <ServerDetailPage />
+          </ProtectedRoute>
+          <ProtectedRoute path='/servers' exact={true} >
+            <ServersPage />
+          </ProtectedRoute>
+        </Switch>
     </BrowserRouter>
   );
 }

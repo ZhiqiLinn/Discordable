@@ -6,17 +6,24 @@ import ChannelsSection from "../ChannelsSection";
 import CreateServerLiveModal from "../CreateServerLiveModal"
 import MembersList from "../MembersList";
 import MessagesBox from "../MessagesBox";
+import './ServerDetail.css'
 
-const ServersPage = () => {
-    const sessionUser = useSelector(state => state.session.user);
+const ServerDetailPage = () => {
 
     return(
-        <div>
-            <h1>hiii</h1>
-
+        <div className="server-detail-page-container">
+            <div>
+                <ChannelsSection />
+            </div>
+            <div>
+                <MessagesBox />
+            </div>
+            <div>
+                <MembersList />
+            </div>
         </div>
         
     )
 }
 
-export default ServersPage
+export default ServerDetailPage
