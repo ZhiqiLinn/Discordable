@@ -32,7 +32,7 @@ def create_one_message():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_message = Message(
-            name=form.data['name'],
+            message=form.data['message'],
             user_id=form.data['user_id'],
             channel_id=form.data['channel_id']
         )
@@ -48,7 +48,7 @@ def update_one_message(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         curr_message = Message.query.get(id)
-        curr_message.name=form.data['name'],
+        curr_message.message=form.data['message'],
         curr_message.user_id=form.data['user_id'],
         curr_message.channel_id=form.data['channel_id']
         db.session.commit()

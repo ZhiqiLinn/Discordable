@@ -1,0 +1,53 @@
+// -------------------------fetch post server
+fetch('/api/servers', {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json", "csrf_token": "Ijc0ZGM2NTkyOThhMmNhMzE0MTFmMjZhMmVhZmE1YjliMjk0NzU0ZDgi.YtsrDg.mMNdbf1lqClaSKSIXCfnSvLX13U"
+  },
+  body: JSON.stringify({
+                    user_id:1,
+                    name:"demoname", 
+                    server_pic:"demopdfdsfsdfddsfrofilepic", 
+                    default_role:"demorole",
+
+                    })
+}).then(res => res.json()).then(data => console.log(data));
+
+// -------------------------fetch put server
+fetch('/api/servers/1', {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json", "csrf_token": "Ijc0ZGM2NTkyOThhMmNhMzE0MTFmMjZhMmVhZmE1YjliMjk0NzU0ZDgi.YtsrDg.mMNdbf1lqClaSKSIXCfnSvLX13U"
+  },
+  body: JSON.stringify({
+                    user_id:1,
+                    name:"demoname", 
+                    server_pic:"demopdfdsfsdfddsfrofilepic", 
+                    default_role:"demorole",
+
+                    })
+}).then(res => res.json()).then(data => console.log(data));
+
+
+
+// -------------------------fetch post channel
+fetch('/api/channels', {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json", "csrf_token": "Ijc0ZGM2NTkyOThhMmNhMzE0MTFmMjZhMmVhZmE1YjliMjk0NzU0ZDgi.YtsrDg.mMNdbf1lqClaSKSIXCfnSvLX13U"
+  },
+  body: JSON.stringify({
+                    user_id:1,
+                    name:"demoname", 
+                    server_pic:"demopdfdsfsdfddsfrofilepic", 
+                    default_role:"demorole",
+
+                    })
+}).then(res => res.json()).then(data => console.log(data));
+
+
+
+
+
+
+

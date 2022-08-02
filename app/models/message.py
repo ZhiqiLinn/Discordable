@@ -10,7 +10,7 @@ class Message(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
 
-def to_dict(self):
+    def to_dict(self):
         return {
                 'id': self.id,
                 'message': self.message,
