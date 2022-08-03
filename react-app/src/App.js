@@ -13,6 +13,7 @@ import ServersPage from './components/ServersPage';
 import ServerDetailPage from './components/ServerDetailPage';
 import ServerSideBar from './components/ServersPage/ServerSideBar';
 import ServerProfilePage from './components/ServerProfilePage';
+import HomePage from './components/HomePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,32 +32,36 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
+
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-      </Switch>
 
+        <Route path='/' exact={true}>
+          <NavBar />
+          <HomePage/>
+        </Route>
 
+        <ProtectedRoute path='/servers/:serverId/profile' exact={true} >
           <ServerSideBar />
-        <Switch>
-          <ProtectedRoute path='/servers/:serverId/profile' exact={true} >
-            <ServerProfilePage />
-          </ProtectedRoute>
-          <ProtectedRoute path='/servers/:serverId' exact={true} >
-            <ServerDetailPage />
-          </ProtectedRoute>
-          <ProtectedRoute path='/servers' exact={true} >
-            <ServersPage />
-          </ProtectedRoute>
-        </Switch>
+          <ServerProfilePage />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/servers/:serverId' exact={true} >
+          <ServerSideBar />
+          <ServerDetailPage />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/servers' exact={true} >
+          <ServerSideBar />
+          <ServersPage />
+        </ProtectedRoute>
+
+      </Switch>
     </BrowserRouter>
   );
 }
