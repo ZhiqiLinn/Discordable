@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     servers = db.relationship('Server', back_populates='owner')
-    joined_servers = db.relationship('Server', secondary=association_table, back_populates='members',cascade="all, delete-orphan")
+    joined_servers = db.relationship('Server', secondary=association_table, back_populates='members')
 
     @property
     def password(self):
@@ -64,7 +64,7 @@ class Server(db.Model):
     owner = db.relationship('User', back_populates='servers')
     channels = db.relationship('Channel', back_populates='server', cascade="all, delete-orphan")
 
-    members = db.relationship('User', secondary=association_table, back_populates='joined_servers', cascade="all, delete-orphan")
+    members = db.relationship('User', secondary=association_table, back_populates='joined_servers')
 
     def to_dict(self): 
         serverMembers = {}
