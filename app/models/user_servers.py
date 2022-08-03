@@ -4,8 +4,8 @@ from flask_login import UserMixin
 
 association_table=db.Table(
     'association_table',
-    db.Column('member_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('server_id', db.Integer, db.ForeignKey('servers.id'), primary_key=True)
+    db.Column('member_id', db.Integer, db.ForeignKey('users.id')),
+    db.Column('server_id', db.Integer, db.ForeignKey('servers.id'))
 
 )
 class User(db.Model, UserMixin):
@@ -39,7 +39,7 @@ class User(db.Model, UserMixin):
                 "joinedServer_name" : joinedServer.name,
                 "joinedServer_server_pic" : joinedServer.server_pic,
                 "joinedServer_default_role" : joinedServer.default_role,
-                "joinedServer_owner_id" : joinedServer.owner_id,
+                "joinedServer_user_id" : joinedServer.user_id,
             }
         return {
             'id': self.id,
@@ -58,7 +58,7 @@ class Server(db.Model):
     name = db.Column(db.String(50), nullable=False)
     server_pic = db.Column(db.Text, nullable=True)
     default_role = db.Column(db.Text, nullable=True)
-    owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     owner = db.relationship('User', back_populates='servers')
     channels = db.relationship('Channel', back_populates='server')
@@ -79,7 +79,7 @@ class Server(db.Model):
                 'name': self.name,
                 'server_pic': self.server_pic,
                 'default_role': self.default_role,
-                'owner_id': self.owner_id,
+                'user_id': self.user_id,
                 'serverMembers' : serverMembers
         }
 

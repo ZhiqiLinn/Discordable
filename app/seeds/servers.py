@@ -7,19 +7,19 @@ def seed_servers():
         name="LOL GAMING CLUB", 
         server_pic="https://www.pentagram.com/work/league-of-legends#31463", 
         default_role="Summoners", 
-        owner_id=1
+        user_id=1
     )
     server2 = Server(
-        name="Makima's Dogs", 
+        name="Makima's", 
         server_pic="https://i.ibb.co/jW3Vm99/412024.jpg", 
-        default_role="Dogs or Hunters", 
-        owner_id=1
+        default_role="Hunters", 
+        user_id=1
     )
     server3 = Server(
         name="Spy Family!!!", 
         server_pic="https://i.ibb.co/9ww0Ndq/https-hiddenremote-com-files-image-exchange-2022-06-ie-87887.jpg", 
         default_role="Anya", 
-        owner_id=1
+        user_id=1
     )
 
 
