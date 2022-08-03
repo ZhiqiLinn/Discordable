@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     servers = db.relationship('Server', back_populates='owner')
-    joined_servers = db.relationship('Server', secondary=association_table, back_populates='members')
+    joined_servers = db.relationship('Server', secondary=association_table, back_populates='members',cascade="all, delete-orphan")
 
     @property
     def password(self):
@@ -34,13 +34,14 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         userJoinedServers = {}
         for joinedServer in self.joined_servers:
-            userJoinedServers[joinedServer] = {
+            userJoinedServers[joinedServer.id] = {
                 "joinedServer_id" : joinedServer.id,
                 "joinedServer_name" : joinedServer.name,
                 "joinedServer_server_pic" : joinedServer.server_pic,
                 "joinedServer_default_role" : joinedServer.default_role,
                 "joinedServer_user_id" : joinedServer.user_id,
             }
+
         return {
             'id': self.id,
             'username': self.username,
@@ -61,9 +62,9 @@ class Server(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     owner = db.relationship('User', back_populates='servers')
-    channels = db.relationship('Channel', back_populates='server')
+    channels = db.relationship('Channel', back_populates='server', cascade="all, delete-orphan")
 
-    members = db.relationship('User', secondary=association_table, back_populates='joined_servers')
+    members = db.relationship('User', secondary=association_table, back_populates='joined_servers', cascade="all, delete-orphan")
 
     def to_dict(self): 
         serverMembers = {}
