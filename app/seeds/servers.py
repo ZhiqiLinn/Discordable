@@ -10,13 +10,13 @@ def seed_servers():
     )
     server2 = Server(
         name="Makima's Dogs", 
-        server_pic="https://ibb.co/X3Fy1ff", 
+        server_pic="https://i.ibb.co/jW3Vm99/412024.jpg", 
         default_role="Dogs or Hunters", 
         user_id="1"
     )
     server3 = Server(
         name="Spy Family!!!", 
-        server_pic="https://ibb.co/PTTyNV5", 
+        server_pic="https://i.ibb.co/9ww0Ndq/https-hiddenremote-com-files-image-exchange-2022-06-ie-87887.jpg", 
         default_role="Anya", 
         user_id="1"
     )

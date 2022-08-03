@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -11,15 +9,15 @@ import { authenticate } from './store/session';
 import { getAllServersThunk } from './store/server';
 import { getAllChannelsThunk } from './store/channel';
 import { getAllMessagesForChannelThunk } from './store/messages';
+import ServersPage from './components/ServersPage';
+import ServerDetailPage from './components/ServerDetailPage';
+import ServerSideBar from './components/ServersPage/ServerSideBar';
+import ServerProfilePage from './components/ServerProfilePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllServersThunk())
-    dispatch(getAllChannelsThunk())
 
-  })
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
@@ -35,12 +33,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
@@ -51,6 +43,20 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
+
+
+          <ServerSideBar />
+        <Switch>
+          <ProtectedRoute path='/servers/:serverId/profile' exact={true} >
+            <ServerProfilePage />
+          </ProtectedRoute>
+          <ProtectedRoute path='/servers/:serverId' exact={true} >
+            <ServerDetailPage />
+          </ProtectedRoute>
+          <ProtectedRoute path='/servers' exact={true} >
+            <ServersPage />
+          </ProtectedRoute>
+        </Switch>
     </BrowserRouter>
   );
 }
