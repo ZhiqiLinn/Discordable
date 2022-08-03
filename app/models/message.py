@@ -9,6 +9,8 @@ class Message(db.Model):
     channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
+    channel = db.relationship('Channel', back_populates='messages')
+
 
     def to_dict(self):
         return {
