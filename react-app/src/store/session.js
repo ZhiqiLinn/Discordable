@@ -42,20 +42,20 @@ export const login = (email, password) => async (dispatch) => {
     })
   });
   
-  console.log("RESPONSE!!", response)
+  // console.log("RESPONSE!!", response)
   if (response.ok) {
-    console.log("!!response.ok")
+    // console.log("!!response.ok")
     const data = await response.json();
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {
-    console.log("!!response<500")
+    // console.log("!!response<500")
     const data = await response.json();
     if (data.errors) {
       return data.errors;
     }
   } else {
-    console.log("!!response==500")
+    // console.log("!!response==500")
 
     return ['An error occurred. Please try again.']
   }
