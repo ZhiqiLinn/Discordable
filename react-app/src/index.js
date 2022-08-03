@@ -5,15 +5,20 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 import { ModalProvider } from './context/Modal';
+import { DarkModalProvider } from './context/DarkModal';
+
+
 const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ModalProvider>
-      <Provider store={store}>
-          <App />
-      </Provider>
-    </ModalProvider>
+    <DarkModalProvider>
+      <ModalProvider>
+        <Provider store={store}>
+            <App />
+        </Provider>
+      </ModalProvider>
+    </DarkModalProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

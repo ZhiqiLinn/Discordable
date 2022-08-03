@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import { getAllServersThunk } from './store/server';
-import { getAllChannelsThunk } from './store/channel';
-import { getAllMessagesForChannelThunk } from './store/messages';
+// import { getAllServersThunk } from './store/server';
+// import { getAllChannelsThunk } from './store/channel';
+// import { getAllMessagesForChannelThunk } from './store/messages';
 import ServersPage from './components/ServersPage';
 import ServerDetailPage from './components/ServerDetailPage';
 import ServerSideBar from './components/ServersPage/ServerSideBar';
 import ServerProfilePage from './components/ServerProfilePage';
 import HomePage from './components/HomePage';
+import ChannelsSection from './components/ChannelsSection';
+import MessagesBox from './components/MessagesBox';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +47,13 @@ function App() {
           <NavBar />
           <HomePage/>
         </Route>
+
+        <ProtectedRoute path='/servers/:serverId/:chanId' exact={true} >
+          <ServerSideBar />
+          <ChannelsSection />
+          <MessagesBox />
+        </ProtectedRoute>
+
 
         <ProtectedRoute path='/servers/:serverId/profile' exact={true} >
           <ServerSideBar />
