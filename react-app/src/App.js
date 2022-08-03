@@ -48,16 +48,14 @@ function App() {
           <HomePage/>
         </Route>
 
+        <ProtectedRoute path='/servers/:serverId/profile' exact={true} >
+          <ServerProfilePage />
+        </ProtectedRoute>
+
         <ProtectedRoute path='/servers/:serverId/:chanId' exact={true} >
           <ServerSideBar />
           <ChannelsSection />
           <MessagesBox />
-        </ProtectedRoute>
-
-
-        <ProtectedRoute path='/servers/:serverId/profile' exact={true} >
-          <ServerSideBar />
-          <ServerProfilePage />
         </ProtectedRoute>
 
         <ProtectedRoute path='/servers/:serverId' exact={true} >

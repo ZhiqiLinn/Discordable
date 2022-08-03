@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
 import { DarkModal } from '../../context/DarkModal';
-import DeleteChannelForm from './DeleteChannelForm';
+import EditChannelForm from './EditChannelForm';
 
 
-const DeleteChannelLiveModal = ({channelId}) => {
+const EditChannelLiveModal = ({channel}) => {
     const [showModal, setShowModal] = useState(false);
-
     const hideForm = () => {
         setShowModal(false)
     }
-
     return (
         <>
-            <button  onClick={() => setShowModal(true)}>🗑️</button>
+            <button  onClick={() => setShowModal(true)}>⚙️</button>
             {showModal && (
                 <div>
                     <DarkModal onClose={() => setShowModal(false)}>
                         <div></div>
-                        <DeleteChannelForm channelId={channelId} hideForm={hideForm}/>
+                        <EditChannelForm channel={channel} hideForm={hideForm}/>
                     </DarkModal>
                 </div>
             )}
@@ -26,4 +24,4 @@ const DeleteChannelLiveModal = ({channelId}) => {
 }
     
 
-export default DeleteChannelLiveModal;
+export default EditChannelLiveModal;

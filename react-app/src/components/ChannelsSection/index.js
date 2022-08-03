@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllChannelsThunk } from "../../store/channel";
 import CreateChannelLiveModal from "../CreateChannelLiveModal";
 import DeleteChannelLiveModal from "../DeleteChannelLiveModal";
+import EditChannelLiveModal from "../EditChannelLiveModal"
 
 
 const ChannelsSection = () => {
@@ -27,6 +28,7 @@ const ChannelsSection = () => {
                     <NavLink to={`/servers/${channel.server_id}/${channel.id}`}>
                         {channel.name}
                     </NavLink>
+                    <EditChannelLiveModal channel={channel} />
                     <DeleteChannelLiveModal channelId={channel.id}/>
                 </div>
         ))
