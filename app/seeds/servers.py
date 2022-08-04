@@ -5,7 +5,7 @@ from app.models import db, Server
 def seed_servers():
     server1 = Server(
         name="LOL GAMING CLUB", 
-        server_pic="https://www.pentagram.com/work/league-of-legends#31463", 
+        server_pic="https://pm1.narvii.com/6960/934dc101f23b3f416d181f6eeba6ea314b7d1538r1-1000-1000v2_hq.jpg", 
         default_role="Summoners", 
         user_id=1
     )
