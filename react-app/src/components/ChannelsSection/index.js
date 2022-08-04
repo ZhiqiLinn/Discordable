@@ -6,6 +6,8 @@ import { getAllChannelsThunk } from "../../store/channel";
 import CreateChannelLiveModal from "../CreateChannelLiveModal";
 import DeleteChannelLiveModal from "../DeleteChannelLiveModal";
 import EditChannelLiveModal from "../EditChannelLiveModal"
+import ServerSideBar from "../ServersPage/ServerSideBar";
+import MessagesBox from "../MessagesBox";
 
 
 const ChannelsSection = () => {
@@ -21,19 +23,29 @@ const ChannelsSection = () => {
         dispatch(getAllChannelsThunk())
     },[])
     return (
-        <>
-        <CreateChannelLiveModal />
-        {filteredChannels.map(channel => (
-                <div>
-                    <NavLink to={`/servers/${channel.server_id}/${channel.id}`}>
-                        {channel.name}
-                    </NavLink>
-                    <EditChannelLiveModal channel={channel} />
-                    <DeleteChannelLiveModal channelId={channel.id}/>
-                </div>
-        ))
-        }   
-        </>
+        <div className="server-page-layout">
+            <div>
+                <ServerSideBar />
+            </div>
+            <div>
+                <CreateChannelLiveModal />
+            </div>
+            <div>
+            {filteredChannels.map(channel => (
+                    <div>
+                        <NavLink to={`/servers/${channel.server_id}/${channel.id}`}>
+                            {channel.name}
+                        </NavLink>
+                        <EditChannelLiveModal channel={channel} />
+                        <DeleteChannelLiveModal channelId={channel.id}/>
+                    </div>
+            ))
+            }   
+            </div>
+            <div>
+                <MessagesBox />
+            </div>
+        </div>
     )
 }
 

@@ -53,18 +53,14 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path='/servers/:serverId/:chanId' exact={true} >
-          <ServerSideBar />
           <ChannelsSection />
-          <MessagesBox />
         </ProtectedRoute>
 
         <ProtectedRoute path='/servers/:serverId' exact={true} >
-          <ServerSideBar />
           <ServerDetailPage />
         </ProtectedRoute>
 
         <ProtectedRoute path='/servers' exact={true} >
-          <ServerSideBar />
           <ServersPage />
         </ProtectedRoute>
 
