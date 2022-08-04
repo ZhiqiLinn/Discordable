@@ -5,3 +5,9 @@
 .server-profile-container{
     height: 30px;
 }
+
+.server-profile-container:hover{
+    height: 30px;
+    background-color: #36393f;
+
+}

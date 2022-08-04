@@ -4,15 +4,18 @@ import { NavLink } from "react-router-dom";
 import { getAllServersThunk } from "../../store/server";
 import CreateServerLiveModal from "../CreateServerLiveModal"
 import LogoutButton from "../auth/LogoutButton"
+import { getAllChannelsThunk } from "../../store/channel";
 
 const ServerSideBar = () => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const allServersArr = Object.values(useSelector(state => state.serverState))
     const userOwnerServer = allServersArr.filter(server => server.user_id == +sessionUser.id)
-    console.log("USER'S OWN SERVER", userOwnerServer)
+    const allChannelsArr = Object.values(useSelector(state => state.channelState))
+
     useEffect(()=> {
         dispatch(getAllServersThunk())
+        dispatch(getAllChannelsThunk())
     },[])
     return(
         <div className="server-sidebar-container">

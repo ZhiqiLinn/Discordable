@@ -5,7 +5,27 @@
     height: 100vh;
 }
 .create-channel-container{
-    height: 16px;
+    height: 20px;
 
     border-bottom: 1px solid white;
+}
+
+.create-channel-container:hover{
+    background-color: #36393f;
+}
+
+.selected-channel{
+    background-color: #36393f;
+    
+}
+
+.create-channel-divs{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2px;
+    padding: 2px;
+}
+
+.channels{
+    padding: 5px;
 }

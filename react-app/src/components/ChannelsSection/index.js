@@ -17,8 +17,8 @@ const ChannelsSection = () => {
     const currentServer = allServersArr.filter(server => server.id == +serverId)[0]
     const allChannelsArr = Object.values(useSelector(state => state.channelState))
     const filteredChannels = allChannelsArr.filter(channel => channel.server_id == +serverId)
-    // console.log("!!FILTERED CHANNELS", filteredChannels)
-    const [currChannel, setCurrChannel] = useState(filteredChannels[0])
+    console.log("!!FILTERED CHANNELS", filteredChannels)
+    const [currChannel, setCurrChannel] = useState(filteredChannels[0]?.id)
 
     useEffect(()=> {
         dispatch(getAllChannelsThunk())
@@ -38,13 +38,13 @@ const ChannelsSection = () => {
             <div>
             {filteredChannels.map(channel => (
                 <>
-                    <div >
+                    <div className={currChannel === channel.id ? " channels selected-channel" : "channels"}>
                         <NavLink 
-                            style={{ textDecoration: 'none', color: 'white' }} 
+                            style={{ textDecoration: 'none', color: 'rgb(195, 194, 194)', fontSize:'small', fontWeight:'light' }} 
                             to={`/servers/${channel.server_id}/${channel.id}/messages`} 
                             onClick={() => setCurrChannel(channel.id)}
                             >
-                            {channel.name}
+                            # {channel.name}
                         </NavLink>
                         <EditChannelLiveModal channel={channel} />
                         <DeleteChannelLiveModal channelId={channel.id}/>
