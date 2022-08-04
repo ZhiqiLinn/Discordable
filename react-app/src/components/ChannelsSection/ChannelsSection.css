@@ -29,3 +29,7 @@
 .channels{
     padding: 5px;
 }
+
+.channels:hover{
+    background-color: #36393f;
+}

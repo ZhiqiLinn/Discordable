@@ -11,11 +11,9 @@ const ServerSideBar = () => {
     const dispatch = useDispatch();
     const allServersArr = Object.values(useSelector(state => state.serverState))
     const userOwnerServer = allServersArr.filter(server => server.user_id == +sessionUser.id)
-    const allChannelsArr = Object.values(useSelector(state => state.channelState))
 
     useEffect(()=> {
         dispatch(getAllServersThunk())
-        dispatch(getAllChannelsThunk())
     },[])
     return(
         <div className="server-sidebar-container">

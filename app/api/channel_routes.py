@@ -25,6 +25,12 @@ def get_all_channels():
 def get_one_channel(id):
     channel = Channel.query.get(id)
     return channel.to_dict()
+#----------------------GET CHANNELS BY SERVER------------------
+
+@channel_routes.route('/server/<int:id>', methods=['GET'])
+def get_all_channels_by_server(id):
+    channels = Channel.query.filter(Channel.server_id == id).all()
+    return {'ServerChannels': [channel.to_dict() for channel in channels]}
 #-------------------------POST ONE CHANNEL---------------------
 @channel_routes.route('', methods=['POST'])
 def create_one_channel():
@@ -39,6 +45,7 @@ def create_one_channel():
         db.session.commit()
         return new_channel.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 #-------------------------UPDATE ONE CHANNEL-------------------
 @channel_routes.route('/<int:id>', methods=['PUT'])

@@ -3,6 +3,7 @@
 const ADD_CHANNEL = "channel/ADD_CHANNEL"
 const GET_CHANNEL = "channel/GET_CHANNEL"
 const GET_ALL_CHANNELS = "channel/GET_ALL_CHANNELS"
+const GET_ALL_CHANNELS_BY_SERVER = "channel/GET_ALL_CHANNELS_BY_SERVER"
 const EDIT_CHANNEL = "channel/EDIT_CHANNEL"
 const DELETE_CHANNEL = "channel/DELETE_CHANNEL"
 
@@ -24,6 +25,12 @@ const getChannel = (channel) => {
 const getAllChannels = (allChannels) => {
     return {
         type: GET_ALL_CHANNELS,
+        allChannels
+    }
+}
+const getAllChannelsByServer = (allChannels) => {
+    return {
+        type: GET_ALL_CHANNELS_BY_SERVER,
         allChannels
     }
 }
@@ -49,6 +56,15 @@ export const getAllChannelsThunk = () => async (dispatch) => {
         const channels = await response.json();
         console.log("GETALLCHANNELSTHUNK",channels)
         dispatch(getAllChannels(channels));
+    }
+}
+
+export const getAllChannelsByServerThunk = (serverId) => async (dispatch) => {
+    const response = await fetch(`/api/channels/server/${serverId}`);
+    if (response.ok) {
+        const channels = await response.json();
+        console.log("GETALLCHANNELSBYSERVER THUNK",channels)
+        dispatch(getAllChannelsByServer(channels));
     }
 }
 
@@ -111,7 +127,7 @@ export const deleteChannelThunk = (channelId) => async (dispatch) => {
 }
 //-------------------------reducer--------------------------------
 
-const initialState = {};
+const initialState = {serverChannels:{}};
 
 const channelReducer = (state = initialState, action) => {
     let newState;
@@ -121,11 +137,17 @@ const channelReducer = (state = initialState, action) => {
             newState[action.channel.id] = action.channel;
             return newState;
         case GET_ALL_CHANNELS:
-            newState = {};
+            newState = {...state};
             action.allChannels.Channel.forEach(ser => {
                 newState[ser.id] = ser;
             });
             return newState;
+        case GET_ALL_CHANNELS_BY_SERVER:
+                newState = {...state, serverChannels:{}};
+                action.allChannels.ServerChannels.forEach(ser => {
+                    newState.serverChannels[ser.id] = ser;
+                });
+                return newState;
         case ADD_CHANNEL:
             return {
                 ...state,
