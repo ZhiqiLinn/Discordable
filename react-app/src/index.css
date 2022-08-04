@@ -3,3 +3,7 @@
 div{
     border: 1px solid black;
 }
+
+.server-page-layout{
+    display: flex;
+}

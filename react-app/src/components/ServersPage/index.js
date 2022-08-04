@@ -6,13 +6,17 @@ import ChannelsSection from "../ChannelsSection";
 import CreateServerLiveModal from "../CreateServerLiveModal"
 import MembersList from "../MembersList";
 import MessagesBox from "../MessagesBox";
-
+import ServerSideBar from "./ServerSideBar";
+import './ServersPage.css'
 const ServersPage = () => {
     const sessionUser = useSelector(state => state.session.user);
 
     return(
-        <div>
-            <h1>WELCOME, PLEASE SELECT YOUR SERVER</h1>
+        <div className="server-page-layout">
+            <ServerSideBar />
+            <div>
+                <h1>WELCOME, PLEASE SELECT YOUR SERVER</h1>
+            </div>
         </div>
         
     )

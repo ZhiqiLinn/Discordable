@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
 import { getAllServersThunk } from "../../store/server";
 import CreateServerLiveModal from "../CreateServerLiveModal"
-
+import LogoutButton from "../auth/LogoutButton"
 
 const ServerSideBar = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -25,6 +25,8 @@ const ServerSideBar = () => {
                 </div>
             ))}
             <CreateServerLiveModal />
+            <LogoutButton />
+            
 
         </div>
         

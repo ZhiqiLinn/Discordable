@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { addServerThunk } from '../../store/server';
 
-function CreateServerForm() {
+function CreateServerForm({hideForm}) {
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -34,6 +34,7 @@ function CreateServerForm() {
         if (newServer && !errors.length) {
             reset();
             setHasSubmitted(false)
+            hideForm();
             history.push(`/servers`)
         }
     }

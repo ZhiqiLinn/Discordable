@@ -59,7 +59,10 @@ def update_one_server(id):
 #-------------------------DELETE ONE SERVER-------------------
 @server_routes.route('/<int:id>', methods=['DELETE'])
 def delete_one_server(id):
+    print("!!!!BEFORE")
     server = Server.query.get(id)
+    print("!!!!AFTER", server.to_dict())
+
     db.session.delete(server)
     db.session.commit()
     return {"message": "Sucessfully Deleted."}

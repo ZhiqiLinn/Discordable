@@ -6,6 +6,10 @@ import CreateServerForm from './CreateServerForm';
 const CreateServerLiveModal = () => {
     const [showModal, setShowModal] = useState(false);
 
+    const hideForm = () => {
+        setShowModal(false)
+    }
+    
     return (
         <>
             <div>
@@ -14,7 +18,7 @@ const CreateServerLiveModal = () => {
             {showModal && (
                 <div>
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreateServerForm />
+                        <CreateServerForm hideForm={hideForm}/>
                     </Modal>
                 </div>
             )}

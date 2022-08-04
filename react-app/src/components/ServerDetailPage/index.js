@@ -8,6 +8,7 @@ import CreateServerLiveModal from "../CreateServerLiveModal"
 import MembersList from "../MembersList";
 import MessagesBox from "../MessagesBox";
 import './ServerDetail.css'
+import ServerSideBar from "../ServersPage/ServerSideBar";
 
 const ServerDetailPage = () => {
     const {serverId} = useParams()
@@ -15,22 +16,17 @@ const ServerDetailPage = () => {
     const currentServer = allServersArr.filter(server => server.id == +serverId)[0]
     console.log("curr server", currentServer)
     return(
-        <>
-            <NavLink to={`/servers/${serverId}/profile`} >
-                Click to Edit Server
-            </NavLink>
-            <div className="server-detail-page-container">
-                <div>
-                    <ChannelsSection serverId={serverId} currentServer={currentServer}/>
-                </div>
-                <div>
-                    <MessagesBox serverId={serverId} currentServer={currentServer}/>
-                </div>
-                <div>
-                    <MembersList serverId={serverId} currentServer={currentServer}/>
-                </div>
+        <div className="server-page-layout">
+            <div>
+                <NavLink to={`/servers/${serverId}/profile`} >
+                    Click to Edit Server
+                </NavLink>
+                <ChannelsSection serverId={serverId} currentServer={currentServer}/>
+            </div> 
+            <div>
+                <MembersList serverId={serverId} currentServer={currentServer}/>
             </div>
-        </>
+        </div>
         
     )
 }
