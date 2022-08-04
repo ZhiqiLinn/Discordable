@@ -1,0 +1,11 @@
+.channel-section-container{
+    color:white;
+    background-color: #2f3136;
+    width: 160px;
+    height: 100vh;
+}
+.create-channel-container{
+    height: 16px;
+
+    border-bottom: 1px solid white;
+}

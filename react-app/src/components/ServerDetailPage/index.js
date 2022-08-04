@@ -17,15 +17,14 @@ const ServerDetailPage = () => {
     console.log("curr server", currentServer)
     return(
         <div className="server-page-layout">
-            <div>
-                <NavLink to={`/servers/${serverId}/profile`} >
-                    Click to Edit Server
-                </NavLink>
+            <ServerSideBar />
+            <div className="channel-section-container" >
+
                 <ChannelsSection serverId={serverId} currentServer={currentServer}/>
             </div> 
-            <div>
+            {/* <div>
                 <MembersList serverId={serverId} currentServer={currentServer}/>
-            </div>
+            </div> */}
         </div>
         
     )

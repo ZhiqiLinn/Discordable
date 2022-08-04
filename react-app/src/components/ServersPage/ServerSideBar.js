@@ -15,11 +15,11 @@ const ServerSideBar = () => {
         dispatch(getAllServersThunk())
     },[])
     return(
-        <div className="server-side-bar-container">
+        <div className="server-sidebar-container">
             {userOwnerServer.map(server => (
                 <div>
                     <NavLink to={`/servers/${server.id}`}>
-                        <img width="100px" height="100px" src={server.server_pic} alt={server.name}>
+                        <img className="server-sidebar-round-img" src={server.server_pic} alt={server.name}>
                         </img>
                     </NavLink>
                 </div>

@@ -48,6 +48,10 @@ function App() {
           <HomePage/>
         </Route>
 
+        <ProtectedRoute path='/servers/:serverId/:chanId/messages' exact={true} >
+          <MessagesBox />
+        </ProtectedRoute>
+
         <ProtectedRoute path='/servers/:serverId/profile' exact={true} >
           <ServerProfilePage />
         </ProtectedRoute>
