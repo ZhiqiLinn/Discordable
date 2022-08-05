@@ -8,6 +8,7 @@ class Message(db.Model):
 #     member_id = db.Column(db.Integer, db.ForeignKey("members.id"), nullable=False)
     channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True), nullable=False)
 
     channel = db.relationship('Channel', back_populates='messages')
 
@@ -18,6 +19,7 @@ class Message(db.Model):
                 'message': self.message,
                 # 'member_id': self.member_id,
                 'channel_id': self.channel_id,
-                'user_id': self.user_id
+                'user_id': self.user_id,
+                'created_at': self.created_at
 
         }

@@ -34,7 +34,8 @@ def create_one_message():
         new_message = Message(
             message=form.data['message'],
             user_id=form.data['user_id'],
-            channel_id=form.data['channel_id']
+            channel_id=form.data['channel_id'],
+            created_at=form.data['created_at']
         )
         db.session.add(new_message)
         db.session.commit()
@@ -50,7 +51,9 @@ def update_one_message(id):
         curr_message = Message.query.get(id)
         curr_message.message=form.data['message'],
         curr_message.user_id=form.data['user_id'],
-        curr_message.channel_id=form.data['channel_id']
+        curr_message.channel_id=form.data['channel_id'],
+        curr_message.created_at=form.data['created_at']
+
         db.session.commit()
         return curr_message.to_dict()
 

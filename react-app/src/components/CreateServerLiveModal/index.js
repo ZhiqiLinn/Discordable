@@ -13,7 +13,7 @@ const CreateServerLiveModal = () => {
     return (
         <>
             <div>
-                <button  onClick={() => setShowModal(true)}>Create </button>
+                <button  onClick={() => setShowModal(true)}> ➕ </button>
             </div>
             {showModal && (
                 <div>

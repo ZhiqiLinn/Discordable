@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -20,7 +20,12 @@ import MessagesBox from './components/MessagesBox';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-
+  
+  // const AllChannels = useSelector(state => state.channelState.serverChannels)
+  // console.log("test!!!!!!!!!!!!!!",AllChannels)
+  // useEffect(() => {
+  //   dispatch(getAllChannelsBelongToServer(1))
+  // },[])
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
@@ -53,7 +58,7 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path='/servers/:serverId/:chanId' exact={true} >
-          <ChannelsSection />
+          <MessagesBox />
         </ProtectedRoute>
 
         <ProtectedRoute path='/servers/:serverId' exact={true} >

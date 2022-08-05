@@ -10,8 +10,15 @@ const CreateChannelLiveModal = () => {
     }
     return (
         <>
-            <div>
-                <button  onClick={() => setShowModal(true)}> +</button>
+            <div className='create-channel-container'>
+                <div className='create-channel-divs' onClick={() => setShowModal(true)}>
+                    <div>
+                        CHANNEL
+                    </div>
+                    <div>
+                        +
+                    </div>
+                </div>
             </div>
             {showModal && (
                 <div>

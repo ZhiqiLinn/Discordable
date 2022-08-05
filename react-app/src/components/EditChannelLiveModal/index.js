@@ -10,7 +10,7 @@ const EditChannelLiveModal = ({channel}) => {
     }
     return (
         <>
-            <button  onClick={() => setShowModal(true)}>⚙️</button>
+            <span  onClick={() => setShowModal(true)}>⚙️</span>
             {showModal && (
                 <div>
                     <DarkModal onClose={() => setShowModal(false)}>
