@@ -5,7 +5,7 @@ const GET_SERVER = "server/GET_SERVER"
 const GET_ALL_SERVERS = "server/GET_ALL_SERVERS"
 const EDIT_SERVER = "server/EDIT_SERVER"
 const DELETE_SERVER = "server/DELETE_SERVER"
-
+const GET_SERVER_OWNER = "server/GET_SERVER_OWNER"
 //-------------------------action creator-------------------------
 const addServer = (addedServer) => {
     return {
@@ -13,6 +13,13 @@ const addServer = (addedServer) => {
         addedServer
     }
 }
+
+// const getServerOwner = (owner) => {
+//     return {
+//         type:GET_SERVER_OWNER,
+//         owner
+//     }
+// }
 
 const getServer = (server) => {
     return {
@@ -72,7 +79,13 @@ export const addServerThunk = (server) => async (dispatch) => {
 }
 
 
-
+// export const getServerOwnerThunk = (ownerId) => async(dispatch) => {
+//     const response = await fetch(`/api/users/${ownerId}`);
+//     if (response.ok) {
+//         const owner = await response.json();
+//         dispatch(getServerOwner(owner));
+//     }
+// }
 
 export const getServerThunk = (serverId) => async (dispatch) => {
     const response = await fetch(`/api/servers/${serverId}`);
@@ -111,19 +124,23 @@ export const deleteServerThunk = (serverId) => async (dispatch) => {
 }
 //-------------------------reducer--------------------------------
 
-const initialState = {};
+const initialState = {allServers: {}, singleServer:{}};
 
 const serverReducer = (state = initialState, action) => {
     let newState;
     switch (action.type){
+        // case GET_SERVER_OWNER:
+        //     newState = {...state, owner:{}}
+        //     newState.owner[action.owner.id] = action.owner
+        //     return newState
         case GET_SERVER:
-            newState = { ...state };
-            newState[action.server.id] = action.server;
+            newState = { ...state, singleServer:{} };
+            newState.singleServer[action.server.id] = action.server;
             return newState;
         case GET_ALL_SERVERS:
-            newState = {};
+            newState = {...state, allServers:{}};
             action.allServers.Server.forEach(ser => {
-                newState[ser.id] = ser;
+                newState.allServers[ser.id] = ser;
             });
             return newState;
         case ADD_SERVER:

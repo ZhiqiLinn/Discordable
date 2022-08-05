@@ -9,7 +9,7 @@ import { getAllChannelsThunk } from "../../store/channel";
 const ServerSideBar = () => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    const allServersArr = Object.values(useSelector(state => state.serverState))
+    const allServersArr = Object.values(useSelector(state => state.serverState.allServers))
     const userOwnerServer = allServersArr.filter(server => server.user_id == +sessionUser.id)
 
     useEffect(()=> {

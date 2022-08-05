@@ -81,6 +81,7 @@ class Server(db.Model):
                 'server_pic': self.server_pic,
                 'default_role': self.default_role,
                 'user_id': self.user_id,
+                'owner': self.owner.to_dict(),
                 'serverMembers' : serverMembers
         }
 
