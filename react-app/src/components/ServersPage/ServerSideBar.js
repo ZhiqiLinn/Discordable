@@ -18,7 +18,7 @@ const ServerSideBar = () => {
     return(
         <div className="server-sidebar-container">
             {userOwnerServer.map(server => (
-                <div>
+                <div key={server.id}>
                     <NavLink to={`/servers/${server.id}`}>
                         <img className="server-sidebar-round-img" src={server.server_pic} alt={server.name}>
                         </img>

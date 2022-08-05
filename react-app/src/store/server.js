@@ -54,7 +54,7 @@ export const getAllServersThunk = () => async (dispatch) => {
     const response = await fetch(`/api/servers`);
     if (response.ok) {
         const servers = await response.json();
-        console.log("GETALLSERVERSTHUNK",servers)
+        // console.log("GETALLSERVERSTHUNK",servers)
         dispatch(getAllServers(servers));
     }
 }
@@ -71,7 +71,7 @@ export const addServerThunk = (server) => async (dispatch) => {
 
     if (response.ok) {
         const newServer = await response.json();
-        console.log("ADDSERVERTHUNK",newServer)
+        // console.log("ADDSERVERTHUNK",newServer)
 
         dispatch(addServer(newServer));
         return newServer;
@@ -92,7 +92,7 @@ export const getServerThunk = (serverId) => async (dispatch) => {
 
     if (response.ok) {
         const server = await response.json();
-        console.log("GETSERVERTHUNK",server)
+        // console.log("GETSERVERTHUNK",server)
 
         dispatch(getServer(server));
     }
@@ -107,7 +107,7 @@ export const editServerThunk = (server) => async (dispatch) => {
     })
     if (response.ok) {
         const newServer = await response.json();
-        console.log("EDITEDSERVERTHUNK",newServer)
+        // console.log("EDITEDSERVERTHUNK",newServer)
         dispatch(editServer(newServer));
         return newServer;
     }

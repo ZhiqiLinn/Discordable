@@ -19,7 +19,7 @@ export const authenticate = () => async (dispatch) => {
       'Content-Type': 'application/json'
     }
   });
-  console.log("AUTHENTICATE RESPONSE!!", response)
+  // console.log("AUTHENTICATE RESPONSE!!", response)
   if (response.ok) {
     const data = await response.json();
     if (data.errors) {
