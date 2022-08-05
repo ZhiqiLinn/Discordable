@@ -14,7 +14,7 @@ const MessagesBox = () => {
 
     useEffect(() => {
         dispatch(getAllMessagesForChannelThunk(chanId))
-    }, []);
+    }, [chanId]);
     return (
         <div className="server-page-layout">  
             <ServerSideBar />
