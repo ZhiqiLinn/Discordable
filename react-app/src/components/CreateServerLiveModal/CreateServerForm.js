@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import { addServerThunk } from '../../store/server';
 
 function CreateServerForm({hideForm}) {
@@ -86,6 +86,11 @@ function CreateServerForm({hideForm}) {
                     <button type='button' onClick={() => history.goBack()}>Cancel</button>
                 </div>
             </form>
+                <div>
+                    <NavLink to='/explore-server'>
+                        Join a Server
+                    </NavLink>
+                </div>
         </div>
     )
 }
