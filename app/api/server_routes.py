@@ -14,16 +14,19 @@ def validation_errors_to_error_messages(validation_errors):
         for error in validation_errors[field]:
             errorMessages.append(f'{field} : {error}')
     return errorMessages
+    
 #-------------------------GET ALL SERVER----------------------
 @server_routes.route('', methods=['GET'])
 def get_all_servers():
     servers = Server.query.all()
     return {'Server': [server.to_dict() for server in servers]}
+
 #-------------------------GET ONE SERVER----------------------
 @server_routes.route('/<int:id>')
 def get_one_server(id):
     server = Server.query.get(id)
     return server.to_dict()
+
 #-------------------------POST ONE SERVER---------------------
 @server_routes.route('', methods=['POST'])
 def create_one_server():
@@ -56,12 +59,13 @@ def update_one_server(id):
         return curr_server.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 #-------------------------DELETE ONE SERVER-------------------
 @server_routes.route('/<int:id>', methods=['DELETE'])
 def delete_one_server(id):
-    print("!!!!BEFORE")
+    # print("!!!!BEFORE")
     server = Server.query.get(id)
-    print("!!!!AFTER", server.to_dict())
+    # print("!!!!AFTER", server.to_dict())
 
     db.session.delete(server)
     db.session.commit()

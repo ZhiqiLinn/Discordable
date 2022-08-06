@@ -6,6 +6,7 @@ const GET_ALL_SERVERS = "server/GET_ALL_SERVERS"
 const EDIT_SERVER = "server/EDIT_SERVER"
 const DELETE_SERVER = "server/DELETE_SERVER"
 
+
 //-------------------------action creator-------------------------
 const addServer = (addedServer) => {
     return {
@@ -13,6 +14,7 @@ const addServer = (addedServer) => {
         addedServer
     }
 }
+
 
 const getServer = (server) => {
     return {
@@ -47,7 +49,7 @@ export const getAllServersThunk = () => async (dispatch) => {
     const response = await fetch(`/api/servers`);
     if (response.ok) {
         const servers = await response.json();
-        console.log("GETALLSERVERSTHUNK",servers)
+        // console.log("GETALLSERVERSTHUNK",servers)
         dispatch(getAllServers(servers));
     }
 }
@@ -64,7 +66,7 @@ export const addServerThunk = (server) => async (dispatch) => {
 
     if (response.ok) {
         const newServer = await response.json();
-        console.log("ADDSERVERTHUNK",newServer)
+        // console.log("ADDSERVERTHUNK",newServer)
 
         dispatch(addServer(newServer));
         return newServer;
@@ -79,7 +81,7 @@ export const getServerThunk = (serverId) => async (dispatch) => {
 
     if (response.ok) {
         const server = await response.json();
-        console.log("GETSERVERTHUNK",server)
+        // console.log("GETSERVERTHUNK",server)
 
         dispatch(getServer(server));
     }
@@ -94,7 +96,7 @@ export const editServerThunk = (server) => async (dispatch) => {
     })
     if (response.ok) {
         const newServer = await response.json();
-        console.log("EDITEDSERVERTHUNK",newServer)
+        // console.log("EDITEDSERVERTHUNK",newServer)
         dispatch(editServer(newServer));
         return newServer;
     }
@@ -109,21 +111,24 @@ export const deleteServerThunk = (serverId) => async (dispatch) => {
         dispatch(deleteServer(serverId));
     }
 }
+
+
 //-------------------------reducer--------------------------------
 
-const initialState = {};
+const initialState = {allServers: {}, singleServer:{}};
 
 const serverReducer = (state = initialState, action) => {
     let newState;
     switch (action.type){
+
         case GET_SERVER:
-            newState = { ...state };
-            newState[action.server.id] = action.server;
+            newState = { ...state, singleServer:{} };
+            newState.singleServer[action.server.id] = action.server;
             return newState;
         case GET_ALL_SERVERS:
-            newState = {};
+            newState = {...state, allServers:{}};
             action.allServers.Server.forEach(ser => {
-                newState[ser.id] = ser;
+                newState.allServers[ser.id] = ser;
             });
             return newState;
         case ADD_SERVER:

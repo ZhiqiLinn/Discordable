@@ -16,6 +16,7 @@ import ServerProfilePage from './components/ServerProfilePage';
 import HomePage from './components/HomePage';
 import ChannelsSection from './components/ChannelsSection';
 import MessagesBox from './components/MessagesBox';
+import JoinServerForm from './components/CreateServerLiveModal/JoinServerForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +47,10 @@ function App() {
 
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/explore-server' exact={true} >
+          <JoinServerForm />
         </ProtectedRoute>
 
         <Route path='/' exact={true}>
