@@ -44,6 +44,7 @@ const LoginForm = () => {
       }}>
           <div className='login-form-container'>
             <div className='login-inner-div'>
+              <div>
               <form onSubmit={onLogin}>
                 <div style={{textAlign:'center'}}>
                   <h3>Welcome back!</h3>
@@ -66,8 +67,7 @@ const LoginForm = () => {
                       value={email}
                       onChange={updateEmail}
                     />
-                  </div>
-                  <div>
+
                     <label htmlFor='password'>PASSWORD</label>
                     <br></br>
                     <input
@@ -81,16 +81,17 @@ const LoginForm = () => {
                   </div>
                   <p>Please do not use real information here :)</p>
                   <br></br>
-                    <div>
-                      <button className="login-btn" type='submit'>Login</button>
-                    </div>
-                    <div className='login-demo-btn'>
-                      <DemoUserLogin />
-                    </div>
-                    <div className='login-to-signup'>
-                      Need an Account? <NavLink to="/signup"> Register</NavLink>
-                    </div>
+                  <div>
+                    <button className="login-btn" type='submit'>Login</button>
+                  </div>
                 </form>
+                <div className='login-demo-btn'>
+                  <DemoUserLogin />
+                </div>
+                <div className='login-to-signup'>
+                  Need an Account? <NavLink to="/signup"> Register</NavLink>
+                </div>
+              </div>
                 <div className='login-form-img'>
                   <img src={qrCode}></img>
                   <h4>Scan to Checkout GitHub</h4>

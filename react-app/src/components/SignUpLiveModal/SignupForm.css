@@ -1,5 +1,5 @@
 .signup-container{
-    height:100vh;
+    height:95vh;
     width:100%;
 }
 
@@ -11,7 +11,7 @@
     z-index: 1;
     background: #2f3136;
     margin: 0 auto 100px;
-    padding: 35px 45px 75px 45px;
+    padding: 35px 55px 85px 55px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     color:rgb(167, 167, 167);
     font-size: 8px;
