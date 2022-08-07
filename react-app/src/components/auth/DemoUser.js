@@ -39,7 +39,7 @@ const DemoUserLogin = () => {
           value={password}
           required
         />
-        <button type="submit">Demo User</button>
+        <button className="nav-demo-btn" type="submit">Demo User</button>
       </form>
     </div>
   );
