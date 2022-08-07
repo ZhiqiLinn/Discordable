@@ -17,6 +17,8 @@ import HomePage from './components/HomePage';
 import ChannelsSection from './components/ChannelsSection';
 import MessagesBox from './components/MessagesBox';
 import JoinServerForm from './components/CreateServerLiveModal/JoinServerForm';
+import LoginForm from './components/LoginLiveModal/LoginForm';
+import SignUpForm from './components/SignUpLiveModal/SignUpForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -56,6 +58,16 @@ function App() {
         <Route path='/' exact={true}>
           <NavBar />
           <HomePage/>
+        </Route>
+
+        <Route path='/login' exact={true}>
+          <NavBar />
+          <LoginForm/>
+        </Route>
+
+        <Route path='/signup' exact={true}>
+          <NavBar />
+          <SignUpForm/>
         </Route>
 
         <ProtectedRoute path='/servers/:serverId/profile' exact={true} >

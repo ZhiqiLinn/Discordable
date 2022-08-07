@@ -15,11 +15,37 @@
     gap:  25px;
     font-size: x-small;
     color:white;
-    font-weight:900
+    font-weight:900;
+    padding-top: 5px;
 }
 
 
 .nav-mid-part a{
     color:white;
     text-decoration: none;
+}
+
+.nav-logout-btn{
+    background-color:white;
+    color:black;
+    display:block;
+    width:50px;
+    height:25px;
+    border:none;
+    border-radius: 50px;
+    text-align: center;
+    font-size:xx-small;
+}
+
+
+.nav-demo-btn{
+        background-color:white;
+        color:black;
+        display:block;
+        width:75px;
+        height:25px;
+        border:none;
+        border-radius: 50px;
+        text-align: center;
+        font-size:xx-small;
 }

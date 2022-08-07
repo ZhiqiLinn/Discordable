@@ -74,10 +74,14 @@ const NavBar = () => {
               <a href='https://www.linkedin.com/in/zhiqi-linn/'>LinkedIn </a>
             </div>
             <div>
-              <LoginLiveModal />
+              <NavLink to='/login' exact={true} activeClassName='active'>
+                Login
+              </NavLink>
             </div>
             <div>
-              <SignupLiveModal />
+              <NavLink to='/signup' exact={true} activeClassName='active'>
+                Signup
+              </NavLink>
             </div>
           </div>
           <div>
