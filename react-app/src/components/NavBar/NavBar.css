@@ -1,0 +1,25 @@
+.nav-bar-container{
+    background-color:#484CEC ; 
+    padding:15px;
+   
+}
+
+.nav-bar-div{
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-mid-part{
+    display: flex;
+    justify-content: space-between;
+    gap:  25px;
+    font-size: x-small;
+    color:white;
+    font-weight:900
+}
+
+
+.nav-mid-part a{
+    color:white;
+    text-decoration: none;
+}

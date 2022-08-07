@@ -8,9 +8,7 @@ const SignupLiveModal = () => {
 
     return (
         <>
-            <div>
-                <button  onClick={() => setShowModal(true)}>SignUp </button>
-            </div>
+            <div  onClick={() => setShowModal(true)}>SignUp </div>
             {showModal && (
                 <div>
                     <Modal onClose={() => setShowModal(false)}>
