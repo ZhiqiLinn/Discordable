@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
-
+import loginBackground from './loginBackground.png'
+import qrCode from './qrcode.PNG'
+import './LoginForm.css'
+import DemoUserLogin from '../auth/DemoUser';
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -35,35 +38,65 @@ const LoginForm = () => {
 
 
   return (
-    <div>
-      <form onSubmit={onLogin}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
-        <div>
-          <label htmlFor='email'>Email</label>
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password</label>
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          />
-          <button type='submit'>Login</button>
-        </div>
-      </form>
+    <div className="login-container" style={{
+      backgroundImage:`url(${loginBackground})`,
+      backgroundSize:'cover',
+      }}>
+          <div className='login-form-container'>
+            <div className='login-inner-div'>
+              <form onSubmit={onLogin}>
+                <div style={{textAlign:'center'}}>
+                  <h3>Welcome back!</h3>
+                  <p>We're so excited to see you again!</p>
+                  <br></br>
+                </div>
+                  <div>
+                    {errors.map((error, ind) => (
+                      <div key={ind}><span style={{color:"red"}}>*</span> {error}</div>
+                    ))}
+                  </div>
+                  <div>
+                    <label htmlFor='email'>EMAIL</label>
+                    <br></br>
+                    <input
+                      className='login-input'
+                      name='email'
+                      type='text'
+                      placeholder='Email'
+                      value={email}
+                      onChange={updateEmail}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor='password'>PASSWORD</label>
+                    <br></br>
+                    <input
+                      className='login-input'
+                      name='password'
+                      type='password'
+                      placeholder='Password'
+                      value={password}
+                      onChange={updatePassword}
+                    />
+                  </div>
+                  <p>Please do not use real information here :)</p>
+                  <br></br>
+                    <div>
+                      <button className="login-btn" type='submit'>Login</button>
+                    </div>
+                    <div className='login-demo-btn'>
+                      <DemoUserLogin />
+                    </div>
+                    <div className='login-to-signup'>
+                      Need an Account? <NavLink to="/signup"> Register</NavLink>
+                    </div>
+                </form>
+                <div className='login-form-img'>
+                  <img src={qrCode}></img>
+                  <h4>Scan to Checkout GitHub</h4>
+                </div>
+            </div>
+          </div>
 
     </div>
   );
