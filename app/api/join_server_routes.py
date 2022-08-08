@@ -1,3 +1,4 @@
+from http import server
 from flask import Blueprint, request
 from app.forms import CreateServerForm, UpdateServerForm
 from app.forms.join_server_form import JoinServerForm
@@ -17,9 +18,11 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
     
-#-------------------------GET ALL SERVER----------------------
+
+#-----------------------GET JOINED SERVER----------------------
+#-------------------------JOIN SERVER----------------------
 @join_server_routes.route('', methods=['POST'])
-@login_required
+# @login_required
 def join_a_server():
     form = JoinServerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -31,6 +34,6 @@ def join_a_server():
         curr_server.members.append(new_member)
         new_member.joined_servers.append(curr_server)
         db.session.commit()
-        return {'message':'Successfully Joined'}
+        return new_member.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

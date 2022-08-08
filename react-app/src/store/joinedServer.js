@@ -14,14 +14,7 @@ const joinAServer = (joinInfo) => {
 
 //-------------------------THUNK----------------------------------
 
-// export const getAlljoinedServerThunk = () => async (dispatch) => {
-//     const response = await fetch(`/api/join-server`);
-//     if (response.ok) {
-//         const servers = await response.json();
-//         // console.log("GETALLSERVERSTHUNK",servers)
-//         dispatch(getAllServers(servers));
-//     }
-// }
+
 export const joinAServerThunk = (joinPayload) => async (dispatch) => {
     const response = await fetch(`/api/join-server`, {
         method: 'POST',
@@ -41,7 +34,7 @@ export const joinAServerThunk = (joinPayload) => async (dispatch) => {
 
 
 //-------------------------reducer--------------------------------
-const initialState = {joinedServers:{}};
+const initialState = {};
 
 const joinedServerReducer = (state = initialState, action) => {
     let newState;
@@ -55,10 +48,7 @@ const joinedServerReducer = (state = initialState, action) => {
         case JOIN_A_SERVER:
             newState = {
                 ...state, 
-                joinedServer:{
-                    ...state.joinedServers,
                     [action.joinInfo.id]: action.joinInfo
-                }
             }
     
             return newState
