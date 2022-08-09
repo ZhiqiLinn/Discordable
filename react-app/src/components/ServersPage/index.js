@@ -13,7 +13,7 @@ const ServersPage = () => {
                 <h1>WELCOME, PLEASE SELECT YOUR SERVER</h1>
             </div>
             <div className="server-user-logout-container">
-                        <UserProfileBar />
+                <UserProfileBar />
             </div>
         </div>
         

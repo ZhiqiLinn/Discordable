@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from app.forms import CreateMessageForm, UpdateMessageForm
 from app.models import db, Message
-
+import datetime
 message_routes = Blueprint('messages', __name__)
 
 
@@ -35,7 +35,7 @@ def create_one_message():
             message=form.data['message'],
             user_id=form.data['user_id'],
             channel_id=form.data['channel_id'],
-            created_at=form.data['created_at']
+            created_at=datetime.datetime.now()
         )
         db.session.add(new_message)
         db.session.commit()
@@ -52,7 +52,7 @@ def update_one_message(id):
         curr_message.message=form.data['message'],
         curr_message.user_id=form.data['user_id'],
         curr_message.channel_id=form.data['channel_id'],
-        curr_message.created_at=form.data['created_at']
+        curr_message.created_at=datetime.datetime.now()
 
         db.session.commit()
         return curr_message.to_dict()

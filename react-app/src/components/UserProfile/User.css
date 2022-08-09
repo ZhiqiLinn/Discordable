@@ -1,0 +1,29 @@
+.user-profile-menu{
+    height:270px;
+    width:270px;
+    background-color: #18191c;
+    position:absolute;
+    bottom:70px;
+    padding:10%;
+}
+
+.user-bar-img{
+    height:40px;
+    width:40px;
+    border-radius: 50%;
+}
+
+.user-menu-img{
+
+    height:90px;
+    width:90px;
+    border-radius: 50%;
+}
+
+.user-menu-name{
+    font-size: large;
+    font-weight: bolder;
+    padding: 10px 3px 10px 0;
+    border-bottom: 1px solid grey;
+
+}
