@@ -19,7 +19,13 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
     
 
-#-----------------------GET JOINED SERVER----------------------
+# -----------------------GET JOINED SERVER----------------------
+@join_server_routes.route('/<int:id>', methods=['GET'])
+def all_servers_by_user(id):
+    # servers = Server.query.join(Server.members).all()
+    user = User.query.get(id)
+    # print("!!!!!!!!!!!!!!!!!!!!!!"*50, user.to_dict())
+    return user.to_dict()
 #-------------------------JOIN SERVER----------------------
 @join_server_routes.route('', methods=['POST'])
 # @login_required
@@ -34,6 +40,7 @@ def join_a_server():
         curr_server.members.append(new_member)
         new_member.joined_servers.append(curr_server)
         db.session.commit()
+        # print("!!!!this is new member", new_member.to_dict())
         return new_member.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

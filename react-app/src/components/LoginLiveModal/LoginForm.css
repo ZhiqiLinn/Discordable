@@ -4,25 +4,23 @@
 }
 .login-form-container{
     position: relative;
-    top:25%;
-    width: 400px;
-    height:210px;
+    top:27%;
+    width: 600px;
+    height:300px;
     z-index: 1;
     background: #2f3136;
     margin: 0 auto 100px;
-    padding: 35px 45px 90px 45px;
+    padding: 35px 45px 120px 45px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     color:rgb(167, 167, 167);
-    font-size: 8px;
     font-weight: bold;
+    font-size: small;
     border-radius: 4px;
 }
-.login-form-container h3{
-    font-size: large;
+.login-form-container h1{
     color:white
 }
 .login-form-container p{
-    font-size: x-small;
     font-weight: normal;
     color:rgb(141, 140, 140)
 }
@@ -30,12 +28,12 @@
 .login-input{
     outline: 0;
     background: #202225;
-    width: 200px;
+    width: 300px;
+    height: 40px;
     border: 0;
     margin: 0 0 15px;
     padding: 5px;
     box-sizing: border-box;
-    font-size: 10px;
     border-radius: 2px;
     color:white
 
@@ -47,15 +45,14 @@
     gap:15px
 }
 .login-form-img img{
-    padding-top: 25px;
-    height: 150px;
-    width:150px;
+    padding-top: 55px;
+    height: 200px;
+    width:200px;
 
 }
 
-.login-form-img h4{
+.login-form-img h2{
     color:white;
-    font-size: 12px;
     text-align: center; 
     padding-top: 10px;
 }
@@ -63,7 +60,8 @@
 .login-btn{
     outline: 0;
     background: #484CEC;
-    width: 200px;
+    width: 300px;
+    height: 40px;
     border: 0;
     margin: 0 0 15px;
     padding: 5px;
@@ -71,7 +69,7 @@
     font-size: 14px;
     border-radius: 2px;
     color:white;
-    font-size: xx-small;
+    font-weight: bold;
 
 }
 .login-btn:hover{
@@ -82,17 +80,18 @@
 .login-to-signup a{
     text-decoration:none;
     color:#0788e4;
-    font-size:9px;
+    font-size: 16px
 }
 
 .login-to-signup a:hover{
     text-decoration:underline
 }
 
-.login-demo-btn button{
+.login-demo-btn button{ 
     outline: 0;
     background: #484CEC;
-    width: 200px;
+    width: 300px;
+    height: 40px;
     border: 0;
     margin: 0 0 15px;
     padding: 3px;
@@ -100,7 +99,6 @@
     font-size: 14px;
     border-radius: 2px;
     color:white;
-    font-size: xx-small;
 }
 
 

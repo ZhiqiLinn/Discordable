@@ -47,7 +47,7 @@ export const getAllMessagesForChannelThunk = (channelId) => async (dispatch) => 
     const response = await fetch(`/api/messages/chan/${channelId}`);
     if (response.ok) {
         const messages = await response.json();
-        console.log("GETALLMESSAGESTHUNK",messages)
+        // console.log("GETALLMESSAGESTHUNK",messages)
         dispatch(getAllMessages(messages));
     }
 }
@@ -64,7 +64,7 @@ export const addMessageThunk = (message) => async (dispatch) => {
 
     if (response.ok) {
         const newMessage = await response.json();
-        console.log("ADDMESSAGETHUNK",newMessage)
+        // console.log("ADDMESSAGETHUNK",newMessage)
 
         dispatch(addMessage(newMessage));
         return newMessage;
@@ -79,7 +79,7 @@ export const getMessageThunk = (messageId) => async (dispatch) => {
 
     if (response.ok) {
         const message = await response.json();
-        console.log("GETMESSAGETHUNK",message)
+        // console.log("GETMESSAGETHUNK",message)
 
         dispatch(getMessage(message));
     }
@@ -94,7 +94,7 @@ export const editMessageThunk = (message) => async (dispatch) => {
     })
     if (response.ok) {
         const newMessage = await response.json();
-        console.log("EDITEDMESSAGETHUNK",newMessage)
+        // console.log("EDITEDMESSAGETHUNK",newMessage)
         dispatch(editMessage(newMessage));
         return newMessage;
     }

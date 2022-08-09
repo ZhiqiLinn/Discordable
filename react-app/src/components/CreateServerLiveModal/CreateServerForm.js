@@ -87,7 +87,7 @@ function CreateServerForm({hideForm}) {
                 </div>
             </form>
                 <div>
-                    <NavLink to='/explore-server'>
+                    <NavLink to='/servers/join'>
                         Join a Server
                     </NavLink>
                 </div>

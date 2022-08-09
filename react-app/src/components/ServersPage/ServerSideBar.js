@@ -4,17 +4,46 @@ import { NavLink } from "react-router-dom";
 import { getAllServersThunk } from "../../store/server";
 import CreateServerLiveModal from "../CreateServerLiveModal"
 import LogoutButton from "../auth/LogoutButton"
-import logo from './logo.png'
+import logo from "./logo.png"
+import { GetAllJoinedServerThunk } from "../../store/joinedServer";
+import UserJoinedServerList from "./UserJoinedServerList";
 const ServerSideBar = () => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const allServersArr = Object.values(useSelector(state => state.serverState))
-    const userOwnerServer = allServersArr.filter(server => server.user_id == +sessionUser.id)
-    const userJoinedServersArr = Object.values(sessionUser.userJoinedServers)
-    console.log(userJoinedServersArr)
+    const userOwnedServer = allServersArr.filter(server => server.user_id == +sessionUser.id)
+    
+    
+    const [users, setUsers] = useState([]);
+    
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('/api/users/');
+            const responseData = await response.json();
+            setUsers(responseData.users);
+        }
+        fetchData();
+    }, []);
+
+    console.log("users:", users)
+    const [joinedServers, setJoinedServers] = useState({})
+    const [joinedServersArr, setJoinedServersArr] = useState([])
+    // console.log(userServers)
+    useEffect(() => {
+        setJoinedServers(sessionUser?.userJoinedServers)
+        if(joinedServers){
+            setJoinedServersArr(Object.values(joinedServers))
+        }
+    },[sessionUser])
+
+    console.log("####### joined server", joinedServersArr)
+    // console.log("####### joined server sessionuser", sessionUser)
+
+
     useEffect(()=> {
+        dispatch(GetAllJoinedServerThunk(sessionUser.id))
         dispatch(getAllServersThunk())
-    },[sessionUser.userJoinedServers])
+    },[sessionUser.userJoinedServers, sessionUser.id])
 
     return(
         <div className="server-sidebar-container">
@@ -23,8 +52,7 @@ const ServerSideBar = () => {
                     <img src={logo}></img>
                 </NavLink>  
             </div>
-            <hr style={{color:"white"}}></hr>
-            {userOwnerServer.map(server => (
+            {userOwnedServer.map(server => (
                 <div key={server.id}>
                     <NavLink to={`/servers/${server.id}`}>
                         <img className="server-sidebar-round-img" src={server.server_pic} alt={server.name}>
@@ -32,16 +60,7 @@ const ServerSideBar = () => {
                     </NavLink>
                 </div>
             ))}
-            {userJoinedServersArr.map(server => {
-                // server.joinedServer_user_id !== sessionUser.id && 
-                <div key={server.id}>
-                <NavLink to={`/servers/${server.joinedServer_id}`}>
-                    <img className="server-sidebar-round-img" src={server.joinedServer_server_pic} alt={server.joinedServer_name}>
-                    </img>
-                </NavLink>
-                </div>
-            }
-            )}
+            <UserJoinedServerList />
             <CreateServerLiveModal />
             <LogoutButton />
             

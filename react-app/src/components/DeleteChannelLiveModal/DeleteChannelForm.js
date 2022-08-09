@@ -6,7 +6,7 @@ import { deleteChannelThunk } from "../../store/channel";
 const DeleteChannelForm = ({channelId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    console.log("THIS IS DELETED CHANNEL ID", channelId)
+    // console.log("THIS IS DELETED CHANNEL ID", channelId)
 
     const handleDeleteSubmit = () => {
         dispatch(deleteChannelThunk(channelId));

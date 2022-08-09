@@ -6,16 +6,17 @@
     align-items: center;
     color:white;
     background-color: #202225;
-    width: 50px;
+    width: 80px;
     height:100vh;
 
 }
 
 .server-sidebar-round-img{
 
-    width:30px;
-    height:30px;
+    width:50px;
+    height:50px;
     border-radius: 50%;
+    padding-bottom: 8px;
 }
 
 .server-sidebar-logo img{
@@ -29,4 +30,16 @@
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
 
+}
+
+.joined-server-arr{
+    background-color: red;
+}
+
+.user-joined-server-sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 10px;
 }

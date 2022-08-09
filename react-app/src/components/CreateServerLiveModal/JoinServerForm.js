@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import {joinAServerThunk} from '../../store/joinedServer';
 
 function JoinServerForm() {
@@ -27,11 +27,11 @@ function JoinServerForm() {
             member_id:sessionUser.id,
             server_id:serverId
         }
-        const newServer = await dispatch(joinAServerThunk(payload))
-        if (newServer && !errors.length) {
+        if (payload && !errors.length) {
+            await dispatch(joinAServerThunk(payload))
             reset();
             setHasSubmitted(false)
-            history.push(`/servers/${serverId}`)
+            history.push('/servers')
         }
     }
     const reset = () => {

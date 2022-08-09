@@ -19,7 +19,7 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
     history.push('/servers')
     if (data) {
-      console.log("data", data)
+      // console.log("data", data)
       setErrors(data);
     }
   };
@@ -47,7 +47,7 @@ const LoginForm = () => {
               <div>
               <form onSubmit={onLogin}>
                 <div style={{textAlign:'center'}}>
-                  <h3>Welcome back!</h3>
+                  <h1>Welcome back!</h1>
                   <p>We're so excited to see you again!</p>
                   <br></br>
                 </div>
@@ -67,7 +67,7 @@ const LoginForm = () => {
                       value={email}
                       onChange={updateEmail}
                     />
-
+                    <br></br>
                     <label htmlFor='password'>PASSWORD</label>
                     <br></br>
                     <input
@@ -89,12 +89,12 @@ const LoginForm = () => {
                   <DemoUserLogin />
                 </div>
                 <div className='login-to-signup'>
-                  Need an Account? <NavLink to="/signup"> Register</NavLink>
+                  <p>Need an Account? <NavLink to="/signup"> Register</NavLink></p>
                 </div>
               </div>
                 <div className='login-form-img'>
                   <img src={qrCode}></img>
-                  <h4>Scan to Checkout GitHub</h4>
+                  <h2>Scan to Checkout <br></br>GitHub</h2>
                 </div>
             </div>
           </div>

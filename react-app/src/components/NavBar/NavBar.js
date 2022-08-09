@@ -4,8 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import DemoUserLogin from '../auth/DemoUser';
 import LogoutButton from '../auth/LogoutButton';
-import LoginLiveModal from '../LoginLiveModal';
-import SignupLiveModal from '../SignUpLiveModal';
 import './NavBar.css'
 import logo from './logo.png'
 const NavBar = () => {
@@ -19,7 +17,7 @@ const NavBar = () => {
       <nav className='nav-bar-div'>
         <div>
           <NavLink to='/' exact={true} activeClassName='active'>
-            <img src={logo} alt='discordable' width="110px" height="25px"></img>
+            <img src={logo} alt='discordable' width="155px" height="46px"></img>
           </NavLink>
         </div>
         <div className='nav-mid-part'>
@@ -57,7 +55,7 @@ const NavBar = () => {
         <nav className='nav-bar-div'>
           <div>
             <NavLink to='/' exact={true} activeClassName='active'>
-              <img src={logo} alt='discordable' width="110px" height="25px"></img>
+              <img src={logo} alt='discordable' width="155px" height="46px"></img>
             </NavLink>
           </div>
           <div className='nav-mid-part'>

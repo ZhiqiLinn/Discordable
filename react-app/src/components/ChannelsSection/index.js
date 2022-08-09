@@ -19,7 +19,7 @@ const ChannelsSection = () => {
     useEffect(() => {
         dispatch(getServerThunk(serverId))
         dispatch(getAllChannelsByServerThunk(serverId))
-    },[serverId])
+    },[dispatch, serverId])
     
     return (
         <>
