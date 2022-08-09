@@ -2,7 +2,7 @@ import { useParams, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import CreateChannelLiveModal from "../CreateChannelLiveModal";
-import DeleteChannelLiveModal from "../DeleteChannelLiveModal";
+import DeleteChannelLiveModal from "../DeleteChannelLiveModal/DeleteChannelLiveModal";
 import EditChannelLiveModal from "../EditChannelLiveModal"
 import './ChannelsSection.css'
 import { getAllChannelsByServerThunk } from "../../store/channel";
@@ -19,7 +19,7 @@ const ChannelsSection = () => {
     useEffect(() => {
         dispatch(getServerThunk(serverId))
         dispatch(getAllChannelsByServerThunk(serverId))
-    },[serverId])
+    },[dispatch, serverId])
     
     return (
         <>

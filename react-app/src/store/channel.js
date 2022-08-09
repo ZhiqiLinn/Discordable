@@ -54,7 +54,7 @@ export const getAllChannelsThunk = () => async (dispatch) => {
     const response = await fetch(`/api/channels`);
     if (response.ok) {
         const channels = await response.json();
-        console.log("GETALLCHANNELSTHUNK",channels)
+        // console.log("GETALLCHANNELSTHUNK",channels)
         dispatch(getAllChannels(channels));
     }
 }
@@ -63,7 +63,7 @@ export const getAllChannelsByServerThunk = (serverId) => async (dispatch) => {
     const response = await fetch(`/api/channels/server/${serverId}`);
     if (response.ok) {
         const channels = await response.json();
-        console.log("GETALLCHANNELSBYSERVER THUNK",channels)
+        // console.log("GETALLCHANNELSBYSERVER THUNK",channels)
         dispatch(getAllChannelsByServer(channels));
     }
 }
@@ -80,7 +80,7 @@ export const addChannelThunk = (channel) => async (dispatch) => {
 
     if (response.ok) {
         const newChannel = await response.json();
-        console.log("ADDCHANNELTHUNK",newChannel)
+        // console.log("ADDCHANNELTHUNK",newChannel)
 
         dispatch(addChannel(newChannel));
         return newChannel;
@@ -95,7 +95,7 @@ export const getChannelThunk = (channelId) => async (dispatch) => {
 
     if (response.ok) {
         const channel = await response.json();
-        console.log("GETCHANNELTHUNK",channel)
+        // console.log("GETCHANNELTHUNK",channel)
 
         dispatch(getChannel(channel));
     }
@@ -110,7 +110,7 @@ export const editChannelThunk = (channel) => async (dispatch) => {
     })
     if (response.ok) {
         const newChannel = await response.json();
-        console.log("EDITEDCHANNELTHUNK",newChannel)
+        // console.log("EDITEDCHANNELTHUNK",newChannel)
         dispatch(editChannel(newChannel));
         return newChannel;
     }
@@ -159,9 +159,9 @@ const channelReducer = (state = initialState, action) => {
                 [action.editedChannel.id]: action.editedChannel
             };
         case DELETE_CHANNEL:
-            newState = { ...state }
-            delete newState[action.deletedChannelId];
-            return newState;
+            let deletedState = { ...state }
+            delete deletedState[action.deletedChannelId];
+            return deletedState;
         default:
             return state;
     }

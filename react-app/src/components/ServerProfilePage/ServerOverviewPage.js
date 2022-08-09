@@ -1,14 +1,13 @@
 
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory,  } from 'react-router-dom'
 import { editServerThunk } from '../../store/server';
-import { getServerThunk } from '../../store/server';
 
 
 const ServerOverviewPage = ({serverId, currentServer}) => {
-    console.log(serverId)
-    console.log(currentServer)
+    // console.log(serverId)
+    // console.log(currentServer)
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)

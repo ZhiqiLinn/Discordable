@@ -1,5 +1,5 @@
 from .db import db
-from .user_servers import User, Server
+from .user_servers import User, Server, association_table
 # from .server import Server
 from .channel import Channel
 from .message import Message

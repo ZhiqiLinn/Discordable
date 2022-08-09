@@ -1,8 +1,14 @@
 //-------------------------action creator-------------------------
 
-
+const GET_ALL_JOINED_SERVERS = "server/GET_ALL_JOINED_SERVER"
 const JOIN_A_SERVER = "server/JOIN_A_SERVER"
 
+const getAUser = (user) => {
+    return{
+        type: GET_ALL_JOINED_SERVERS,
+        user
+    }
+}
 
 const joinAServer = (joinInfo) => {
     return{
@@ -12,16 +18,20 @@ const joinAServer = (joinInfo) => {
 }
 
 
-//-------------------------THUNK----------------------------------
+// -------------------------THUNK----------------------------------
 
-// export const getAlljoinedServerThunk = () => async (dispatch) => {
-//     const response = await fetch(`/api/join-server`);
-//     if (response.ok) {
-//         const servers = await response.json();
-//         // console.log("GETALLSERVERSTHUNK",servers)
-//         dispatch(getAllServers(servers));
-//     }
-// }
+export const GetAllJoinedServerThunk = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/join-server/${userId}`)
+    if (response.ok) {
+        const newMember = await response.json();
+        // console.log("ADDSERVERTHUNK",newServer)
+
+        dispatch(getAUser(newMember))
+        console.log("THIS IS NEW MEMBER", newMember)
+        return newMember;
+    }
+}
+
 export const joinAServerThunk = (joinPayload) => async (dispatch) => {
     const response = await fetch(`/api/join-server`, {
         method: 'POST',
@@ -41,24 +51,18 @@ export const joinAServerThunk = (joinPayload) => async (dispatch) => {
 
 
 //-------------------------reducer--------------------------------
-const initialState = {joinedServers:{}};
+const initialState = {user:{}};
 
 const joinedServerReducer = (state = initialState, action) => {
     let newState;
     switch (action.type){
-        // case GET_ALL_SERVERS:
-        //     newState = {...state, allServers:{}};
-        //     action.allServers.Server.forEach(ser => {
-        //         newState.allServers[ser.id] = ser;
-        //     });
-        //     return newState;
+        case GET_ALL_JOINED_SERVERS:
+            newState = {...state, user:{[action.user.id]: action.user}}
+            return newState;
         case JOIN_A_SERVER:
             newState = {
                 ...state, 
-                joinedServer:{
-                    ...state.joinedServers,
                     [action.joinInfo.id]: action.joinInfo
-                }
             }
     
             return newState

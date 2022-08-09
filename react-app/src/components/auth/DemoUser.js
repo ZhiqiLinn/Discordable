@@ -28,15 +28,17 @@ const DemoUserLogin = () => {
     <div>
       <form onSubmit={onLogin}>
         <input
-          hidden="true"
+          hidden={true}
           type="text"
           value={email}
+          readOnly
           required
         />
         <input
-          hidden="true"
+          hidden={true}
           type="password"
           value={password}
+          readOnly
           required
         />
         <button className="nav-demo-btn" type="submit">Demo User</button>

@@ -115,20 +115,20 @@ export const deleteServerThunk = (serverId) => async (dispatch) => {
 
 //-------------------------reducer--------------------------------
 
-const initialState = {allServers: {}, singleServer:{}};
+const initialState = {};
 
 const serverReducer = (state = initialState, action) => {
     let newState;
     switch (action.type){
 
         case GET_SERVER:
-            newState = { ...state, singleServer:{} };
-            newState.singleServer[action.server.id] = action.server;
+            newState = { ...state,};
+            newState[action.server.id] = action.server;
             return newState;
         case GET_ALL_SERVERS:
-            newState = {...state, allServers:{}};
+            newState = {...state};
             action.allServers.Server.forEach(ser => {
-                newState.allServers[ser.id] = ser;
+                newState[ser.id] = ser;
             });
             return newState;
         case ADD_SERVER:

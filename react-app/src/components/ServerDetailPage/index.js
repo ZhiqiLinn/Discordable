@@ -11,7 +11,7 @@ const ServerDetailPage = () => {
     const {serverId} = useParams()
     const [serverMembers, setServerMembers] = useState({})
     const [serverMembersArr, setServerMembersArr] = useState([])
-    const servers = useSelector(state => state.serverState.singleServer)
+    const servers = useSelector(state => state.serverState)
     const currentServer = servers[parseInt(serverId)]
     // console.log("!!!!!!THIS IS CURRRENT SERVER",currentServer)
     
@@ -38,8 +38,10 @@ const ServerDetailPage = () => {
 
                         <ChannelsSection serverId={serverId} currentServer={currentServer}/>
                     </div> 
-                    <div>
-                        Welcome to server{currentServer.name}
+                    <div className="server-intro">
+                        <h1>Welcome to {currentServer.name}</h1>
+                        <p>Please select your channel!</p>
+                        <a href='/'>How to user Discordable</a>
                     </div>
                     <div>
                         <div>

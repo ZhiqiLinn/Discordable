@@ -8,9 +8,9 @@ user_routes = Blueprint('users', __name__)
 @user_routes.route('/')
 @login_required
 def users():
-    print("!!!!!")
+    # print("!!!!!")
     users = User.query.all()
-    print("!!!!!after", [user.to_dict() for user in users])
+    # print("!!!!!after", [user.to_dict() for user in users])
     return {'users': [user.to_dict() for user in users]}
 
 
