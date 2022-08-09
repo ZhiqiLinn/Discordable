@@ -13,7 +13,7 @@ const DeleteChannelLiveModal = () => {
     console.log("THIS IS CHAN ID:",chanId)
     const handleDeleteSubmit = () => {
         dispatch(deleteChannelThunk(chanId));
-        history.push(`/servers`);
+        history.push(`/servers/${serverId}`);
 
     }
 

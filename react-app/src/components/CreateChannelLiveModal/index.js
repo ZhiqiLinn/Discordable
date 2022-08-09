@@ -12,11 +12,11 @@ const CreateChannelLiveModal = () => {
         <>
             <div className='create-channel-container'>
                 <div className='create-channel-divs' onClick={() => setShowModal(true)}>
-                    <div>
-                        CHANNEL
+                    <div className='text-channel' >
+                    <i class="fa-solid fa-caret-down"></i>  TEXT CHANNEL
                     </div>
                     <div>
-                        +
+                    <i class="fa-solid fa-plus"></i>
                     </div>
                 </div>
             </div>

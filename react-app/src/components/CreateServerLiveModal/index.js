@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import CreateServerForm from './CreateServerForm';
-
+import './CreateServer.css'
 
 const CreateServerLiveModal = () => {
     const [showModal, setShowModal] = useState(false);
@@ -13,7 +13,7 @@ const CreateServerLiveModal = () => {
     return (
         <>
             <div>
-                <button  onClick={() => setShowModal(true)}> ➕ </button>
+                <button className="create-join-server-btn" onClick={() => setShowModal(true)}> + </button>
             </div>
             {showModal && (
                 <div>

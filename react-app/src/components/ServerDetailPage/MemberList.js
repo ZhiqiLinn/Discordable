@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import {  useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
-import { getServerThunk } from "../../store/server";
-import ChannelsSection from "../ChannelsSection";
-import ServerSideBar from "../ServersPage/ServerSideBar";
+
 import './ServerDetail.css'
 
-const ServerDetailPage = () => {
+const MemberList = () => {
     const dispatch = useDispatch()
     const {serverId} = useParams()
     const [serverMembers, setServerMembers] = useState({})
@@ -17,9 +15,7 @@ const ServerDetailPage = () => {
     
     // console.log("!!!!!!!!!tHIS IS CURRENT SERVER'S MEMBER LIST", serverMembersArr)
 
-    useEffect(() => {
-        dispatch(getServerThunk(serverId))
-    }, [dispatch, serverId]);
+
 
     useEffect(() => {
         setServerMembers(currentServer?.serverMembers)
@@ -32,17 +28,6 @@ const ServerDetailPage = () => {
     return(
         <>
             {currentServer && 
-                <div className="server-page-layout">
-                    <ServerSideBar />
-                    <div className="channel-section-container" >
-
-                        <ChannelsSection serverId={serverId} currentServer={currentServer}/>
-                    </div> 
-                    <div className="server-intro">
-                        <h1>Welcome to {currentServer.name}</h1>
-                        <p>Please select your channel!</p>
-                        <a href='/'>How to user Discordable</a>
-                    </div>
                     <div>
                         <div>
                             {currentServer.default_role}:
@@ -55,11 +40,9 @@ const ServerDetailPage = () => {
                             ))}
                         </div>
                     </div>
-
-                </div>
             }
         </>
     )
 }
 
-export default ServerDetailPage
+export default MemberList

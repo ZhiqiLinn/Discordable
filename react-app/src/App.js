@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import User from './components/User';
 import { authenticate } from './store/session';
 // import { getAllServersThunk } from './store/server';
 // import { getAllChannelsThunk } from './store/channel';
@@ -40,13 +39,6 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        {/* <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute> */}
-
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
 
         <ProtectedRoute path='/servers/join' exact={true} >
           <JoinServerForm />
