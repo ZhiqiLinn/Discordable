@@ -15,7 +15,7 @@ function UserJoinedServerList() {
     fetchData();
   }, []);
 
-  console.log("USER LSIT!!!!!!!!!!!!!!!", users)
+  // console.log("USER LSIT!!!!!!!!!!!!!!!", users)
 
   const userComponents = users.map((user) => (
   <>

@@ -27,7 +27,7 @@ export const GetAllJoinedServerThunk = (userId) => async (dispatch) => {
         // console.log("ADDSERVERTHUNK",newServer)
 
         dispatch(getAUser(newMember))
-        console.log("THIS IS NEW MEMBER", newMember)
+        // console.log("THIS IS NEW MEMBER", newMember)
         return newMember;
     }
 }

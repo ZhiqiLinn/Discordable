@@ -10,7 +10,7 @@ const DeleteChannelLiveModal = () => {
     const history = useHistory();
     const {serverId, chanId} = useParams();
     const [showModal, setShowModal] = useState(false);
-    console.log("THIS IS CHAN ID:",chanId)
+    // console.log("THIS IS CHAN ID:",chanId)
     const handleDeleteSubmit = () => {
         dispatch(deleteChannelThunk(chanId));
         history.push(`/servers/${serverId}`);
