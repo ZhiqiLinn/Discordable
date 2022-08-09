@@ -44,7 +44,7 @@ const NavBar = () => {
               </NavLink>
             </div>
           </div>
-        <div>
+        <div className="nav-logout-btn">
           <LogoutButton />
         </div>
 

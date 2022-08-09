@@ -61,7 +61,6 @@ const ServerSideBar = () => {
             ))}
             <UserJoinedServerList />
             <CreateServerLiveModal />
-            <LogoutButton />
             
 
         </div>

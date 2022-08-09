@@ -6,8 +6,9 @@
     align-items: center;
     color:white;
     background-color: #202225;
-    width: 80px;
+    width: 75px;
     height:100vh;
+    
 
 }
 
@@ -16,8 +17,8 @@
     width:50px;
     height:50px;
     border-radius: 50%;
-    padding-top: 4px;
-    padding-bottom: 8px;
+    margin-bottom: 5px;
+
 }
 
 .server-sidebar-round-img:hover{
@@ -25,12 +26,14 @@
     transform: scale(1.1);
     transition: 1s;
 }
-
+.server-sidebar-logo {
+    margin-bottom: 15px;
+    border-bottom: 1px solid grey;
+}
 .server-sidebar-logo img{
     padding: 15px;
     width:50px;
     height:50px;
-    border-bottom: 1px solid grey;
 }
 
 .server-sidebar-logo img:hover{

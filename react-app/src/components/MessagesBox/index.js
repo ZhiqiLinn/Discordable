@@ -6,6 +6,7 @@ import { getAllMessagesForChannelThunk } from "../../store/messages"
 import ChannelsSection from "../ChannelsSection"
 import ServerSideBar from "../ServersPage/ServerSideBar"
 import './MessagesBox.css'
+import MemberList from "../ServerDetailPage/MemberList";
 
 const MessagesBox = () => {
     const {chanId} = useParams()
@@ -33,6 +34,7 @@ const MessagesBox = () => {
 
                 }
             </div>
+            <MemberList />
         </div>
     )
 }

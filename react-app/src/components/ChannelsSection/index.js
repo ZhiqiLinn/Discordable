@@ -7,6 +7,7 @@ import EditChannelLiveModal from "../EditChannelLiveModal"
 import './ChannelsSection.css'
 import { getAllChannelsByServerThunk } from "../../store/channel";
 import { getServerThunk } from "../../store/server";
+import UserProfileBar from "../UserProfile/UserProfileBar";
 
 const ChannelsSection = () => {
     const {serverId} = useParams();
@@ -21,15 +22,29 @@ const ChannelsSection = () => {
         dispatch(getAllChannelsByServerThunk(serverId))
     },[dispatch, serverId])
     
-    return (
-        <>
-                { currentServer && <div className="channel-section-container"> 
-                    <div>
+    let editProfileLink;
+    if(sessionUser.id === serverId.user_id){
+        editProfileLink = (
+            <div>
                         <NavLink to={`/servers/${serverId}/profile`}  style={{ textDecoration: 'none', color: 'White' }}>
                             <div className="server-profile-container">
                                 {currentServer?.name} 
                             </div>
                         </NavLink>
+                    </div>
+        )
+    }else{
+        editProfileLink = (
+            <div className="server-profile-container">
+                {currentServer?.name} 
+            </div>
+        )
+    }
+    return (
+        <>
+                { currentServer && <div className="channel-section-container"> 
+                    <div>
+                        {editProfileLink}
                     </div>
                     <div>
                         <CreateChannelLiveModal />
@@ -39,19 +54,19 @@ const ChannelsSection = () => {
                         <>
                             <div className={currChannel === channel.id ? " channels selected-channel" : "channels"}>
                                 <NavLink 
-                                    style={{ textDecoration: 'none', color: 'rgb(195, 194, 194)', fontSize:'small', fontWeight:'light' }} 
+                                    style={{ textDecoration: 'none', color: 'rgb(195, 194, 194)', fontSize:'14px', fontWeight:'light' }} 
                                     to={`/servers/${channel.server_id}/${channel.id}`} 
                                     onClick={() => setCurrChannel(channel.id)}
                                     >
-                                        { channel.name.length > 11 && 
+                                        { channel.name.length > 15 && 
                                             <>
-                                            # { `${channel.name.slice(0,11)}...`}
+                                            <i class="fa-solid fa-hashtag"></i> { `${channel.name.slice(0,15)}...`}
                                             </>
                                             
                                         }
-                                        { channel.name.length <= 11 && 
+                                        { channel.name.length <= 15 && 
                                             <>
-                                            # {channel.name}
+                                            <i class="fa-solid fa-hashtag"></i> {channel.name}
                                             </>
                                             
                                         }
@@ -60,7 +75,7 @@ const ChannelsSection = () => {
                                 {sessionUser.id === currentServer.user_id && currChannel === channel.id && 
                                     <>
                                         <EditChannelLiveModal channel={channel} />
-                                        <DeleteChannelLiveModal channelId={channel.id}/>
+                                        <DeleteChannelLiveModal />
                                     </>
 
                                 }
@@ -69,7 +84,9 @@ const ChannelsSection = () => {
                     ))
                     }   
                     </div>
-
+                    <div className="channel-user-logout-container">
+                        <UserProfileBar />
+                    </div>
                 </div>
             }   
         </>

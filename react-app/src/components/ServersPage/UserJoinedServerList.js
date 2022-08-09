@@ -22,9 +22,11 @@ function UserJoinedServerList() {
     { user.id === sessionUser.id && 
     <div key={user.id} className="user-joined-server-sidebar">
       {Object.values(user.userJoinedServers).map(server=> (
-        <img className="server-sidebar-round-img" src={server.joinedServer_server_pic} alt={server.joinedServer_name}>
-        </img>
-        
+         <NavLink to={`/servers/${server.joinedServer_id}`}>
+
+          <img className="server-sidebar-round-img" src={server.joinedServer_server_pic} alt={server.joinedServer_name}>
+          </img>
+        </NavLink>
         ))
       }
     </div>
