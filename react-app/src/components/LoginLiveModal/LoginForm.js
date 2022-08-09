@@ -54,13 +54,13 @@ const LoginForm = () => {
             <div className='login-inner-div'>
               <div>
               <form onSubmit={onLogin}>
-              {hasSubmitted && errors &&
+              {/* {hasSubmitted && errors &&
                 <div id='error-msg'>
                   {errors.map((error, ind) => (
                     <div key={ind} style={{textAlign:'center', color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
                   ))}
                 </div>
-                }
+                } */}
                 <div style={{textAlign:'center'}}>
                   <h1>Welcome back!</h1>
                   <p>We're so excited to see you again!</p>

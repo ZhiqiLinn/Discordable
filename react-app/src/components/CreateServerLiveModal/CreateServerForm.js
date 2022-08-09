@@ -32,8 +32,9 @@ function CreateServerForm({hideForm}) {
             server_pic,
             default_role
         }
-        const newServer = await dispatch(addServerThunk(serverPayload))
-        if (newServer && !errors.length) {
+        let newServer;
+        if (!errors.length) {
+            newServer = await dispatch(addServerThunk(serverPayload))
             reset();
             setHasSubmitted(false)
             hideForm();

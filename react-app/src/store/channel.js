@@ -159,9 +159,9 @@ const channelReducer = (state = initialState, action) => {
                 [action.editedChannel.id]: action.editedChannel
             };
         case DELETE_CHANNEL:
-            newState = { ...state }
-            delete newState[action.deletedChannelId];
-            return newState;
+            let deletedState = { ...state }
+            delete deletedState[action.deletedChannelId];
+            return deletedState;
         default:
             return state;
     }

@@ -16,6 +16,7 @@
     width:50px;
     height:50px;
     border-radius: 50%;
+    padding-top: 4px;
     padding-bottom: 8px;
 }
 
@@ -29,7 +30,7 @@
     padding: 15px;
     width:50px;
     height:50px;
-    border-radius: 50%;
+    border-bottom: 1px solid grey;
 }
 
 .server-sidebar-logo img:hover{
