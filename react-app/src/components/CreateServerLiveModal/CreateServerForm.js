@@ -17,9 +17,11 @@ function CreateServerForm({hideForm}) {
 
     useEffect(() => {
         let errors = []
-        if (name.length >= 50) errors.push("Name length invalid and should be less than 50 characters");
+        if (name.length < 3 || name.length > 50) errors.push("Name length should be between 3 and 50 characters")
+        if (!/https?:\/\/.*\.(?:png|jpg)/.test(server_pic)) errors.push("Image URL invalid");
+        // if (default_role.length < 3 || default_role.length > 10) errors.push("role title length should be between 3 and 10 characters")
         setErrors(errors);
-    }, [name]);
+    }, [name, server_pic]);
 
     const handleCreate = async (e) => {
         e.preventDefault();
@@ -47,13 +49,15 @@ function CreateServerForm({hideForm}) {
         <div >
             <h1>Customize Your Server</h1>
             <div>
-                {hasSubmitted && errors &&
-                    <div >
-                        {errors.map((error, idx) => <div key={idx}> * {error}</div>)}
-                    </div>
-                }
             </div>
             <form onSubmit={handleCreate}>
+                    {hasSubmitted && errors &&
+                    <div id='error-msg'>
+                    {errors.map((error, ind) => (
+                        <div key={ind} style={{color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
+                    ))}
+                    </div>
+                    }
                 <div>
                     <div>Server Name</div>
                     <input

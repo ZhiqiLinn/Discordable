@@ -71,7 +71,7 @@ const SignUpForm = () => {
           {hasSubmitted && errors &&
             <div id='error-msg'>
               {errors.map((error, ind) => (
-                <div key={ind} style={{textAlign:'center', color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
+                <div key={ind} style={{ color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
               ))}
             </div>
             }

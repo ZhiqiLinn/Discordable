@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
@@ -10,16 +10,24 @@ const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [hasSubmitted, setHasSubmitted] = useState(false)
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
+  useEffect(() => {
+    let errors = [];
+    if (!email.includes("@") ) errors.push("Invalid email format")
+    setErrors(errors);
+  }, [email]);
+
   const onLogin = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true)
     const data = await dispatch(login(email, password));
     history.push('/servers')
     if (data) {
-      // console.log("data", data)
+      setHasSubmitted(false)
       setErrors(data);
     }
   };
@@ -46,6 +54,13 @@ const LoginForm = () => {
             <div className='login-inner-div'>
               <div>
               <form onSubmit={onLogin}>
+              {hasSubmitted && errors &&
+                <div id='error-msg'>
+                  {errors.map((error, ind) => (
+                    <div key={ind} style={{textAlign:'center', color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
+                  ))}
+                </div>
+                }
                 <div style={{textAlign:'center'}}>
                   <h1>Welcome back!</h1>
                   <p>We're so excited to see you again!</p>

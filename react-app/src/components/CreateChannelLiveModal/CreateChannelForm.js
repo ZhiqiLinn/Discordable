@@ -16,7 +16,7 @@ const CreateChannelForm = ({hideForm}) => {
 
     useEffect(() => {
         let errors = []
-        if (name.length >= 50) errors.push("Name length invalid and should be less than 50 characters");
+        if (name.length < 3 || name.length > 50) errors.push("Name length should be between 3 and 50 characters")
         setErrors(errors);
     }, [name]);
 
