@@ -14,36 +14,35 @@ const ServerSideBar = () => {
     const userOwnedServer = allServersArr.filter(server => server.user_id == +sessionUser.id)
     
     
-    const [users, setUsers] = useState([]);
+    // const [users, setUsers] = useState([]);
     
-    useEffect(() => {
-        async function fetchData() {
-            const response = await fetch('/api/users/');
-            const responseData = await response.json();
-            setUsers(responseData.users);
-        }
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const response = await fetch('/api/users/');
+    //         const responseData = await response.json();
+    //         setUsers(responseData.users);
+    //     }
+    //     fetchData();
+    // }, []);
 
-    console.log("users:", users)
-    const [joinedServers, setJoinedServers] = useState({})
-    const [joinedServersArr, setJoinedServersArr] = useState([])
-    // console.log(userServers)
-    useEffect(() => {
-        setJoinedServers(sessionUser?.userJoinedServers)
-        if(joinedServers){
-            setJoinedServersArr(Object.values(joinedServers))
-        }
-    },[sessionUser])
+    // console.log("users:", users)
+    // const [joinedServers, setJoinedServers] = useState({})
+    // const [joinedServersArr, setJoinedServersArr] = useState([])
+    // // console.log(userServers)
+    // useEffect(() => {
+    //     setJoinedServers(sessionUser?.userJoinedServers)
+    //     if(joinedServers){
+    //         setJoinedServersArr(Object.values(joinedServers))
+    //     }
+    // },[sessionUser])
 
-    console.log("####### joined server", joinedServersArr)
+    // console.log("####### joined server", joinedServersArr)
     // console.log("####### joined server sessionuser", sessionUser)
 
 
     useEffect(()=> {
-        dispatch(GetAllJoinedServerThunk(sessionUser.id))
         dispatch(getAllServersThunk())
-    },[sessionUser.userJoinedServers, sessionUser.id])
+    },[])
 
     return(
         <div className="server-sidebar-container">
