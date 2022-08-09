@@ -9,6 +9,7 @@ import ChannelsSection from "../ChannelsSection"
 import ServerSideBar from "../ServersPage/ServerSideBar"
 import './MessagesBox.css'
 import MemberList from "../ServerDetailPage/MemberList";
+import CreateMessageBar from "./CreateMessagesBar";
 
 const MessagesBox = () => {
     const {serverId, chanId} = useParams()
@@ -67,8 +68,9 @@ const MessagesBox = () => {
 
                     }
                 </div>
+                <CreateMessageBar />
             </div>
-            <MemberList />
+            <MemberList AllChannels={AllChannels}/>
         </div>
     )
 }

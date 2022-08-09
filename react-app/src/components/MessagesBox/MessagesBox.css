@@ -16,7 +16,7 @@
     height: 30px;
     padding-left: 15px;
     padding-top: 20px;
-    border-bottom: 1px solid black;
+    border-bottom: .3px solid black;
 }
 
 .all-msg-container{
@@ -32,3 +32,22 @@
     gap:10px   
 }
 
+.create-msg-container{
+    position: absolute;
+    bottom: 0;
+    height:75px;
+    width:70vw;
+    background-color: #57585e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.create-msg-container input{
+    height:45px;
+    width: 50vw;
+    background-color:#36393f93;
+    border: none;
+    border-radius: 15px;
+    margin-right: 25px;
+
+}
