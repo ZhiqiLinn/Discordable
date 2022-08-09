@@ -18,3 +18,9 @@
 body{
     background-color: #36393f;
 }
+
+
+.signup-container .error-msg{
+    font-size: 20px
+}
+

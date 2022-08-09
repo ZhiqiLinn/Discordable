@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -10,14 +10,28 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [hasSubmitted, setHasSubmitted] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    let errors = [];
+    if (username.length < 3 || username.length > 50) errors.push("Name length should be between 3 and 50 characters")
+    if (!email.includes("@") ) errors.push("Invalid email format")
+    if (password.length < 6 ) errors.push("Password must be at least 6 characters")
+    if (password !== repeatPassword) errors.push("Confirmed password doesnt match")
+    setErrors(errors);
+
+  }, [username, email, password]);
+
   const onSignUp = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true)
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
+        setHasSubmitted(false)
         setErrors(data)
       }
     }
@@ -51,16 +65,19 @@ const SignUpForm = () => {
       <div className='signup-form-container'>
         <form onSubmit={onSignUp}>
           <div style={{textAlign:'center'}}>
-                  <h3>Create an account</h3>
+                  <h1>Create an account</h1>
                   <br></br>
           </div>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
+          {hasSubmitted && errors &&
+            <div id='error-msg'>
+              {errors.map((error, ind) => (
+                <div key={ind} style={{textAlign:'center', color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
+              ))}
+            </div>
+            }
           <div>
             <label>USERNAME</label>
+            <br></br>
             <input
               className='signup-input'
               type='text'
@@ -101,7 +118,6 @@ const SignUpForm = () => {
               name='repeat_password'
               onChange={updateRepeatPassword}
               value={repeatPassword}
-              required={true}
             />
           </div>
           <p>Please do not use real information here :)</p>
