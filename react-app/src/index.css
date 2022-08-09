@@ -24,3 +24,9 @@ body{
     font-size: 20px
 }
 
+img{
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
+}
