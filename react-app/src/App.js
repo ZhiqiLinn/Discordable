@@ -61,6 +61,9 @@ function App() {
           <SignUpForm/>
         </Route>
 
+        <ProtectedRoute path='/servers/:serverId/join' exact={true} >
+          <JoinServerForm />
+        </ProtectedRoute>
 
         <ProtectedRoute path='/servers/:serverId/quit' exact={true} >
           <QuitServer />

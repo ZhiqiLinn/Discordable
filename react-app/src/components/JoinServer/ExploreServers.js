@@ -57,16 +57,19 @@ const ExploreServers = () => {
                     <div className="server-listings-container">
                         {
                             allServers.map(server => (
-                                <div className="server-listing" key={server.id} >
-                                        <img src={server.server_pic}></img>
-                                        <p>✅ Server Id: {server.id}</p>
-                                        <p> {server.name}</p>
-                                        { joinedCheck(server.id) ? 
-                                            <div style={{color:"grey"}}>Already Joined!</div> 
-                                            : <JoinServerForm currentServerId={server.id}/>
-                                            
-                                        }
-                                </div>
+                                <NavLink to={`/servers/${server.id}/join`}>
+                                    <div className="server-listing" key={server.id} >
+                                            <img src={server.server_pic}></img>
+                                            <p>✅ Server Id: {server.id}</p>
+                                            <p> {server.name}</p>
+                                            {/* { joinedCheck(server.id) ? 
+                                                <div style={{color:"grey"}}>Already Joined!</div> 
+                                                // : <JoinServerForm currentServerId={server.id}/>
+                                                : <NavLink to={`/servers/${server.id}/join`}>Join</NavLink>
+
+                                            } */}
+                                    </div>
+                                </NavLink>
                             ))
 
                         }

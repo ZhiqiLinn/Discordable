@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
+import { useHistory, useParams} from 'react-router-dom';
+
 import { getAllServersThunk } from "../../store/server";
 import CreateServerLiveModal from "../CreateServerLiveModal"
 import LogoutButton from "../auth/LogoutButton"
@@ -10,6 +12,8 @@ import UserJoinedServerList from "./UserJoinedServerList";
 const ServerSideBar = () => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    const history = useHistory();
+
     const allServersArr = Object.values(useSelector(state => state.serverState))
     const userOwnedServer = allServersArr.filter(server => server.user_id == +sessionUser.id)
     
@@ -43,6 +47,7 @@ const ServerSideBar = () => {
     useEffect(()=> {
         dispatch(getAllServersThunk())
     },[])
+    
 
     return(
         <div className="server-sidebar-container">
@@ -62,7 +67,7 @@ const ServerSideBar = () => {
             <UserJoinedServerList />
             <CreateServerLiveModal />
             <div>
-                <button className="explore-server-btn"> <i class="fa-solid fa-compass"></i> </button>
+                <button className="explore-server-btn" onClick={()=> history.push('/servers')}> <i class="fa-solid fa-compass"></i> </button>
             </div>
 
         </div>

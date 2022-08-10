@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory} from 'react-router-dom';
+import { useHistory, useParams} from 'react-router-dom';
 import {joinAServerThunk} from '../../store/joinedServer';
 import { Modal } from '../../context/Modal';
 import { getAllServersThunk } from '../../store/server';
 
 
-function JoinServerForm({currentServerId}) {
-    console.log("currentServerId",currentServerId)
+function JoinServerForm() {
+    const {serverId } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -26,21 +26,20 @@ function JoinServerForm({currentServerId}) {
           setUsers(responseData.users);
         }
         fetchData();
-      }, [sessionUser]);
+      }, []);
 
     const handleCreate = async (e) => {
         e.preventDefault();
         setHasSubmitted(true)
         const payload = {
             member_id:sessionUser.id,
-            server_id:currentServerId
+            server_id:serverId
         }
         if (payload && !errors.length) {
             await dispatch(joinAServerThunk(payload))
             // reset();
             setHasSubmitted(false)
-            setShowModal(false)
-            // history.push(`/servers/${currentServerId}`)
+            history.push(`/servers/${serverId}`)
         }
     }
     // const reset = () => {
@@ -70,7 +69,7 @@ function JoinServerForm({currentServerId}) {
                                     placeholder='Please enter server ID'
                                     type='text'
                                     hidden={true}
-                                    value={currentServerId}
+                                    value={serverId}
                                 />
                             </div>
                             <div>
