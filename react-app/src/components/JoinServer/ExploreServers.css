@@ -1,0 +1,38 @@
+.join-server-container{
+    display: flex;
+    gap:5%
+}
+
+
+.server-listings-container{
+    margin-top: 10%;
+    display:flex;
+    flex-direction: row;
+    gap:3%
+}
+
+.server-listing{
+    width: 350px;
+    height: 375px;
+    background: #292b2f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    
+    
+    
+}
+.server-listing img{
+    margin-top:15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 275px;
+    height: 275px;
+}
+
+.server-listing p{
+    color:white;
+    font-weight: bolder;
+
+}

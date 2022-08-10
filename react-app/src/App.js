@@ -16,6 +16,7 @@ import JoinServerForm from './components/JoinServer/JoinServerForm';
 import LoginForm from './components/LoginLiveModal/LoginForm';
 import SignUpForm from './components/SignUpLiveModal/SignUpForm';
 import QuitServer from './components/QuitServer.js';
+import ExploreServers from './components/JoinServer/ExploreServers';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,7 +43,7 @@ function App() {
       <Switch>
 
         <ProtectedRoute path='/servers/join' exact={true} >
-          <JoinServerForm />
+          <ExploreServers />
         </ProtectedRoute>
 
         <Route path='/' exact={true}>
@@ -59,6 +60,8 @@ function App() {
           <NavBar />
           <SignUpForm/>
         </Route>
+
+
         <ProtectedRoute path='/servers/:serverId/quit' exact={true} >
           <QuitServer />
         </ProtectedRoute>

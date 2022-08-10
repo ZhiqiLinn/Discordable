@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 import ServerSideBar from "./ServerSideBar";
 import './ServersPage.css'
 import UserProfileBar from "../UserProfile/UserProfileBar";
+import ExploreServers from "../JoinServer/ExploreServers";
 
 const ServersPage = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -10,7 +11,7 @@ const ServersPage = () => {
         <div className="server-page-layout">
             <ServerSideBar />
             <div>
-                <h1>WELCOME, PLEASE SELECT YOUR SERVER</h1>
+                <ExploreServers />
             </div>
             <div className="server-user-logout-container">
                 <UserProfileBar />
