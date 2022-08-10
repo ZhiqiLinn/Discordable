@@ -11,16 +11,13 @@ const ExploreServers = () => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
     const [users, setUsers] = useState({});
+    const [joined, setJoined] = useState(false)
     // console.log(sessionUser)
     const allServers = Object.values(useSelector(state => state.serverState))
     const userJoinedServersArr = Object.values(sessionUser.userJoinedServers)
     const userOwnedServer = allServers.filter(server => server.user_id == +sessionUser.id)
 
-    const joinedServerIds = userJoinedServersArr.map(server => server.joinedServer_id)
-    const ownedServerIds = userOwnedServer.map(server => server.id)
 
-    console.log('joinedServerIds:', joinedServerIds)
-    console.log('ownedServerIds:', ownedServerIds)
 
     useEffect(() => {
         dispatch(getAllServersThunk())
@@ -37,11 +34,13 @@ const ExploreServers = () => {
       }, []);
 
     console.log("THIS IS USER IN EXPLORE SERVERS", users)
-    const joinedCheck = (serverId) => {
-        if(joinedServerIds.includes(serverId) || ownedServerIds.includes(serverId)){
-            return true
-        }
-    }
+    // useEffect(() => {
+    //     if(joinedServerIds.includes(serverId) || ownedServerIds.includes(serverId)){
+    //         setJoined(true)
+    //     }
+        
+    //     },[joined])
+
     return(
         <>
             <div style={{
@@ -51,7 +50,7 @@ const ExploreServers = () => {
                 backgroundImage:`url(${exploreBackground})`,
                 backgroundSize:'cover',
                 }}>
-                    <h1 className="explore-server-quote">Explore Servers!</h1>
+                    <h1 className="explore-server-quote">Click server to join today!</h1>
             </div>
                 {allServers && 
                     <div className="server-listings-container">
@@ -62,7 +61,7 @@ const ExploreServers = () => {
                                             <img src={server.server_pic}></img>
                                             <p>✅ Server Id: {server.id}</p>
                                             <p> {server.name}</p>
-                                            {/* { joinedCheck(server.id) ? 
+                                            {/* { joined?? 
                                                 <div style={{color:"grey"}}>Already Joined!</div> 
                                                 // : <JoinServerForm currentServerId={server.id}/>
                                                 : <NavLink to={`/servers/${server.id}/join`}>Join</NavLink>
