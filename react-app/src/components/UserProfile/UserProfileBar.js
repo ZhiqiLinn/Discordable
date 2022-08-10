@@ -29,7 +29,7 @@ const UserProfileBar = () => {
         // console.log("NEWPIC",newPic)
         setImage(null)
         setShowUpdateModal(false)
-        history.go('/servers')
+        // history.go('/servers')
     }
 
 
