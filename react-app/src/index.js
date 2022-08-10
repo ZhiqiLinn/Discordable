@@ -6,19 +6,22 @@ import App from './App';
 import configureStore from './store';
 import { ModalProvider } from './context/Modal';
 import { DarkModalProvider } from './context/DarkModal';
+import { MsgModalProvider } from './context/MsgModal';
 
 
 const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <DarkModalProvider>
-      <ModalProvider>
-        <Provider store={store}>
-            <App />
-        </Provider>
-      </ModalProvider>
-    </DarkModalProvider>
+    <MsgModalProvider>
+      <DarkModalProvider>
+        <ModalProvider>
+          <Provider store={store}>
+              <App />
+          </Provider>
+        </ModalProvider>
+      </DarkModalProvider>
+    </MsgModalProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

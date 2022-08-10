@@ -2,9 +2,9 @@ import React, { useContext, useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css'
 
-const DarkModalContext = React.createContext();
+const MsgModalContext = React.createContext();
 
-export function DarkModalProvider({ children }) {
+export function MsgModalProvider({ children }) {
     const modalRef = useRef();
     const [value, setValue] = useState();
 
@@ -14,22 +14,22 @@ export function DarkModalProvider({ children }) {
     
     return (
         <>
-            <DarkModalContext.Provider value={value}>
+            <MsgModalContext.Provider value={value}>
                 {children}
-            </DarkModalContext.Provider>
+            </MsgModalContext.Provider>
             <div ref={modalRef} />
         </>
     );
 }
 
-export function DarkModal({ onClose, children }) {
-    const modalNode = useContext(DarkModalContext);
+export function MsgModal({ onClose, children }) {
+    const modalNode = useContext(MsgModalContext);
     if (!modalNode) return null;
 
     return ReactDOM.createPortal(
-        <div id="dark-modal">
-            <div id="dark-modal-background" onClick={onClose} />
-            <div id="dark-modal-content">
+        <div id="msg-modal">
+            <div id="msg-modal-background" onClick={onClose} />
+            <div id="msg-modal-content">
                 {children}
             </div>
         </div>,
