@@ -17,6 +17,7 @@ const ExploreServers = () => {
     const userJoinedServersArr = Object.values(sessionUser.userJoinedServers)
     const userOwnedServer = allServers.filter(server => server.user_id == +sessionUser.id)
 
+    
 
 
     useEffect(() => {
@@ -56,19 +57,22 @@ const ExploreServers = () => {
                     <div className="server-listings-container">
                         {
                             allServers.map(server => (
-                                <NavLink to={`/servers/${server.id}/join`}>
-                                    <div className="server-listing" key={server.id} >
-                                            <img src={server.server_pic}></img>
-                                            <p>✅ Server Id: {server.id}</p>
-                                            <p> {server.name}</p>
-                                            {/* { joined?? 
-                                                <div style={{color:"grey"}}>Already Joined!</div> 
-                                                // : <JoinServerForm currentServerId={server.id}/>
-                                                : <NavLink to={`/servers/${server.id}/join`}>Join</NavLink>
+                                <>
+                                    { server.user_id !== sessionUser.id && 
+                                    <NavLink to={`/servers/${server.id}/join`}>
+                                        <div className="server-listing" key={server.id} >
+                                                <img src={server.server_pic}></img>
+                                                <p>✅ Server Id: {server.id}</p>
+                                                <p> {server.name}</p>
+                                                {/* { joined?? 
+                                                    <div style={{color:"grey"}}>Already Joined!</div> 
+                                                    // : <JoinServerForm currentServerId={server.id}/>
+                                                    : <NavLink to={`/servers/${server.id}/join`}>Join</NavLink>
 
-                                            } */}
-                                    </div>
-                                </NavLink>
+                                                } */}
+                                        </div>
+                                    </NavLink>}
+                                </>
                             ))
 
                         }
