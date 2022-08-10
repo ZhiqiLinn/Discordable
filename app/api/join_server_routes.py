@@ -20,12 +20,12 @@ def validation_errors_to_error_messages(validation_errors):
     
 
 # -----------------------GET JOINED SERVER----------------------
-@join_server_routes.route('/<int:id>', methods=['GET'])
-def all_servers_by_user(id):
-    # servers = Server.query.join(Server.members).all()
-    user = User.query.get(id)
-    # print("!!!!!!!!!!!!!!!!!!!!!!"*50, user.to_dict())
-    return user.to_dict()
+# @join_server_routes.route('/<int:id>', methods=['GET'])
+# def all_servers_by_user(id):
+#     # servers = Server.query.join(Server.members).all()
+#     user = User.query.get(id)
+#     # print("!!!!!!!!!!!!!!!!!!!!!!"*50, user.to_dict())
+#     return user.to_dict()
 #-------------------------JOIN SERVER----------------------
 @join_server_routes.route('', methods=['POST'])
 # @login_required
@@ -43,4 +43,24 @@ def join_a_server():
         # print("!!!!this is new member", new_member.to_dict())
         return new_member.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+#-------------------------DELETE ONE JOINED SERVER-------------------
+# @join_server_routes.route('', methods=['PUT'])
+# def quit_a_server(id):
+#     form = JoinServerForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         # curr_member_id = form.data['member_id']
+#         # curr_server_id = form.data['server_id']
+#         # curr_server = Server.query.get(curr_server_id)
+#         # curr_member = User.query.get(curr_member_id)
+#         # curr_member.joined_servers.remove(curr_server)
+#         # db.session.add(curr_member)
+#         # curr_server.members.remove(curr_member)
+#         # db.session.add(curr_server)
+#         # db.session.commit()
+#         server = Server.query.get(id)
+#         return {'message': 'Successfully Quited!'}
+#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 

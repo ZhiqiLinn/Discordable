@@ -18,11 +18,11 @@ function UserJoinedServerList() {
   // console.log("USER LSIT!!!!!!!!!!!!!!!", users)
 
   const userComponents = users.map((user) => (
-  <>
+  <div key={user.id}>
     { user.id === sessionUser.id && 
-    <div key={user.id} className="user-joined-server-sidebar">
+    <div className="user-joined-server-sidebar">
       {Object.values(user.userJoinedServers).map(server=> (
-         <NavLink to={`/servers/${server.joinedServer_id}`}>
+         <NavLink to={`/servers/${server.joinedServer_id}`} key={server.joinedServer_id}>
 
           <img className="server-sidebar-round-img" src={server.joinedServer_server_pic} alt={server.joinedServer_name}>
           </img>
@@ -31,7 +31,7 @@ function UserJoinedServerList() {
       }
     </div>
     }
-  </>
+  </div>
   
   ));
 

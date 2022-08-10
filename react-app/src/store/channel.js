@@ -150,8 +150,8 @@ const channelReducer = (state = initialState, action) => {
                 return newState;
         case ADD_CHANNEL:
             return {
-                ...state,
-                [action.addedChannel.id]: action.addedChannel
+                ...state, serverChannels:{...state.serverChannels, [action.addedChannel.id]: action.addedChannel}
+                
             };
         case EDIT_CHANNEL:
             return {

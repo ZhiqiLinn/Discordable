@@ -130,7 +130,7 @@ export default function reducer(state = initialState, action) {
     case REMOVE_USER:
       return { user: null } 
     case UPLOAD_PROFILE_PIC:
-      return {...state, [action.user.id]:action.user}
+      return {['user']:action.user}
     default:
       return state;
   }

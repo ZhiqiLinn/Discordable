@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
-import DeleteServerForm from '../DeleteServerForm.js/DeleteServerForm';
+import DeleteServerForm from './DeleteServerForm';
 import ServerOverviewPage from './ServerOverviewPage';
 
 
@@ -40,12 +40,7 @@ const ServerProfilePage = () => {
                 <div>
                     <button onClick={openOverview}>Overview</button>
                 </div>
-                {/* <div>
-                    <button>Roles</button>
-                </div>
-                <div>
-                    <button>Members</button>
-                </div> */}
+
                 <div>
                     <button onClick={openDeletePage}>Delete Server 🗑️</button>
                 </div>

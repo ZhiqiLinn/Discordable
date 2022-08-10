@@ -6,7 +6,7 @@ import DeleteChannelLiveModal from "../DeleteChannelLiveModal/DeleteChannelLiveM
 import EditChannelLiveModal from "../EditChannelLiveModal"
 import './ChannelsSection.css'
 import { getAllChannelsByServerThunk } from "../../store/channel";
-import { getServerThunk } from "../../store/server";
+import { getAllServersThunk, getServerThunk } from "../../store/server";
 import UserProfileBar from "../UserProfile/UserProfileBar";
 
 const ChannelsSection = () => {
@@ -18,20 +18,19 @@ const ChannelsSection = () => {
     const [currChannel, setCurrChannel] = useState(AllChannels[0]?.id)
 
     useEffect(() => {
-        dispatch(getServerThunk(serverId))
         dispatch(getAllChannelsByServerThunk(serverId))
     },[dispatch, serverId])
     
     let editProfileLink;
-    if(sessionUser.id === serverId.user_id){
+    if(sessionUser.id === currentServer?.user_id){
         editProfileLink = (
             <div>
-                        <NavLink to={`/servers/${serverId}/profile`}  style={{ textDecoration: 'none', color: 'White' }}>
-                            <div className="server-profile-container">
-                                {currentServer?.name} 
-                            </div>
-                        </NavLink>
+                <NavLink to={`/servers/${serverId}/profile`}  style={{ textDecoration: 'none', color: 'White' }}>
+                    <div className="server-profile-container">
+                        {currentServer?.name} 
                     </div>
+                </NavLink>
+            </div>
         )
     }else{
         editProfileLink = (
@@ -47,12 +46,12 @@ const ChannelsSection = () => {
                         {editProfileLink}
                     </div>
                     <div>
-                        <CreateChannelLiveModal />
+                        <CreateChannelLiveModal sessionUser={sessionUser}/>
                     </div>
                     <div>
                     {AllChannels.map(channel => (
-                        <>
-                            <div className={currChannel === channel.id ? " channels selected-channel" : "channels"}>
+                        <div key={channel.id}>
+                            <div  className={currChannel === channel.id ? " channels selected-channel" : "channels"}>
                                 <NavLink 
                                     style={{ textDecoration: 'none', color: 'rgb(195, 194, 194)', fontSize:'14px', fontWeight:'light' }} 
                                     to={`/servers/${channel.server_id}/${channel.id}`} 
@@ -60,13 +59,13 @@ const ChannelsSection = () => {
                                     >
                                         { channel.name.length > 15 && 
                                             <>
-                                            <i class="fa-solid fa-hashtag"></i> { `${channel.name.slice(0,15)}...`}
+                                            <i className="fa-solid fa-hashtag"></i> { `${channel.name.slice(0,15)}...`}
                                             </>
                                             
                                         }
                                         { channel.name.length <= 15 && 
                                             <>
-                                            <i class="fa-solid fa-hashtag"></i> {channel.name}
+                                            <i className="fa-solid fa-hashtag"></i> {channel.name}
                                             </>
                                             
                                         }
@@ -80,7 +79,7 @@ const ChannelsSection = () => {
 
                                 }
                             </div>
-                        </>
+                        </div>
                     ))
                     }   
                     </div>
