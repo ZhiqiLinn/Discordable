@@ -15,7 +15,7 @@ const EditChannelForm = ({channel, hideForm}) => {
 
     useEffect(() => {
         let errors = []
-        if (name.length >= 50) errors.push("Name length invalid and should be less than 50 characters");
+        if (!name.length) errors.push("Please enter a channel name!")
         setErrors(errors);
     }, [name]);
 
@@ -46,8 +46,10 @@ const EditChannelForm = ({channel, hideForm}) => {
             <h1>Edit Channel</h1>
             <div>
                 {hasSubmitted && errors &&
-                    <div >
-                        {errors.map((error, idx) => <div key={idx}> * {error}</div>)}
+                    <div id='error-msg'>
+                    {errors.map((error, ind) => (
+                        <div key={ind} style={{ color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
+                    ))}
                     </div>
                 }
             </div>
