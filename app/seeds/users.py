@@ -8,11 +8,11 @@ def seed_users():
     rena = User(
         username='rena', email='rena@aa.io', password='password')
     user1 = User(
-        username='user1', email='user1@aa.io', password='password')
+        username='dave', email='dave@aa.io', password='password')
     user2 = User(
-        username='user2', email='user2@aa.io', password='password')
+        username='Belu', email='belu@aa.io', password='password')
     user3 = User(
-        username='user3', email='user3@aa.io', password='password')
+        username='LofiGirl', email='lofi@aa.io', password='password')
     user4 = User(
         username='user4', email='user4@aa.io', password='password')
     user5 = User(

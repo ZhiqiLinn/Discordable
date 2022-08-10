@@ -21,12 +21,34 @@ def seed_servers():
         default_role="Anya", 
         user_id=1
     )
+    server4 = Server(
+        name="March '22 a/A Cohort", 
+        server_pic="https://top10codingbootcamps.com/wp-content/uploads/2022/05/603820afd31232aab368ea6f_New-Red-logo-emblem-150x150.png", 
+        default_role="Programmer", 
+        user_id=3
+    )
+    server5 = Server(
+        name="BeluGANG", 
+        server_pic="https://unita.co/wp-content/uploads/2022/05/belugang-logo.jpg", 
+        default_role="MOD", 
+        user_id=4
+    )
+    server6 = Server(
+        name="Lofi Girl", 
+        server_pic="https://unita.co/wp-content/uploads/2022/05/belugang-logo.jpg", 
+        default_role="Lofi Artist", 
+        user_id=5
+    )
 
 
 
     db.session.add(server1)
     db.session.add(server2)
     db.session.add(server3)
+    db.session.add(server4)
+    db.session.add(server5)
+    db.session.add(server6)
+
 
     db.session.commit()
 
