@@ -13,10 +13,18 @@ const ExploreServers = () => {
     const [users, setUsers] = useState({});
     // console.log(sessionUser)
     const allServers = Object.values(useSelector(state => state.serverState))
+    const userJoinedServersArr = Object.values(sessionUser.userJoinedServers)
+    const userOwnedServer = allServers.filter(server => server.user_id == +sessionUser.id)
+
+    const joinedServerIds = userJoinedServersArr.map(server => server.joinedServer_id)
+    const ownedServerIds = userOwnedServer.map(server => server.id)
+
+    console.log('joinedServerIds:', joinedServerIds)
+    console.log('ownedServerIds:', ownedServerIds)
 
     useEffect(() => {
         dispatch(getAllServersThunk())
-    }, []);
+    }, [sessionUser.id]);
 
 
     useEffect(() => {
@@ -28,12 +36,7 @@ const ExploreServers = () => {
         fetchData();
       }, []);
 
-    const userJoinedServersArr = Object.values(sessionUser.userJoinedServers)
-    const userOwnedServer = allServers.filter(server => server.user_id == +sessionUser.id)
-    const joinedServerIds = userJoinedServersArr.map(server => server.joinedServer_id)
-    const ownedServerIds = userOwnedServer.map(server => server.id)
-
-    
+    console.log("THIS IS USER IN EXPLORE SERVERS", users)
     const joinedCheck = (serverId) => {
         if(joinedServerIds.includes(serverId) || ownedServerIds.includes(serverId)){
             return true
@@ -50,24 +53,27 @@ const ExploreServers = () => {
                 }}>
                     <h1 className="explore-server-quote">Explore Servers!</h1>
             </div>
-            <div className="server-listings-container">
                 {allServers && 
-                    allServers.map(server => (
-                        <div className="server-listing" key={server.id} >
-                                <img src={server.server_pic}></img>
-                                <p>✅ Server Id: {server.id}</p>
-                                <p> {server.name}</p>
-                                { joinedCheck(server.id) ? 
-                                    <div style={{color:"grey"}}>Already Joined!</div> 
-                                    : <JoinServerForm currentServerId={server.id}/>
-                                    
-                                }
-                        </div>
-                    ))
+                    <div className="server-listings-container">
+                        {
+                            allServers.map(server => (
+                                <div className="server-listing" key={server.id} >
+                                        <img src={server.server_pic}></img>
+                                        <p>✅ Server Id: {server.id}</p>
+                                        <p> {server.name}</p>
+                                        { joinedCheck(server.id) ? 
+                                            <div style={{color:"grey"}}>Already Joined!</div> 
+                                            : <JoinServerForm currentServerId={server.id}/>
+                                            
+                                        }
+                                </div>
+                            ))
+
+                        }
                     
             
+                 </div>
                 }
-            </div>
         </>
     )
 }

@@ -75,11 +75,12 @@ const UserProfileBar = () => {
                                 <h2>Select Your Profile Picture</h2>
                                 <div>
                                     <form className='upload-img-form' onSubmit={handleSubmit}>
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            onChange={updateImage}
-                                        />
+                                            <input
+                                                className="upload-pic-input"
+                                                type="file"
+                                                accept="image/*"
+                                                onChange={updateImage}
+                                            />
                                         <br></br>
                                         <br></br>
                                         <div className='delete-biz-buttons'>

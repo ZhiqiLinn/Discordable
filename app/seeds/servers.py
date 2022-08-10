@@ -29,13 +29,13 @@ def seed_servers():
     )
     server5 = Server(
         name="BeluGANG", 
-        server_pic="https://unita.co/wp-content/uploads/2022/05/belugang-logo.jpg", 
+        server_pic="https://images.chesscomfiles.com/uploads/v1/group/358841.6424f314.160x160o.ffb7a9e8a4dc.jpeg", 
         default_role="MOD", 
         user_id=4
     )
     server6 = Server(
         name="Lofi Girl", 
-        server_pic="https://unita.co/wp-content/uploads/2022/05/belugang-logo.jpg", 
+        server_pic="https://upload.wikimedia.org/wikipedia/en/thumb/2/23/Lofi_girl_logo.jpg/250px-Lofi_girl_logo.jpg", 
         default_role="Lofi Artist", 
         user_id=5
     )

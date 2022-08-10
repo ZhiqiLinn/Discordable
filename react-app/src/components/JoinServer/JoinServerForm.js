@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory} from 'react-router-dom';
 import {joinAServerThunk} from '../../store/joinedServer';
 import { Modal } from '../../context/Modal';
+import { getAllServersThunk } from '../../store/server';
 
 
 function JoinServerForm({currentServerId}) {
@@ -15,13 +16,17 @@ function JoinServerForm({currentServerId}) {
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [showModal, setShowModal] = useState(false);
+    const [users, setUsers] = useState({});
 
 
-    // useEffect(() => {
-    //     let errors = []
-    //     if (!serverId) errors.push("Please enter server link");
-    //     setErrors(errors);
-    // }, [serverId]);
+    useEffect(() => {
+        async function fetchData() {
+          const response = await fetch('/api/users/');
+          const responseData = await response.json();
+          setUsers(responseData.users);
+        }
+        fetchData();
+      }, [sessionUser]);
 
     const handleCreate = async (e) => {
         e.preventDefault();
@@ -34,7 +39,8 @@ function JoinServerForm({currentServerId}) {
             await dispatch(joinAServerThunk(payload))
             // reset();
             setHasSubmitted(false)
-            history.push(`/servers/${currentServerId}`)
+            setShowModal(false)
+            // history.push(`/servers/${currentServerId}`)
         }
     }
     // const reset = () => {

@@ -61,7 +61,9 @@ const ServerSideBar = () => {
             ))}
             <UserJoinedServerList />
             <CreateServerLiveModal />
-            
+            <div>
+                <button className="explore-server-btn"> <i class="fa-solid fa-compass"></i> </button>
+            </div>
 
         </div>
         

@@ -23,7 +23,7 @@ const ServerOverviewPage = ({serverId, currentServer}) => {
     useEffect(() => {
         let errors = []
         if (name.length < 3 || name.length > 50) errors.push("Server name should be between 3 and 50 characters")
-        if (!/https?:\/\/.*\.(?:png|jpg)/.test(server_pic)) errors.push("Image URL invalid");
+        if (!/https?:\/\/.*\.(?:png|jpg|jpeg)/.test(server_pic)) errors.push("Image URL invalid");
         if (!default_role.length) errors.push("Default role cannot be empty")
         setErrors(errors);
     }, [name, server_pic,default_role]);
