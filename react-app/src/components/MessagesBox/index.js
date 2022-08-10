@@ -20,7 +20,7 @@ const MessagesBox = () => {
     const [users, setUsers] = useState([])
     const AllChannels = Object.values(useSelector(state => state.channelState.serverChannels))
     const sessionUser = useSelector(state => state.session.user)
-
+    // console.log(users)
     useEffect(() => {
         dispatch(getAllMessagesForChannelThunk(chanId))
         dispatch(getAllChannelsByServerThunk(serverId))
@@ -33,7 +33,7 @@ const MessagesBox = () => {
             setUsers(responseData.users);
         }
         fetchData();
-    }, []);
+    }, [sessionUser]);
 
     const findUserInfo = (userId) => {
         let result = users.filter(user => user.id === +userId);
