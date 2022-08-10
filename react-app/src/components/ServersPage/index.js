@@ -13,9 +13,7 @@ const ServersPage = () => {
             <div>
                 <ExploreServers />
             </div>
-            <div className="server-user-logout-container">
-                <UserProfileBar />
-            </div>
+
         </div>
         
     )

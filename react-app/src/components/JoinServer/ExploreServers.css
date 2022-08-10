@@ -36,3 +36,13 @@
     font-weight: bolder;
 
 }
+
+
+.explore-server-quote{
+    z-index: 10;
+    position: absolute;
+    top:25%;
+    left:15%;
+    color:white;
+    font-size: 60px;
+}
