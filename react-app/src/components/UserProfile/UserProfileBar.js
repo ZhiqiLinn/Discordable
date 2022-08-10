@@ -16,7 +16,7 @@ const UserProfileBar = () => {
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
-      };
+      }; 
     
 
       const handleSubmit = async (e) => {
@@ -25,7 +25,7 @@ const UserProfileBar = () => {
             profile_pic:image
         }
         // console.log(profilePayload)
-        let newPic = await dispatch(uploadProfilePicThunk(profilePayload))
+        await dispatch(uploadProfilePicThunk(profilePayload))
         // console.log("NEWPIC",newPic)
         setImage(null)
         setShowUpdateModal(false)

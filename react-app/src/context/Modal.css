@@ -26,3 +26,62 @@
     height: 500px;
   }
 
+
+  #msg-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #msg-modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  #msg-modal-content {
+    position: absolute;
+    background-color:white;
+    border-radius: 10px;
+    width: 250px;
+    height: 250px;
+  }
+
+  #dark-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #dark-modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  #dark-modal-content {
+    position: absolute;
+    background-color:black;
+    color:white;
+    border-radius: 10px;
+    width: 400px;
+    height: 400px;
+  }
+
+

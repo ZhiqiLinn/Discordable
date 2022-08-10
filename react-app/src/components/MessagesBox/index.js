@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState} from "react";
 
 import { useParams } from "react-router-dom"
-import { getAllMessagesForChannelThunk } from "../../store/messages"
+import {getAllMessagesForChannelThunk } from "../../store/messages"
 import { getAllChannelsByServerThunk } from "../../store/channel";
 
 import ChannelsSection from "../ChannelsSection"
@@ -10,6 +10,8 @@ import ServerSideBar from "../ServersPage/ServerSideBar"
 import './MessagesBox.css'
 import MemberList from "../ServerDetailPage/MemberList";
 import CreateMessageBar from "./CreateMessagesBar";
+import DeleteMessageModal from "./DeleteMessage";
+import EditMessage from "./EditMessage";
 
 const MessagesBox = () => {
     const {serverId, chanId} = useParams()
@@ -17,6 +19,7 @@ const MessagesBox = () => {
     const allMessagesArr = Object.values(useSelector(state => state.messageState))
     const [users, setUsers] = useState([])
     const AllChannels = Object.values(useSelector(state => state.channelState.serverChannels))
+    const sessionUser = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(getAllMessagesForChannelThunk(chanId))
@@ -41,6 +44,8 @@ const MessagesBox = () => {
         return result[0]
     }
 
+  
+
     return (
         <div className="server-page-layout">  
             <ServerSideBar />
@@ -59,14 +64,20 @@ const MessagesBox = () => {
                                 <div>
                                     <p>{findUserInfo(msg.user_id)?.username} <span style={{color:"grey", fontSize:"small"}}>{msg.created_at}</span></p>
                                 </div>
-                                <div>
-                                    <p>{msg.message}</p>
-                                </div>
+                                {sessionUser.id === msg.user_id ? 
+                                    (<div>
+                                        <p>{msg.message} </p>
+                                        <EditMessage msgId={msg.id}/>
+                                        <DeleteMessageModal msgId={msg.id}/>
+                                    </div>)
+                                    : (<p>{msg.message}</p>) 
+                                }
                             </div>
                         </div>
                     ))
 
                     }
+
                 </div>
                 <CreateMessageBar />
             </div>
