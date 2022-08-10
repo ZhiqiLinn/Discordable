@@ -26,13 +26,6 @@ const ExploreServers = () => {
                             <p>✅ Server Id: {server.id}</p>
                             <p> {server.name}</p>
                             <JoinServerForm currentServerId={server.id}/>
-                            {/* {showModal && (
-                                <div>
-                                    <Modal onClose={() => setShowModal(false)}>
-                                        <JoinServerForm currentServerId={server.id}/>
-                                    </Modal>
-                                </div>
-                            )} */}
                     </div>
                 ))
                 

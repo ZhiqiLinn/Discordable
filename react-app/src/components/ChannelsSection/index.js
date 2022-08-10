@@ -8,6 +8,7 @@ import './ChannelsSection.css'
 import { getAllChannelsByServerThunk } from "../../store/channel";
 import { getAllServersThunk, getServerThunk } from "../../store/server";
 import UserProfileBar from "../UserProfile/UserProfileBar";
+import QuitServer from "../QuitServer.js";
 
 const ChannelsSection = () => {
     const {serverId} = useParams();
@@ -36,6 +37,7 @@ const ChannelsSection = () => {
         editProfileLink = (
             <div className="server-profile-container">
                 {currentServer?.name} 
+                <QuitServer />
             </div>
         )
     }
