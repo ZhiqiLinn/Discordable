@@ -15,6 +15,7 @@ import MessagesBox from './components/MessagesBox';
 import JoinServerForm from './components/JoinServer/JoinServerForm';
 import LoginForm from './components/LoginLiveModal/LoginForm';
 import SignUpForm from './components/SignUpLiveModal/SignUpForm';
+import QuitServer from './components/QuitServer.js';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +59,9 @@ function App() {
           <NavBar />
           <SignUpForm/>
         </Route>
+        <ProtectedRoute path='/servers/:serverId/quit' exact={true} >
+          <QuitServer />
+        </ProtectedRoute>
 
         <ProtectedRoute path='/servers/:serverId/profile' exact={true} >
           <ServerProfilePage />
