@@ -1,12 +1,19 @@
 .user-profile-menu{
-    height:270px;
-    width:270px;
+    height:250px;
+    width:250px;
     background-color: #18191c;
     position:absolute;
     bottom:75px;
     padding:10%;
     border-radius: 20px;
 }
+/* .user-profile-color-panel{
+    position: absolute;
+    z-index: 0;
+    height: 50px;
+    width:270px;
+    background-color: #484CEC;
+} */
 
 .user-bar-img{
     height:40px;
@@ -19,14 +26,29 @@
     height:90px;
     width:90px;
     border-radius: 50%;
+    z-index: 1;
 }
-
+.img-update{
+    position:absolute;
+    top:20%;
+    left:20%;
+    z-index: 3
+}
+.grey-cover{
+    position:absolute;
+    height:90px;
+    width:90px;
+    border-radius: 50%;
+    background-color: #18191c9b;
+    z-index: 2;
+    cursor: pointer;
+}
 .user-menu-name{
     font-size: large;
     font-weight: bolder;
-    padding: 10px 3px 10px 0;
+    padding: 10px 0px 10px 10px;
     border-bottom: 1px solid grey;
-
+    margin-bottom: 10%;
 }
 
 .user-profile-close{
@@ -37,4 +59,21 @@
 
 .upload-pic-input button{
     background-color:red;
+}
+
+.user-profile-logout-btn button{
+    position: absolute;
+    bottom: 20px;
+    outline: 0;
+    background: #484CEC;
+    width: 200px;
+    height: 40px;
+    border: 0;
+    margin-left:20px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 2px;
+    color:white;
+    font-weight: bold;
 }

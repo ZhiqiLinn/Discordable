@@ -4,7 +4,7 @@ import { useHistory, useParams} from 'react-router-dom';
 import {joinAServerThunk} from '../../store/joinedServer';
 import { Modal } from '../../context/Modal';
 import { getAllServersThunk } from '../../store/server';
-
+import joinPageBackground from './joinPageBackground.jpg'
 
 function JoinServerForm() {
     const {serverId } = useParams();
@@ -15,21 +15,17 @@ function JoinServerForm() {
 
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
-    const [showModal, setShowModal] = useState(false);
     const [users, setUsers] = useState({});
     const [joined, setJoined] = useState(false)
     const [owned, setOwned] = useState(false)
 
     const allServers = Object.values(useSelector(state => state.serverState))
     const userJoinedServersArr = Object.values(sessionUser.userJoinedServers)
+
     //iterate thourgh all joined server, if this server is joined by the user
     const joinedByUser = userJoinedServersArr.filter(server => serverId == +server.joinedServer_id)
     //iterate through all servers, if this server is owned by the session user
     const ownedByUser = allServers.filter(server => server.user_id == +sessionUser.id)
-    const ownedServerIds = ownedByUser.map(server => server.id)
-
-    console.log("session user id", sessionUser.id)
-    console.log("server user id", ownedByUser)
     useEffect(()=> {
         if (ownedByUser.includes(serverId)) setOwned(true)
         if (joinedByUser?.length > 0) setJoined(true)
@@ -55,19 +51,21 @@ function JoinServerForm() {
     let joinPageJSX;
     if(owned || joined){
         joinPageJSX = (
-            <div>
+            <div className='already-joined-container'>
                 <h1>
                     You Already joined!!!
                 </h1>
-                <button onClick={() => history.push(`/servers/${serverId}`)}>Check out Server!</button>
+                <br></br>
+                
+                <button className="btn" onClick={() => history.push(`/servers/${serverId}`)}>Check out Server!</button>
 
             </div>
         )
     }else{
         joinPageJSX = (
 
-            <div>
-                <h1>Join a Server</h1>
+            <div className='join-confirmation-container'>
+                <h1>Do you want to join the server?</h1>
                 <div>
                     {hasSubmitted && errors &&
                         <div >
@@ -77,7 +75,6 @@ function JoinServerForm() {
                 </div>
                 <form onSubmit={handleCreate}>
                     <div>
-                        <div>INIVITE LINK *</div>
                         <input
                             placeholder='Please enter server ID'
                             type='text'
@@ -86,7 +83,10 @@ function JoinServerForm() {
                         />
                     </div>
                     <div>
-                        <button type='submit'>Join</button>
+                        <br></br>
+                        <button className="btn" type='submit'>Yes</button>
+                        <br></br>
+                        <button className="btn" onClick={() => history.push('/servers')}>No</button>
                     </div>
                 </form>
 
@@ -113,9 +113,13 @@ function JoinServerForm() {
 
 
     return(
-        <> 
+        <div className='join-page-container' 
+            style={{
+                backgroundImage:`url(${joinPageBackground})`,
+                backgroundSize:'cover',
+                }}> 
             {joinPageJSX}
-        </>
+        </div>
     )
 }
 

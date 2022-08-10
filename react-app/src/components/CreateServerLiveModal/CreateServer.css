@@ -6,6 +6,8 @@
     color:green;
     font-size: 30px;
     border:1px solid #2f3136;
+    margin-top:10px;
+
 }
 
 
@@ -13,5 +15,6 @@
     background-color: rgb(84, 184, 84);
     color:white;
     border-radius: 25%;
+    font-size: 35px;
     transition: .3s;
 }

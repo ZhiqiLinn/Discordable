@@ -46,3 +46,33 @@
     color:white;
     font-size: 60px;
 }
+
+.join-page-container{
+    width: 100vw;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.already-joined-container{
+    height: 100px;
+    width:400px;
+    background-color: #292b2f;
+    text-align: center;
+    padding: 2%;  
+    box-shadow: 0px 0px 20px -2px rgba(135,130,135,1); 
+    border-radius: 8px; 
+    color:white;
+}
+
+.join-confirmation-container{
+    height: 200px;
+    width:400px;
+    background-color: #292b2f;
+    text-align: center;
+    padding: 2%;  
+    box-shadow: 0px 0px 20px -2px rgba(135,130,135,1); 
+    border-radius: 8px; 
+    color:white;
+}
