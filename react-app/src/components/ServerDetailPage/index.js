@@ -34,9 +34,9 @@ const ServerDetailPage = () => {
             {currentServer && 
                 <div className="server-page-layout">
                     <ServerSideBar />
-                    <div className="channel-section-container" >
+                    <div  >
 
-                        <ChannelsSection serverId={serverId} currentServer={currentServer}/>
+                        <ChannelsSection />
                     </div> 
                     <div className="server-intro">
                         <h1>Welcome to {currentServer.name}</h1>

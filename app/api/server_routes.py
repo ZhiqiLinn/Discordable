@@ -1,6 +1,7 @@
 from flask import Blueprint, request
-from app.forms import CreateServerForm, UpdateServerForm
-from app.models import db, Server
+from app.forms import CreateServerForm, UpdateServerForm, JoinServerForm
+from app.models import db, Server, User
+from flask_login import current_user, login_required
 
 server_routes = Blueprint('servers', __name__)
 
@@ -70,3 +71,12 @@ def delete_one_server(id):
     db.session.delete(server)
     db.session.commit()
     return {"message": "Sucessfully Deleted."}
+
+
+#-------------------------DELETE ONE JOINED SERVER-------------------
+@server_routes.route('/<int:id>/delete', methods=['PUT'])
+def quit_a_server(id):
+    server = Server.query.get(id)
+    current_user.joined_servers.remove(server)
+    db.session.commit()
+    return server.to_dict()

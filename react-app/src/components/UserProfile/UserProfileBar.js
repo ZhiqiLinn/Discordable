@@ -49,13 +49,13 @@ const UserProfileBar = () => {
                 <p>{sessionUser.username}</p>
             </div>
             <div className="logout-btn" onClick={openMenu}>
-                <i class="fa-solid fa-gear fa-1.5x" ></i>
+                <i className="fa-solid fa-gear fa-1.5x" ></i>
             </div>
             {showMenu && (
                 <>
                 <div className="user-profile-menu">
                     <div className="user-profile-close" onClick={()=>setShowMenu(false)}>
-                        <i class="fa-solid fa-circle-xmark fa-lg"></i>
+                        <i className="fa-solid fa-circle-xmark fa-lg"></i>
                     </div>
                     <div >
                         <img className='user-menu-img' src={sessionUser.profile_pic} alt={sessionUser.username}></img>

@@ -12,7 +12,7 @@ import ServerDetailPage from './components/ServerDetailPage';
 import ServerProfilePage from './components/ServerProfilePage';
 import HomePage from './components/HomePage';
 import MessagesBox from './components/MessagesBox';
-import JoinServerForm from './components/CreateServerLiveModal/JoinServerForm';
+import JoinServerForm from './components/JoinServer/JoinServerForm';
 import LoginForm from './components/LoginLiveModal/LoginForm';
 import SignUpForm from './components/SignUpLiveModal/SignUpForm';
 

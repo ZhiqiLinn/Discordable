@@ -45,19 +45,22 @@ def join_a_server():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 #-------------------------DELETE ONE JOINED SERVER-------------------
-@join_server_routes.route('', methods=['PUT'])
-def quit_a_server():
-    form = JoinServerForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        curr_member_id = form.data['member_id']
-        curr_server_id = form.data['server_id']
-        curr_server = Server.query.get(curr_server_id)
-        curr_member = User.query.get(curr_member_id)
-        curr_server.members.remove(curr_member)
-        curr_member.joined_servers.remove(curr_server)
-        db.session.commit()
-        return {'message': 'Successfully Quited!'}
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+# @join_server_routes.route('', methods=['PUT'])
+# def quit_a_server(id):
+#     form = JoinServerForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         # curr_member_id = form.data['member_id']
+#         # curr_server_id = form.data['server_id']
+#         # curr_server = Server.query.get(curr_server_id)
+#         # curr_member = User.query.get(curr_member_id)
+#         # curr_member.joined_servers.remove(curr_server)
+#         # db.session.add(curr_member)
+#         # curr_server.members.remove(curr_member)
+#         # db.session.add(curr_server)
+#         # db.session.commit()
+#         server = Server.query.get(id)
+#         return {'message': 'Successfully Quited!'}
+#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

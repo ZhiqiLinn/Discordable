@@ -47,7 +47,7 @@ const MessagesBox = () => {
             <ChannelsSection selectedChanId={chanId}/>
             <div className="message-box-layout">
                 <div className="msg-channel-name-container">
-                    <p><i class="fa-solid fa-hashtag"></i> { findChanInfo(chanId)?.name}</p>
+                    <p><i className="fa-solid fa-hashtag"></i> { findChanInfo(chanId)?.name}</p>
                 </div >
                 <div className="all-msg-container">
                     { allMessagesArr && allMessagesArr.map(msg => (
