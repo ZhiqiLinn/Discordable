@@ -13,6 +13,7 @@ const UserProfileBar = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [showUpdateModal, setShowUpdateModal] = useState(false);
     const [image, setImage] = useState(null);
+    
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);

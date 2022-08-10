@@ -45,6 +45,7 @@ const EditMessage = ({msgId}) => {
         if (!errors.length) {
             await dispatch(editMessageThunk(msgPayload))
             reset();
+            setShowModal(false)
             setHasSubmitted(false);
             history.push(`/servers/${serverId}/${chanId}`);
         }
