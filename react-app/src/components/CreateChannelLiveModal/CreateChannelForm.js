@@ -16,7 +16,7 @@ const CreateChannelForm = ({hideForm}) => {
 
     useEffect(() => {
         let errors = []
-        if (name.length < 3 || name.length > 50) errors.push("Name length should be between 3 and 50 characters")
+        if (!name.length) errors.push("Please enter a channel name!")
         setErrors(errors);
     }, [name]);
 
@@ -29,8 +29,8 @@ const CreateChannelForm = ({hideForm}) => {
             server_id: serverId
 
         }
-        const newChannel = await dispatch(addChannelThunk(channelPayload))
-        if (newChannel && !errors.length) {
+        if (!errors.length) {
+            await dispatch(addChannelThunk(channelPayload))
             reset();
             setHasSubmitted(false);
             hideForm();
@@ -41,14 +41,17 @@ const CreateChannelForm = ({hideForm}) => {
         setName('');
     }
 
+
     return(
         <div >
             <h1>Create Channel</h1>
             <div>
                 {hasSubmitted && errors &&
-                    <div >
-                        {errors.map((error, idx) => <div key={idx}> * {error}</div>)}
-                    </div>
+                <div id='error-msg'>
+                {errors.map((error, ind) => (
+                    <div key={ind} style={{ color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
+                ))}
+                </div>
                 }
             </div>
             <form onSubmit={handleCreate}>
@@ -66,7 +69,7 @@ const CreateChannelForm = ({hideForm}) => {
                         </label>
                 </div>
                 <div>
-                    <button type='button' onClick={() => history.goBack()}>Cancel</button>
+                    <button type='button' onClick={() => hideForm()}>Cancel</button>
                     <button id='next-button' type="submit">Create Channel</button>
                 </div>
             </form>

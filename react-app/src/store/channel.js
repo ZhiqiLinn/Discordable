@@ -156,7 +156,7 @@ const channelReducer = (state = initialState, action) => {
         case EDIT_CHANNEL:
             return {
                 ...state,
-                [action.editedChannel.id]: action.editedChannel
+                serverChannels:{...state.serverChannels, [action.editedChannel.id]: action.editedChannel}
             };
         case DELETE_CHANNEL:
             let deletedState = { ...state }

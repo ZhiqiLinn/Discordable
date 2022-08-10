@@ -19,7 +19,7 @@ function CreateServerForm({hideForm}) {
         let errors = []
         if (name.length < 3 || name.length > 50) errors.push("Name length should be between 3 and 50 characters")
         if (!/https?:\/\/.*\.(?:png|jpg)/.test(server_pic)) errors.push("Image URL invalid");
-        // if (default_role.length < 3 || default_role.length > 10) errors.push("role title length should be between 3 and 10 characters")
+        if (!default_role.length) errors.push("Default role cannot be empty")
         setErrors(errors);
     }, [name, server_pic]);
 
@@ -32,9 +32,9 @@ function CreateServerForm({hideForm}) {
             server_pic,
             default_role
         }
-        let newServer;
+  
         if (!errors.length) {
-            newServer = await dispatch(addServerThunk(serverPayload))
+            await dispatch(addServerThunk(serverPayload))
             reset();
             setHasSubmitted(false)
             hideForm();
