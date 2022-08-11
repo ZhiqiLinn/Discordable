@@ -43,6 +43,8 @@
     background-color: #2f3136;
     width: 200px;
     height:100vh;
+    color:white;
+    padding: 15px;
 }
 .server-intro{
     margin-left: 325px;
