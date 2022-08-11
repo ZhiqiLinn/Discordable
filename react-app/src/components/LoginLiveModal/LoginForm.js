@@ -23,7 +23,9 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true)
     const data = await dispatch(login(email, password));
+    setHasSubmitted(false)
     if (data) {
       setErrors(data);
     }
