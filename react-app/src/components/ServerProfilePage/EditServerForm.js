@@ -18,7 +18,15 @@ const EditServerForm = ({hideForm, serverId}) => {
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
     //------------------CALL SERVERS AGAIN------------------------
-    
+    useEffect(() => {
+        let errors = []
+        if (name.length < 3 || name.length > 50) errors.push("Name length should be between 3 and 50 characters")
+        if (!/https?:\/\/.*\.(?:png|jpg|jpeg)/.test(server_pic)) errors.push("Image URL invalid. Should be JPG/PNG/JPEG");
+        if (default_role.length=== 0) errors.push("Default role cannot be empty")
+        setErrors(errors);
+        // console.log(default_role)
+    }, [name, server_pic, default_role]);
+
     useEffect(() => {
             dispatch(getAllServersThunk())
     },[dispatch, serverId])
@@ -51,7 +59,7 @@ const EditServerForm = ({hideForm, serverId}) => {
         hideForm();
     }
     return(
-        <div >
+        <div className='edit-server-container'>
             <h1>Server Overview</h1>
             <div>
                 {hasSubmitted && errors &&
@@ -89,9 +97,12 @@ const EditServerForm = ({hideForm, serverId}) => {
                     />
                 </div>
                 <div>
-                    <button className='btn' type='button' onClick={handleCancel}>Cancel</button>
-                    <button className='btn' type='button' onClick={resetPayload}>Reset</button>
+                    <br></br>
                     <button className='btn' type="submit">Save Changes</button>
+                    <br></br>
+                    <button className='btn' type='button' onClick={resetPayload}>Reset</button>
+                    <br></br>
+                    <button className='btn' type='button' onClick={handleCancel}>Cancel</button>
                 </div>
             </form>
         </div>

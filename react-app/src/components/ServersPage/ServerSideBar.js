@@ -43,7 +43,7 @@ const ServerSideBar = () => {
                 <UserJoinedServerList />
                 <CreateServerLiveModal />
                 <div>
-                    <button className="explore-server-btn" onClick={()=> history.push('/servers')}> <i class="fa-solid fa-compass"></i> </button>
+                    <button className="explore-server-btn" onClick={()=> history.push('/servers')}> <i class="fa-solid fa-compass" style={{cursor:"pointer"}}></i> </button>
                 </div>
 
             </div>

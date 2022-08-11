@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { DarkModal } from '../../context/DarkModal';
+import { SmallModal } from '../../context/SmallModal';
 import { useDispatch} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 import { deleteChannelThunk } from "../../store/channel";
-
+import './DeleteChannel.css'
 
 const DeleteChannelLiveModal = () => {
     const dispatch = useDispatch();
@@ -19,18 +19,19 @@ const DeleteChannelLiveModal = () => {
 
     return (
         <>
-            <span  onClick={() => setShowModal(true)}> 🗑️ </span>
+            <span  onClick={() => setShowModal(true)} style={{cursor:"pointer"}}> 🗑️ </span>
             {showModal && (
                 <div>
-                    <DarkModal onClose={() => setShowModal(false)}>
-                        <div >
-                            <h1>DO YOU REALLY WANNA DELETE THIS CHANNEL???</h1>
+                    <SmallModal onClose={() => setShowModal(false)}>
+                        <div className='delete-server-container'>
+                            <h2>Please confirm that you would like to delete this channel.</h2>
                             <div >
-                                <button onClick={() => setShowModal(false)}>Cancel</button>
-                                <button onClick={handleDeleteSubmit}>Delete</button>
+                                <button className='btn' onClick={() => setShowModal(false)}>No</button>
+                                <br></br>
+                                <button className='btn' onClick={handleDeleteSubmit}>Yes</button>
                             </div>
                         </div>
-                    </DarkModal>
+                    </SmallModal>
                 </div>
             )}
         </>

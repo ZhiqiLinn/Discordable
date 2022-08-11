@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DarkModal } from '../../context/DarkModal';
+import { SmallModal } from '../../context/SmallModal';
 import CreateChannelForm from './CreateChannelForm';
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
@@ -24,18 +24,20 @@ const CreateChannelLiveModal = ({sessionUser}) => {
             <div className='create-channel-container'>
                 <div className='create-channel-divs' onClick={() => setShowModal(true)}>
                     <div className='text-channel' >
-                    <i className="fa-solid fa-caret-down"></i>  TEXT CHANNEL
+                    <i className="fa-solid fa-caret-down" style={{cursor:"pointer"}}></i>  TEXT CHANNEL
                     </div>
-                    <div>
-                    <i className="fa-solid fa-plus"></i>
-                    </div>
+                    { sessionUser.id === currentServer.user_id &&
+                        <div>
+                            <i className="fa-solid fa-plus" style={{cursor:"pointer"}}></i>
+                        </div>
+                    }
                 </div>
             </div>
             {showModal &&  sessionUser.id === currentServer.user_id && (
                 <div>
-                    <DarkModal onClose={() => setShowModal(false)} >
+                    <SmallModal onClose={() => setShowModal(false)} >
                         <CreateChannelForm hideForm={hideForm}/>
-                    </DarkModal>
+                    </SmallModal>
                 </div>
             )}
         </>

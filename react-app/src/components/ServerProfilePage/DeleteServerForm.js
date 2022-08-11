@@ -2,8 +2,8 @@ import { useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { deleteServerThunk } from "../../store/server";
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
-
+import { SmallModal } from '../../context/SmallModal';
+import './ServerProfile.css'
 const DeleteServerForm = ({serverId}) => {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
@@ -16,18 +16,19 @@ const DeleteServerForm = ({serverId}) => {
     }
     return (
         <>
-            <div  onClick={() => setShowModal(true)}> 🗑️ </div>
+            <div  onClick={() => setShowModal(true)} style={{cursor:"pointer"}}> 🗑️ </div>
             {showModal && (
                 <div>
-                    <Modal onClose={() => setShowModal(false)}>
-                    <div >
-                        <h1>Please confirm that you would like to delete your server.</h1>
+                    <SmallModal onClose={() => setShowModal(false)}>
+                    <div className='delete-server-container'>
+                        <h2>Please confirm that you would like to delete your server.</h2>
                         <div >
-                            <button onClick={() => history.push(`/servers/${serverId}`)}>No</button>
-                            <button onClick={handleDeleteSubmit}>Yes</button>
+                            <button className='btn' onClick={() => setShowModal(false)}>No</button>
+                            <br></br>
+                            <button className='btn' onClick={handleDeleteSubmit}>Yes</button>
                         </div>
                     </div>
-                    </Modal>
+                    </SmallModal>
                 </div>
             )}
         </>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 import { addChannelThunk } from '../../store/channel';
+import './CreateChannel.css'
 
 const CreateChannelForm = ({hideForm}) => {
     const {serverId} = useParams();
@@ -43,7 +44,7 @@ const CreateChannelForm = ({hideForm}) => {
 
 
     return(
-        <div >
+        <div className='create-channel-modal'>
             <h1>Create Channel</h1>
             <div>
                 {hasSubmitted && errors &&
@@ -58,7 +59,7 @@ const CreateChannelForm = ({hideForm}) => {
                 <div>
                     <div>CHANNEL NAME</div>
                         <label>
-                            #
+                        <i className="fa-solid fa-hashtag"></i>
                             <input
                                 placeholder='new-channel'
                                 type='text'
@@ -69,8 +70,9 @@ const CreateChannelForm = ({hideForm}) => {
                         </label>
                 </div>
                 <div>
-                    <button type='button' onClick={() => hideForm()}>Cancel</button>
-                    <button id='next-button' type="submit">Create Channel</button>
+                    <button className='btn' type="submit">Create Channel</button>
+                    <br></br>
+                    <button className='btn' type='button' onClick={() => hideForm()}>Cancel</button>
                 </div>
             </form>
         </div>

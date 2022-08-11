@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 import { ModalProvider } from './context/Modal';
-import { DarkModalProvider } from './context/DarkModal';
+import { SmallModalProvider } from './context/SmallModal';
 import { MsgModalProvider } from './context/MsgModal';
 
 
@@ -14,13 +14,13 @@ const store = configureStore();
 ReactDOM.render(
   <React.StrictMode>
     <MsgModalProvider>
-      <DarkModalProvider>
+      <SmallModalProvider>
         <ModalProvider>
           <Provider store={store}>
               <App />
           </Provider>
         </ModalProvider>
-      </DarkModalProvider>
+      </SmallModalProvider>
     </MsgModalProvider>
   </React.StrictMode>,
   document.getElementById('root')

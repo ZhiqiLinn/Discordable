@@ -50,13 +50,13 @@ const UserProfileBar = () => {
                 <p>{sessionUser.username}</p>
             </div>
             <div className="logout-btn" onClick={openMenu}>
-                <i className="fa-solid fa-gear fa-1.5x" ></i>
+                <i className="fa-solid fa-gear fa-1.5x" style={{cursor:"pointer"}}></i>
             </div>
             {showMenu && (
                 <>
                 <div className="user-profile-menu">
                     <div className="user-profile-close" onClick={()=>setShowMenu(false)}>
-                        <i className="fa-solid fa-circle-xmark fa-lg"></i>
+                        <i className="fa-solid fa-circle-xmark fa-lg" style={{cursor:"pointer"}}></i>
                     </div>
                     <div onClick={() => setShowUpdateModal(true)}>
                         <div className="grey-cover"></div>

@@ -23,18 +23,6 @@ const ChannelsSection = () => {
         dispatch(getAllChannelsByServerThunk(serverId))
     },[dispatch, serverId])
     
-    // { channel.name.length > 15 && 
-    //     <>
-    //     <i className="fa-solid fa-hashtag"></i> { `${channel.name.slice(0,15)}...`}
-    //     </>
-        
-    // }
-    // { channel.name.length <= 15 && 
-    //     <>
-    //     <i className="fa-solid fa-hashtag"></i> {channel.name}
-    //     </>
-        
-    // }
 
     let editProfileLink;
     if(sessionUser.id === currentServer?.user_id){
@@ -83,15 +71,13 @@ const ChannelsSection = () => {
                                     to={`/servers/${channel.server_id}/${channel.id}`} 
                                     onClick={() => setCurrChannel(channel.id)}
                                     >
-                                        { channel.name.length > 15 && 
+                                        { channel.name.length > 15 ?
                                             <>
-                                            <i className="fa-solid fa-hashtag"></i> { `${channel.name.slice(0,15)}...`}
+                                            <i className="fa-solid fa-hashtag" style={{cursor:"pointer"}}></i> { `${channel.name.slice(0,15)}...`}
                                             </>
-                                            
-                                        }
-                                        { channel.name.length <= 15 && 
+                                            :
                                             <>
-                                            <i className="fa-solid fa-hashtag"></i> {channel.name}
+                                            <i className="fa-solid fa-hashtag" style={{cursor:"pointer"}}></i> {channel.name}
                                             </>
                                             
                                         }

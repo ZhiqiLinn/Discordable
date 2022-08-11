@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from 'react-router-dom'
 import { quitAServerThunk } from "../../store/joinedServer";
-import { DarkModal } from '../../context/DarkModal';
+import { SmallModal } from '../../context/SmallModal';
 import React, { useState } from 'react';
 import './QuitServer.css'
 
@@ -29,16 +29,17 @@ const QuitServer = () => {
             <button className="quit-server-btn" onClick={() => setShowModal(true)}> leave </button>
             {showModal && (
                 <div>
-                    <DarkModal onClose={() => setShowModal(false)}>
-                        <div >
-                            <h1>Please confirm that you would like to quit this server</h1>
+                    <SmallModal onClose={() => setShowModal(false)}>
+                        <div className="quit-server-container">
+                            <h2>Please confirm that you would like to quit this server</h2>
                             <div >
                                 <button className="btn" onClick={() => setShowModal(false)}>No</button>
+                                <br></br>
                                 <button className="btn" onClick={handleQuit}>Yes</button>
 
                             </div>
                         </div>
-                    </DarkModal>
+                    </SmallModal>
                 </div>
             )}
         

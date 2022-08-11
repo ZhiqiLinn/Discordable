@@ -10,7 +10,7 @@ const EditServerLiveModal = ({serverId}) => {
     }
     return (
         <>
-            <div  onClick={() => setShowModal(true)}> ⚙️ </div>
+            <div  onClick={() => setShowModal(true)} style={{cursor:"pointer"}}> ⚙️ </div>
             {showModal && (
                 <div>
                     <Modal onClose={() => setShowModal(false)}>
