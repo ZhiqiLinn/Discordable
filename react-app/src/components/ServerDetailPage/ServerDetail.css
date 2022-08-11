@@ -3,6 +3,7 @@
 
 }
 .server-profile-container{
+    display: flex;
     height: 30px;
     padding-left: 15px;
     padding-top: 20px;
@@ -42,4 +43,21 @@
     background-color: #2f3136;
     width: 200px;
     height:100vh;
+}
+.server-intro{
+    margin-left: 325px;
+    color:white;
+    text-align: center;
+    margin:25% 35% 25% 35%
+}
+
+.server-intro a{
+    text-decoration:none;
+    color:#0788e4;
+    font-weight: bold;
+}
+
+
+.server-intro a:hover{
+    text-decoration:underline;
 }

@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { quitAServerThunk } from "../../store/joinedServer";
 import { DarkModal } from '../../context/DarkModal';
 import React, { useState } from 'react';
-
+import './QuitServer.css'
 
 const QuitServer = () => {
     const dispatch = useDispatch();
@@ -25,22 +25,24 @@ const QuitServer = () => {
     }
 
     return(
-        <div >
-            <button  onClick={() => setShowModal(true)}> leave </button>
+        < >
+            <button className="quit-server-btn" onClick={() => setShowModal(true)}> leave </button>
             {showModal && (
                 <div>
                     <DarkModal onClose={() => setShowModal(false)}>
                         <div >
-                            <h1>DO YOU REALLY WANNA QUIT THIS SERVER???</h1>
+                            <h1>Please confirm that you would like to quit this server</h1>
                             <div >
-                                <button onClick={handleQuit}>Delete</button>
+                                <button className="btn" onClick={() => setShowModal(false)}>No</button>
+                                <button className="btn" onClick={handleQuit}>Yes</button>
+
                             </div>
                         </div>
                     </DarkModal>
                 </div>
             )}
         
-        </div>
+        </>
     )
 }
 

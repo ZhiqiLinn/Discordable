@@ -17,7 +17,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     let errors = [];
-    if (!email.includes("@") ) errors.push("Invalid email format")
+    if (!email.includes("@") ) errors.push("Invalid email format, must includes @")
     setErrors(errors);
   }, [email]);
 

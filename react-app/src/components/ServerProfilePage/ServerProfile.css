@@ -1,0 +1,12 @@
+.server-profile-page-container{
+    display: flex;
+    gap:10px;
+    width: 500px;
+    height: 500px;
+
+}
+.server-profile-page-sidebar{
+    background-color: #202225;
+    width: 500px;
+    height: 500px;
+}

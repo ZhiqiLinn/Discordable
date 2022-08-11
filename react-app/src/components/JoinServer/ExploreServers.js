@@ -11,11 +11,8 @@ const ExploreServers = () => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
     const [users, setUsers] = useState({});
-    const [joined, setJoined] = useState(false)
     // console.log(sessionUser)
     const allServers = Object.values(useSelector(state => state.serverState))
-    const userJoinedServersArr = Object.values(sessionUser.userJoinedServers)
-    const userOwnedServer = allServers.filter(server => server.user_id == +sessionUser.id)
 
     
 

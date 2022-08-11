@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DarkModal } from '../../context/DarkModal';
 import CreateChannelForm from './CreateChannelForm';
-import { useParams, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
 import { getServerThunk } from "../../store/server";
 

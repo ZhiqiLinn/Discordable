@@ -8,7 +8,7 @@ const ServersPage = () => {
 
     return(
         <div className="server-page-layout">
-            <ServerSideBar />
+            {/* <ServerSideBar /> */}
             <div>
                 <ExploreServers />
             </div>

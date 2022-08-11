@@ -9,6 +9,7 @@ import LogoutButton from "../auth/LogoutButton"
 import logo from "./logo.png"
 import { GetAllJoinedServerThunk } from "../../store/joinedServer";
 import UserJoinedServerList from "./UserJoinedServerList";
+
 const ServerSideBar = () => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
@@ -17,32 +18,6 @@ const ServerSideBar = () => {
     const allServersArr = Object.values(useSelector(state => state.serverState))
     const userOwnedServer = allServersArr.filter(server => server.user_id == +sessionUser.id)
     
-    
-    // const [users, setUsers] = useState([]);
-    
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const response = await fetch('/api/users/');
-    //         const responseData = await response.json();
-    //         setUsers(responseData.users);
-    //     }
-    //     fetchData();
-    // }, []);
-
-    // console.log("users:", users)
-    // const [joinedServers, setJoinedServers] = useState({})
-    // const [joinedServersArr, setJoinedServersArr] = useState([])
-    // // console.log(userServers)
-    // useEffect(() => {
-    //     setJoinedServers(sessionUser?.userJoinedServers)
-    //     if(joinedServers){
-    //         setJoinedServersArr(Object.values(joinedServers))
-    //     }
-    // },[sessionUser])
-
-    // console.log("####### joined server", joinedServersArr)
-    // console.log("####### joined server sessionuser", sessionUser)
-
 
     useEffect(()=> {
         dispatch(getAllServersThunk())
