@@ -2,6 +2,7 @@
     background-color: #36393f;
     color:white;
     width: 70vw;
+    margin-left: 325px;
 }
 
 .msg-user-pic{
@@ -11,17 +12,21 @@
 }
 
 .msg-channel-name-container{
-    position: sticky;
-    width: 70vw;
+    position: fixed;
+    background-color: #36393f;
+    width: 80vw;
     height: 30px;
     padding-left: 15px;
     padding-top: 20px;
     border-bottom: .3px solid black;
+
 }
 
 .all-msg-container{
-    padding-top:15px;
+    padding-top:70px;
     padding-left:2%;
+    padding-bottom: 100px;
+
     display: flex;
     flex-direction: column;
     gap:15px
@@ -33,21 +38,39 @@
 }
 
 .create-msg-container{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     height:75px;
-    width:70vw;
+    width:100vw;
     background-color: #57585e;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
 }
 .create-msg-container input{
-    height:45px;
-    width: 50vw;
+    height:40px;
+    width: 700px;
     background-color:#36393f93;
     border: none;
     border-radius: 15px;
     margin-right: 25px;
-
+    margin-left: 15%;
+    
+}
+.input-div{
+    display: flex;
+    position: absolute;
+    top:30%;
+}
+.send-msg-btn{
+    outline: 0;
+    background: #484CEC;
+    width: 75px;
+    height: 40px;
+    border: 0;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 2px;
+    color:white;
+    font-weight: bold;
 }

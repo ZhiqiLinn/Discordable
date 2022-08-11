@@ -36,8 +36,8 @@ const ChannelsSection = () => {
     }else{
         editProfileLink = (
             <div className="server-profile-container">
-                {currentServer?.name} 
-                <QuitServer />
+                <p>{currentServer?.name} <QuitServer /></p>
+                
             </div>
         )
     }

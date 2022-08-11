@@ -45,11 +45,14 @@ const ExploreServers = () => {
     return(
         <>
             <div style={{
-                width:"90vw",
-                height:"500px",
-                marginLeft:"50px",
+                width:"89vw",
+                height:"600px",
+                marginLeft:"100px",
+                marginTop:"30px",
                 backgroundImage:`url(${exploreBackground})`,
                 backgroundSize:'cover',
+                backgroundPostion:'center center',
+                borderRadius:'10px'
                 }}>
                     <h1 className="explore-server-quote">Click server to join today!</h1>
             </div>
@@ -59,11 +62,12 @@ const ExploreServers = () => {
                             allServers.map(server => (
                                 <>
                                     { server.user_id !== sessionUser.id && 
-                                    <NavLink to={`/servers/${server.id}/join`}>
+                                    <NavLink to={`/servers/${server.id}/join`}
+                                        style={{textDecoration:"none"}}>
                                         <div className="server-listing" key={server.id} >
                                                 <img src={server.server_pic}></img>
-                                                <p>✅ Server Id: {server.id}</p>
-                                                <p> {server.name}</p>
+                                                <p className="explore-server-name"> ✅ {server.name}</p>
+                                                <p > Server Id: {server.id}</p>
                                                 {/* { joined?? 
                                                     <div style={{color:"grey"}}>Already Joined!</div> 
                                                     // : <JoinServerForm currentServerId={server.id}/>

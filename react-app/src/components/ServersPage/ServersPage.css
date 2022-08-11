@@ -8,7 +8,7 @@
     background-color: #202225;
     width: 75px;
     height:100vh;
-    
+    position: fixed;
 
 }
 
@@ -23,7 +23,7 @@
 .server-sidebar-round-img:hover{
     border-radius: 25%;
     transform: scale(1.1);
-    transition: 1s;
+    transition: .2s;
 }
 .server-sidebar-logo {
     margin-bottom: 15px;

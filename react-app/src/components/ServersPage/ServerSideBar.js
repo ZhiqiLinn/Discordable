@@ -50,24 +50,27 @@ const ServerSideBar = () => {
     
 
     return(
-        <div className="server-sidebar-container">
-            <div className="server-sidebar-logo">
-                <NavLink to={`/`}>
-                    <img src={logo}></img>
-                </NavLink>  
-            </div>
-            {userOwnedServer.map(server => (
-                <div key={server.id}>
-                    <NavLink to={`/servers/${server.id}`}>
-                        <img className="server-sidebar-round-img" src={server.server_pic} alt={server.name}>
-                        </img>
-                    </NavLink>
+        <div >
+            <div className="server-sidebar-container">
+                <div className="server-sidebar-logo">
+                    <NavLink to={`/`}>
+                        <img src={logo}></img>
+                    </NavLink>  
                 </div>
-            ))}
-            <UserJoinedServerList />
-            <CreateServerLiveModal />
-            <div>
-                <button className="explore-server-btn" onClick={()=> history.push('/servers')}> <i class="fa-solid fa-compass"></i> </button>
+                {userOwnedServer.map(server => (
+                    <div key={server.id}>
+                        <NavLink to={`/servers/${server.id}`}>
+                            <img className="server-sidebar-round-img" src={server.server_pic} alt={server.name}>
+                            </img>
+                        </NavLink>
+                    </div>
+                ))}
+                <UserJoinedServerList />
+                <CreateServerLiveModal />
+                <div>
+                    <button className="explore-server-btn" onClick={()=> history.push('/servers')}> <i class="fa-solid fa-compass"></i> </button>
+                </div>
+
             </div>
 
         </div>

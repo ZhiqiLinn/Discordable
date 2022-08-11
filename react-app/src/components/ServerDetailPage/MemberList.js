@@ -28,7 +28,7 @@ const MemberList = () => {
     return(
         <>
             {currentServer && 
-                    <div>
+                    <div className="members-container">
                         <div>
                             {currentServer.default_role}:
                             <hr></hr>

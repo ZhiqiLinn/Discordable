@@ -5,10 +5,11 @@
 
 
 .server-listings-container{
-    margin-top: 10%;
-    display:flex;
-    flex-direction: row;
-    gap:3%
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    gap: 6%;
+    margin: 75px 0px 100px 100px;
+
 }
 
 .server-listing{
@@ -32,6 +33,9 @@
 }
 
 .server-listing p{
+    color:rgb(115, 115, 115);
+}
+.server-listing .explore-server-name{
     color:white;
     font-weight: bolder;
 

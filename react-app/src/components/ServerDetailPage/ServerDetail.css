@@ -34,3 +34,12 @@
     border-radius: 50%;
     margin-right: 15px;
 }
+
+.members-container{
+    position: fixed;
+    right:0;
+    top:0;
+    background-color: #2f3136;
+    width: 200px;
+    height:100vh;
+}

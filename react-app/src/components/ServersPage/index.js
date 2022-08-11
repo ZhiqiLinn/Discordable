@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux"
 import ServerSideBar from "./ServerSideBar";
 import './ServersPage.css'
-import UserProfileBar from "../UserProfile/UserProfileBar";
 import ExploreServers from "../JoinServer/ExploreServers";
 
 const ServersPage = () => {

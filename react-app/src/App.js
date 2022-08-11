@@ -17,6 +17,7 @@ import LoginForm from './components/LoginLiveModal/LoginForm';
 import SignUpForm from './components/SignUpLiveModal/SignUpForm';
 import QuitServer from './components/QuitServer.js';
 import ExploreServers from './components/JoinServer/ExploreServers';
+import ServerSideBar from './components/ServersPage/ServerSideBar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

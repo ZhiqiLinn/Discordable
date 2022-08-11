@@ -50,27 +50,28 @@ const CreateMessageBar = () => {
         setMessage('');
     }
     return(
-        <div className="create-msg-container">
-            <form onSubmit={handleCreate}>
+        <form onSubmit={handleCreate}>
+            <div className="create-msg-container">
                 {hasSubmitted && errors &&
                 <div id='error-msg'>
                     {errors.map((error, ind) => (
-                    <div key={ind} style={{ color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
+                        <div key={ind} style={{ color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
                     ))}
                 </div>
                 }
-                <div>
+                <div className="input-div">
                     <input
                         placeholder={`   Message # ${findChanInfo(chanId)?.name}`}
                         type='text'
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                    />
-                    
-                    <button  type="submit">Send</button>
+                        />
+                        
+                    <button  type="submit" className="send-msg-btn">Send</button>
+
+                </div>
                 </div>
             </form>
-        </div>
     )
 }
 export default CreateMessageBar
