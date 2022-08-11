@@ -28,6 +28,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
+            <p style={{position:"absolute", bottom:"5px", color:"white"}}>© Copyright 2022 Discordable by Zhiqi Lin, Discord, and App Academy</p>
         </div>
     )
 }
