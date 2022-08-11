@@ -23,14 +23,12 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    setHasSubmitted(true)
     const data = await dispatch(login(email, password));
-    history.push('/servers')
     if (data) {
-      setHasSubmitted(false)
       setErrors(data);
     }
   };
+
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
