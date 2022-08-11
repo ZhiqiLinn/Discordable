@@ -6,8 +6,10 @@ import DeleteChannelLiveModal from "../DeleteChannelLiveModal/DeleteChannelLiveM
 import EditChannelLiveModal from "../EditChannelLiveModal"
 import './ChannelsSection.css'
 import { getAllChannelsByServerThunk } from "../../store/channel";
-import { getAllServersThunk, getServerThunk } from "../../store/server";
 import UserProfileBar from "../UserProfile/UserProfileBar";
+import QuitServer from "../QuitServer.js";
+import EditServerLiveModal from "../ServerProfilePage/EditServerLiveModal";
+import DeleteServerForm from "../ServerProfilePage/DeleteServerForm";
 
 const ChannelsSection = () => {
     const {serverId} = useParams();
@@ -21,21 +23,33 @@ const ChannelsSection = () => {
         dispatch(getAllChannelsByServerThunk(serverId))
     },[dispatch, serverId])
     
+
     let editProfileLink;
     if(sessionUser.id === currentServer?.user_id){
         editProfileLink = (
             <div>
-                <NavLink to={`/servers/${serverId}/profile`}  style={{ textDecoration: 'none', color: 'White' }}>
-                    <div className="server-profile-container">
-                        {currentServer?.name} 
-                    </div>
-                </NavLink>
+                <div className="server-profile-container">
+                    {
+                        currentServer?.name.length > 15 ? 
+                        <p>{currentServer?.name.slice(0,15)}...</p> 
+                        : <p>{currentServer?.name}</p>
+                    }
+                    <EditServerLiveModal serverId={currentServer.id}/>
+                    <DeleteServerForm serverId={currentServer.id}/>
+
+                </div>
             </div>
         )
     }else{
         editProfileLink = (
             <div className="server-profile-container">
-                {currentServer?.name} 
+                {
+                     currentServer?.name.length > 15 ? 
+                     <p>{currentServer?.name.slice(0,15)}...</p> 
+                     : <p>{currentServer?.name}</p>
+                    }
+                <QuitServer />
+                
             </div>
         )
     }
@@ -57,15 +71,13 @@ const ChannelsSection = () => {
                                     to={`/servers/${channel.server_id}/${channel.id}`} 
                                     onClick={() => setCurrChannel(channel.id)}
                                     >
-                                        { channel.name.length > 15 && 
+                                        { channel.name.length > 15 ?
                                             <>
-                                            <i className="fa-solid fa-hashtag"></i> { `${channel.name.slice(0,15)}...`}
+                                            <i className="fa-solid fa-hashtag" style={{cursor:"pointer"}}></i> { `${channel.name.slice(0,15)}...`}
                                             </>
-                                            
-                                        }
-                                        { channel.name.length <= 15 && 
+                                            :
                                             <>
-                                            <i className="fa-solid fa-hashtag"></i> {channel.name}
+                                            <i className="fa-solid fa-hashtag" style={{cursor:"pointer"}}></i> {channel.name}
                                             </>
                                             
                                         }

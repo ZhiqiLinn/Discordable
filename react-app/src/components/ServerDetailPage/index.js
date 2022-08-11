@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import {  useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { getServerThunk } from "../../store/server";
 import ChannelsSection from "../ChannelsSection";
 import ServerSideBar from "../ServersPage/ServerSideBar";
+import MemberList from "./MemberList";
 import './ServerDetail.css'
 
-const ServerDetailPage = () => {
+const ServerDetailPage = ({allServers}) => {
     const dispatch = useDispatch()
     const {serverId} = useParams()
     const [serverMembers, setServerMembers] = useState({})
@@ -40,20 +41,11 @@ const ServerDetailPage = () => {
                     </div> 
                     <div className="server-intro">
                         <h1>Welcome to {currentServer.name}</h1>
-                        <p>Please select your channel!</p>
-                        <a href='/'>How to user Discordable</a>
+                        <p>This is your shiny server!! Please select a channel to start the chat. For guide on how to use discordable, click below: </p>
+                        <NavLink to='/'>Getting Started Guide</NavLink>
                     </div>
                     <div>
-                        <div>
-                            {currentServer.default_role}:
-                            <hr></hr>
-                        <div>
-                            * {currentServer.owner.username}
-                        </div>
-                            { serverMembersArr && serverMembersArr.map((member, index) => (
-                                <p key={index}>{member.member_username}</p>
-                            ))}
-                        </div>
+                        <MemberList />
                     </div>
 
                 </div>

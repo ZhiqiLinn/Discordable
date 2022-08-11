@@ -1,0 +1,107 @@
+.join-server-container{
+    display: flex;
+    gap:5%
+}
+
+
+.server-listings-container{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    gap: 6%;
+    padding-bottom: 100px;
+    margin: 75px 0px 0px 100px;
+
+}
+
+.server-listing{
+    width: 350px;
+    height: 375px;
+    background: #292b2f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    
+    
+    
+}
+.server-listing img{
+    margin-top:15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 275px;
+    height: 275px;
+}
+
+.server-listing p{
+    color:rgb(115, 115, 115);
+}
+.server-listing .explore-server-name{
+    color:white;
+    font-weight: bolder;
+
+}
+
+
+.explore-server-quote{
+    z-index: 1;
+    position: absolute;
+    top:10%;
+    left:15%;
+    color:white;
+    font-size: 60px;
+}
+
+.join-page-container{
+    width: 100vw;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.already-joined-container{
+    height: 100px;
+    width:400px;
+    background-color: #292b2f;
+    text-align: center;
+    padding: 2%;  
+    box-shadow: 0px 0px 20px -2px rgba(135,130,135,1); 
+    border-radius: 8px; 
+    color:white;
+}
+
+.join-confirmation-container{
+    height: 200px;
+    width:400px;
+    background-color: #292b2f;
+    text-align: center;
+    padding: 2%;  
+    box-shadow: 0px 0px 20px -2px rgba(135,130,135,1); 
+    border-radius: 8px; 
+    color:white;
+}
+
+
+.edit-server-container{
+    text-align: center;
+    
+}
+.edit-server-container h1{
+    margin: 20px 0 10px 0;
+}
+.edit-server-container p{
+    margin: 15px 0 10px 0;
+}
+.edit-server-container input{
+    outline: 0;
+    background: #d1d3d4;
+    width: 300px;
+    height: 40px;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    color:black
+}

@@ -56,7 +56,7 @@ const EditMessage = ({msgId}) => {
     }
     return(
         <>
-        <span  onClick={() => setShowModal(true)}> <i className="fa-solid fa-pen"></i> </span>
+        <span  onClick={() => setShowModal(true)}> <i className="fa-solid fa-pen" style={{cursor:"pointer"}}></i> </span>
             {showModal && (
                 <div>
                     <MsgModal onClose={() => setShowModal(false)}>

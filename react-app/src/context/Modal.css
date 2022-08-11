@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
   
   #modal-background {
@@ -23,7 +24,8 @@
     background-color:white;
     border-radius: 10px;
     width: 500px;
-    height: 500px;
+    height: 600px;
+    z-index: 10;
   }
 
 
@@ -55,7 +57,7 @@
     height: 250px;
   }
 
-  #dark-modal {
+  #Small-modal {
     position: fixed;
     top: 0;
     right: 0;
@@ -66,7 +68,7 @@
     align-items: center;
   }
   
-  #dark-modal-background {
+  #Small-modal-background {
     position: fixed;
     top: 0;
     right: 0;
@@ -75,10 +77,10 @@
     background-color: rgba(0, 0, 0, 0.7);
   }
   
-  #dark-modal-content {
+  #Small-modal-content {
     position: absolute;
-    background-color:black;
-    color:white;
+    background-color:white;
+    color:black;
     border-radius: 10px;
     width: 400px;
     height: 400px;

@@ -18,10 +18,11 @@ function CreateServerForm({hideForm}) {
     useEffect(() => {
         let errors = []
         if (name.length < 3 || name.length > 50) errors.push("Name length should be between 3 and 50 characters")
-        if (!/https?:\/\/.*\.(?:png|jpg)/.test(server_pic)) errors.push("Image URL invalid");
-        if (!default_role.length) errors.push("Default role cannot be empty")
+        if (!/https?:\/\/.*\.(?:png|jpg|jpeg)/.test(server_pic)) errors.push("Image URL invalid, should be JPG/PNG/JPEG");
+        if (default_role.length=== 0) errors.push("Default role cannot be empty")
         setErrors(errors);
-    }, [name, server_pic]);
+        // console.log(default_role)
+    }, [name, server_pic, default_role]);
 
     const handleCreate = async (e) => {
         e.preventDefault();
@@ -32,25 +33,27 @@ function CreateServerForm({hideForm}) {
             server_pic,
             default_role
         }
-  
+        let newServer;
         if (!errors.length) {
-            await dispatch(addServerThunk(serverPayload))
+            newServer = await dispatch(addServerThunk(serverPayload))
             reset();
             setHasSubmitted(false)
             hideForm();
-            history.push(`/servers`)
+            history.push(`/servers/${newServer.id}`)
         }
     }
     const reset = () => {
         setName('');
         setServer_pic('');
     }
+    const handleCancel = () =>{
+        hideForm();
+    }
 
     return(
-        <div >
+        <div className='create-server-container'>
             <h1>Customize Your Server</h1>
-            <div>
-            </div>
+            <p style={{color:'grey'}}>Give your new server a personality with a name and image. You can always change it later.</p>
             <form onSubmit={handleCreate}>
                     {hasSubmitted && errors &&
                     <div id='error-msg'>
@@ -87,15 +90,11 @@ function CreateServerForm({hideForm}) {
                     />
                 </div>
                 <div>
-                    <button id='next-button' type="submit">Create</button>
-                    <button type='button' onClick={() => history.goBack()}>Cancel</button>
+                    <button className='btn' type="submit">Create</button>
+                    <br></br>
+                    <button className='btn' type='button' onClick={handleCancel}>Cancel</button>
                 </div>
             </form>
-                <div>
-                    <NavLink to='/servers/join'>
-                        Join a Server
-                    </NavLink>
-                </div>
         </div>
     )
 }

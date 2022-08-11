@@ -26,7 +26,7 @@ const DeleteMessageModal = ({msgId}) => {
 
     return (
         <>
-            <span  onClick={() => setShowModal(true)}> <i class="fa-solid fa-trash-can"></i> </span>
+            <span  onClick={() => setShowModal(true)}> <i class="fa-solid fa-trash-can" style={{cursor:"pointer"}}></i> </span>
             {showModal && (
                 <div>
                     <MsgModal onClose={() => setShowModal(false)}>

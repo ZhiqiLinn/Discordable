@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 import { editChannelThunk } from '../../store/channel';
-
+import "./EditChannel.css"
 const EditChannelForm = ({channel, hideForm}) => {
     const {serverId} = useParams();
     const history = useHistory();
@@ -42,7 +42,7 @@ const EditChannelForm = ({channel, hideForm}) => {
     }
 
     return(
-        <div >
+        <div className='edit-channel-modal'>
             <h1>Edit Channel</h1>
             <div>
                 {hasSubmitted && errors &&
@@ -68,8 +68,10 @@ const EditChannelForm = ({channel, hideForm}) => {
                         </label>
                 </div>
                 <div>
-                    <button type='button' onClick={() => history.goBack()}>Cancel</button>
-                    <button id='next-button' type="submit">Edit Channel</button>
+                    <button className='btn' type="submit">Edit Channel</button>
+                    <br></br>
+                    <button className='btn' type='button' onClick={() =>hideForm()}>Cancel</button>
+                    
                 </div>
             </form>
         </div>

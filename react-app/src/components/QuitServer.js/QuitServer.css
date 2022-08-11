@@ -1,0 +1,21 @@
+.quit-server-btn{
+    outline: 0;
+    background: #484CEC;
+    width: 70px;
+    height: 25px;
+    border: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 2px;
+    color:white;
+    font-weight: bold;
+}
+
+.quit-server-container{
+    text-align: center;
+    
+}
+.quit-server-container h2{
+    margin: 80px 0 30px 0;
+}
+

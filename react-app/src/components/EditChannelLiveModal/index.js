@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DarkModal } from '../../context/DarkModal';
+import { SmallModal } from '../../context/SmallModal';
 import EditChannelForm from './EditChannelForm';
 
 
@@ -10,13 +10,12 @@ const EditChannelLiveModal = ({channel}) => {
     }
     return (
         <>
-            <span  onClick={() => setShowModal(true)}>⚙️</span>
+            <span  onClick={() => setShowModal(true)} style={{cursor:"pointer"}}>⚙️</span>
             {showModal && (
                 <div>
-                    <DarkModal onClose={() => setShowModal(false)}>
-                        <div></div>
+                    <SmallModal onClose={() => setShowModal(false)}>
                         <EditChannelForm channel={channel} hideForm={hideForm}/>
-                    </DarkModal>
+                    </SmallModal>
                 </div>
             )}
         </>
