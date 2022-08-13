@@ -16,7 +16,8 @@ const CreateMessageBar = () => {
 
     useEffect(() => {
         let errors = []
-        if (message.length <=0) errors.push("Please enter your message")
+        let messageArr = message.split(' ').join('')
+        if (messageArr.length < 1 || messageArr.length > 500) errors.push("Message length between 0 - 500 charatcers, not include whitespace, message shouldn't include only whitespace.")
         setErrors(errors);
     }, [message]);
 
@@ -38,8 +39,9 @@ const CreateMessageBar = () => {
             channel_id: chanId,
             created_at: new Date()
         }
-        const newMsg = await dispatch(addMessageThunk(msgPayload))
-        if (newMsg && !errors.length) {
+        let newMsg;
+        if (!errors.length) {
+            newMsg = await dispatch(addMessageThunk(msgPayload))
             reset();
             setHasSubmitted(false);
             history.push(`/servers/${serverId}/${chanId}`);

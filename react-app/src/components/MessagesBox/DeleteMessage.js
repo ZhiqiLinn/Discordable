@@ -1,10 +1,8 @@
-import React, {  useEffect, useState } from 'react';
-import { MsgModal } from '../../context/MsgModal';
+import React, {  useState } from 'react';
 import { useDispatch} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
-import { deleteChannelThunk } from "../../store/channel";
 import { deleteMessageThunk } from '../../store/messages';
-import {getAllMessagesForChannelThunk } from "../../store/messages"
+import { SmallModal } from '../../context/SmallModal';
 
 
 const DeleteMessageModal = ({msgId}) => {
@@ -29,15 +27,16 @@ const DeleteMessageModal = ({msgId}) => {
             <span  onClick={() => setShowModal(true)}> <i class="fa-solid fa-trash-can" style={{cursor:"pointer"}}></i> </span>
             {showModal && (
                 <div>
-                    <MsgModal onClose={() => setShowModal(false)}>
-                        <div >
-                            <h1>Delete Msg?</h1>
+                    <SmallModal onClose={() => setShowModal(false)}>
+                        <div className='delete-message-container'>
+                            <h2>Please confirm that you would like to delete your message</h2>
                             <div >
-                                <button onClick={() => setShowModal(false)}>Cancel</button>
-                                <button onClick={handleDeleteSubmit}>Delete</button>
+                                <button className='btn' onClick={() => setShowModal(false)}>No</button>
+                                <br></br>
+                                <button className='btn' onClick={handleDeleteSubmit}>Yes</button>
                             </div>
                         </div>
-                    </MsgModal>
+                    </SmallModal>
                 </div>
             )}
         </>

@@ -15,11 +15,11 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    let errors = [];
-    if (!email.includes("@") ) errors.push("Invalid email format, must includes @")
-    setErrors(errors);
-  }, [email]);
+  // useEffect(() => {
+  //   let errors = [];
+  //   if (!email.includes("@") ) errors.push("Invalid email format, must includes @")
+  //   setErrors(errors);
+  // }, [email]);
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ const LoginForm = () => {
   };
 
   if (sessionUser) return (
-    <Redirect to="/" />
+    <Redirect to="/servers" />
   );
 
 
@@ -68,7 +68,7 @@ const LoginForm = () => {
                 </div>
                   <div>
                     {errors.map((error, ind) => (
-                      <div key={ind}><span style={{color:"red"}}>*</span> {error}</div>
+                      <div key={ind} style={{textAlign:'center', color:"rgb(230, 65, 65)"}}> ❌ {error}</div>
                     ))}
                   </div>
                   <div>

@@ -5,7 +5,7 @@ class Message(db.Model):
     __tablename__ = "messages"
 
     id = db.Column(db.Integer, primary_key=True)
-    message = db.Column(db.String(500), nullable=False)
+    message = db.Column(db.Text, nullable=False)
 #     member_id = db.Column(db.Integer, db.ForeignKey("members.id"), nullable=False)
     channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)

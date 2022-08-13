@@ -15,7 +15,8 @@ const EditChannelForm = ({channel, hideForm}) => {
 
     useEffect(() => {
         let errors = []
-        if (!name.length) errors.push("Please enter a channel name!")
+        let nameArr = name.split(' ').join('')
+        if (nameArr.length < 3 || nameArr.length > 50) errors.push("Name should be 3 and 50 characters long, not include white space. Name shouldn't include only white spaces")
         setErrors(errors);
     }, [name]);
 
@@ -29,8 +30,9 @@ const EditChannelForm = ({channel, hideForm}) => {
             server_id: serverId
 
         }
-        const newChannel = await dispatch(editChannelThunk(channelPayload))
-        if (newChannel && !errors.length) {
+        let newChannel;
+        if (!errors.length) {
+            newChannel = await dispatch(editChannelThunk(channelPayload))
             reset();
             setHasSubmitted(false);
             hideForm();

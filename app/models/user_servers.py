@@ -59,7 +59,7 @@ class Server(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     server_pic = db.Column(db.Text, nullable=True)
-    default_role = db.Column(db.String(50), nullable=True)
+    default_role = db.Column(db.String(15), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     owner = db.relationship('User', back_populates='servers')
