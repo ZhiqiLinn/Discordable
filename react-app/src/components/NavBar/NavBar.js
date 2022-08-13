@@ -25,7 +25,7 @@ const NavBar = () => {
               <a href='https://discord.com/download'>Discord Download</a>
             </div>
             <div>
-              <a href='https://discord.com/download'>Features</a>
+              <a href='https://github.com/ZhiqiLinn/Discordable/wiki/HOW-TO-USE-DISCORDABLE'>Features</a>
             </div>
             <div>
               <a href='https://github.com/ZhiqiLinn'>GitHub </a>
