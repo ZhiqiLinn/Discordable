@@ -46,29 +46,13 @@ CLICK HERE TO VIEW **[Discord](https://discord.com/)**
 **Home Page**
 * Login & Signup
 
-* View all businesses or view businesses by category
-
-
 **User Profile**
-* View all businesses, reviews, images posted by the current logged-in user
+
+**Servers**
+
+**Channels**
+
+**Messages**
 
 
-**Businesses**
-* Post a business and view business detail
 
-
-* Edit and delte a business posted by the logged-in user
-
-
-**Ratings and Reviews**
-* View all reviews. Add, edit and delete a review posted by logged-in user for a business
-
-**Images**
-* View all images. Add and delete an image posted by logged-in user for a business.
-
-
-**Search and Filters**
-* Search a keyword and will be redirect to result page
-
-**Google Map**
-* View all Businesses locations on all businesses page, view individual location on the detail page
