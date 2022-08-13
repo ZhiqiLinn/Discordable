@@ -17,9 +17,12 @@ function CreateServerForm({hideForm}) {
 
     useEffect(() => {
         let errors = []
-        if (name.length < 3 || name.length > 50) errors.push("Name length should be between 3 and 50 characters")
-        if (!/https?:\/\/.*\.(?:png|jpg|jpeg)/.test(server_pic)) errors.push("Image URL invalid, should be JPG/PNG/JPEG");
-        if (default_role.length=== 0) errors.push("Default role cannot be empty")
+        let nameArr = name.split(' ').join('')
+        let newRole = default_role.split(' ').join('')
+        if (nameArr.length < 3 || nameArr.length > 50) errors.push("Name should be 3 and 50 characters long, not include white space. Name shouldn't include only white spaces")
+        if (!/https?:\/\/.*\.(?:png|jpg|jpeg)/.test(server_pic)) errors.push('Image URL invalid, should be ending with JPG/PNG/JPEG. ie. "https://www.exampleImage.jpg"'
+        );
+        if (newRole.length <= 0 || newRole.length > 15) errors.push("Role should be less than 15 characters, not include white space. Role shouldn't include only white spaces")
         setErrors(errors);
         // console.log(default_role)
     }, [name, server_pic, default_role]);

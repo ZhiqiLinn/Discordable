@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 1e23e53634b0
+Revision ID: d9469eb48f90
 Revises: 
-Create Date: 2022-08-09 09:40:12.585655
+Create Date: 2022-08-13 17:08:41.414186
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1e23e53634b0'
+revision = 'd9469eb48f90'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,7 +32,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('server_pic', sa.Text(), nullable=True),
-    sa.Column('default_role', sa.String(length=50), nullable=True),
+    sa.Column('default_role', sa.String(length=15), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -52,10 +52,10 @@ def upgrade():
     )
     op.create_table('messages',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('message', sa.String(length=500), nullable=False),
+    sa.Column('message', sa.Text(), nullable=False),
     sa.Column('channel_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['channel_id'], ['channels.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

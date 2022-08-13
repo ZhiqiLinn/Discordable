@@ -14,28 +14,50 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    let errors = [];
-    if (username.length < 3 || username.length > 50) errors.push("Name length should be between 3 and 50 characters")
-    if (!email.includes("@") ) errors.push("Invalid email format")
-    if (password.length < 6 ) errors.push("Password must be at least 6 characters")
-    if (password !== repeatPassword) errors.push("Confirmed password doesnt match")
-    setErrors(errors);
+  // useEffect(() => {
+  //   let errors = [];
+  //   if (username.length < 3 || username.length > 50) errors.push("Name length should be between 3 and 50 characters")
+  //   if (!email.includes("@") ) errors.push("Invalid email format")
+  //   if (password.length < 6 ) errors.push("Password must be at least 6 characters")
+  //   if (password !== repeatPassword) errors.push("Confirmed password doesnt match")
+  //   setErrors(errors);
 
-  }, [username, email, password]);
+  // }, [username, email, password]);
 
+  // const onSignUp = async (e) => {
+  //   e.preventDefault();
+  //   const errorsArr = []
+  //   setHasSubmitted(true)
+
+  //   if (password === repeatPassword) {
+  //     const data = await dispatch(signUp(username, email, password, repeatPassword));
+  //     if(data){
+  //       console.log('s',data)
+  //       errorsArr.push(...data)
+  //     }
+  //     if (errorsArr.length) {
+  //       setHasSubmitted(false)
+  //       setErrors(errorsArr)
+  //     }
+  //   }
+  // };
+  // console.log(errors)
   const onSignUp = async (e) => {
     e.preventDefault();
     setHasSubmitted(true)
+    const errorsArray = [];
 
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setHasSubmitted(false)
-        setErrors(data)
-      }
+    const data = await dispatch(signUp(username, email, password, repeatPassword));
+    if (data) {
+      errorsArray.push(...data)
     }
-  };
+    if (errorsArray.length) {
+      setErrors(errorsArray)
+
+    }
+  }
+
+  
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -54,7 +76,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/servers' />;
   }
 
   return (

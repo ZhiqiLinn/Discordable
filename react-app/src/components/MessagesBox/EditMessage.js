@@ -3,7 +3,7 @@ import { useEffect, useState} from "react";
 import { getAllChannelsByServerThunk } from "../../store/channel";
 import { useParams, useHistory } from "react-router-dom"
 import { editMessageThunk } from "../../store/messages";
-import { MsgModal } from '../../context/MsgModal';
+import { SmallModal } from '../../context/SmallModal';
 
 import './MessagesBox.css'
 const EditMessage = ({msgId}) => {
@@ -12,16 +12,20 @@ const EditMessage = ({msgId}) => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
     const AllChannels = Object.values(useSelector(state => state.channelState.serverChannels))
-    const [message, setMessage] = useState("")
+    const currMsg = useSelector(state => state.messageState[msgId])
+    console.log('currMsg', currMsg)
+    const [message, setMessage] = useState(currMsg.message)
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         let errors = []
-        if (message.length <=0) errors.push("Please enter your message")
+        let messageArr = message.split(' ').join('')
+        if (messageArr.length < 1 || messageArr.length > 500) errors.push("Message length between 0 - 500 charatcers, not include whitespace, message shouldn't include only whitespace.")
         setErrors(errors);
     }, [message]);
+
 
     useEffect(() => {
         dispatch(getAllChannelsByServerThunk(serverId))
@@ -59,8 +63,9 @@ const EditMessage = ({msgId}) => {
         <span  onClick={() => setShowModal(true)}> <i className="fa-solid fa-pen" style={{cursor:"pointer"}}></i> </span>
             {showModal && (
                 <div>
-                    <MsgModal onClose={() => setShowModal(false)}>
-                        <div>
+                    <SmallModal onClose={() => setShowModal(false)}>
+                        <div className="edit-message-modal">
+                            <h2>Modify Message</h2>
                             <form onSubmit={handleCreate}>
                                 {hasSubmitted && errors &&
                                 <div id='error-msg'>
@@ -70,18 +75,20 @@ const EditMessage = ({msgId}) => {
                                 </div>
                                 }
                                 <div>
-                                    <input
+                                    <textarea
                                         placeholder={`   Message # ${findChanInfo(chanId)?.name}`}
                                         type='text'
                                         value={message}
                                         onChange={(e) => setMessage(e.target.value)}
                                     />
-                                    
-                                    <button  type="submit">Send</button>
+                                    <button className="btn" type="submit">Save Changes</button>
+                                    <br></br>
+                                    <button className="btn" type="submit" onClick={()=> setShowModal(false)}>Cancel</button>
+
                                 </div>
                             </form>
                         </div>
-                    </MsgModal>
+                    </SmallModal>
         </div>
     )}
     </>
