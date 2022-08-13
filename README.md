@@ -44,15 +44,24 @@ CLICK HERE TO VIEW **[Discord](https://discord.com/)**
 ## Functionalities
 
 **Home Page**
-* Login & Signup
-
-**User Profile**
+* Signup
+![signup](https://user-images.githubusercontent.com/90532956/184512189-3abcfbc2-6dfc-4057-9dfc-54f17f9b6ea1.gif)
+* Login
+![loginAndDemoLogin](https://user-images.githubusercontent.com/90532956/184512190-100ba832-a2cd-4007-8feb-1d24733f2296.gif)
 
 **Servers**
+* Join & Quit Server
+![JoinServerAndQuirServer](https://user-images.githubusercontent.com/90532956/184512212-d4874e49-7d84-4dc5-b3b1-eab1c08cadc8.gif)
+* Create, Edit & Delete Server
+![serverCRUD](https://user-images.githubusercontent.com/90532956/184513455-60a868d2-67ea-4ece-8573-9beed04e7135.gif)
 
 **Channels**
+* Create, Edit & Delete Channel
+![channelCRUD](https://user-images.githubusercontent.com/90532956/184515360-8cad3321-451c-40c2-bf03-20a8ac86a374.gif)
 
 **Messages**
+* Create, Edit & Delete Message
+![msgCRUD](https://user-images.githubusercontent.com/90532956/184515434-b95aa344-10b8-442c-93d6-cdf6c8a9f78c.gif)
 
 
 

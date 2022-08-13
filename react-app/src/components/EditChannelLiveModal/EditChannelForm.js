@@ -36,7 +36,7 @@ const EditChannelForm = ({channel, hideForm}) => {
             reset();
             setHasSubmitted(false);
             hideForm();
-            history.push(`/servers/${serverId}`);
+            history.push(`/servers/${serverId}/${channelPayload.id}`);
         }
     }
     const reset = () => {
