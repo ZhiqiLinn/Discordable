@@ -44,3 +44,15 @@ CLICK HERE TO VIEW **[Discord](https://discord.com/)**
 ## Functionalities
 
 **Home Page**
+* Login & Signup
+
+**User Profile**
+
+**Servers**
+
+**Channels**
+
+**Messages**
+
+
+
