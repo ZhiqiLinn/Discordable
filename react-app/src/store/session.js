@@ -101,7 +101,7 @@ export const signUp = (username, email, password, repeatPassword) => async (disp
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) {
-      console.log('thunk',data.errors)
+      // console.log('thunk',data.errors)
       return data.errors;
     
     }
