@@ -13,7 +13,7 @@ const EditMessage = ({msgId}) => {
     const sessionUser = useSelector(state => state.session.user)
     const AllChannels = Object.values(useSelector(state => state.channelState.serverChannels))
     const currMsg = useSelector(state => state.messageState[msgId])
-    console.log('currMsg', currMsg)
+    // console.log('currMsg', currMsg)
     const [message, setMessage] = useState(currMsg.message)
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
