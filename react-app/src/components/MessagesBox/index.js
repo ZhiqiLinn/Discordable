@@ -67,7 +67,7 @@ const MessagesBox = () => {
                                 {sessionUser.id === msg.user_id ? 
                                     (<div>
                                         <p>{msg.message} </p>
-                                        <EditMessage msgId={msg.id}/>
+                                        <EditMessage msgId={msg.id} currentMsg={msg}/>
                                         <DeleteMessageModal msgId={msg.id}/>
                                     </div>)
                                     : (<p>{msg.message}</p>) 
