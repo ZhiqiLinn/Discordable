@@ -2,7 +2,8 @@ from flask import Blueprint, request
 from app.forms import CreateServerForm, UpdateServerForm, JoinServerForm
 from app.models import db, Server, User
 from flask_login import current_user, login_required
-
+from app.awsS3 import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 server_routes = Blueprint('servers', __name__)
 
 #-------------------------SERVER VALIDATIONS------------------
@@ -80,3 +81,34 @@ def quit_a_server(id):
     current_user.joined_servers.remove(server)
     db.session.commit()
     return server.to_dict()
+
+
+
+@server_routes.route('/<int:id>/updatePic', methods=['PUT'])
+def update_picture(id):
+    form = UpdateServerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        if 'server_pic' in request.files:
+            image = request.files["server_pic"]
+
+            if not allowed_file(image.filename):
+                return { "errors": "file type not permitted" }, 400
+            
+            image.filename = get_unique_filename(image.filename)
+
+            upload = upload_file_to_s3(image)
+
+            if "url" not in upload:
+                return upload, 400
+
+            server_pic = upload["url"]
+        server = Server.query.get(id)
+        server.server_pic = server_pic
+        server.name=form.data['name'],
+        server.user_id=form.data['user_id'],
+        server.default_role=form.data['default_role']
+        # db.session.add(user)
+        db.session.commit()
+        return server.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

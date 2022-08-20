@@ -5,9 +5,15 @@ const GET_SERVER = "server/GET_SERVER"
 const GET_ALL_SERVERS = "server/GET_ALL_SERVERS"
 const EDIT_SERVER = "server/EDIT_SERVER"
 const DELETE_SERVER = "server/DELETE_SERVER"
+const UPLOAD_SERVER_PIC = 'session/UPLOAD_SERVER_PIC';
 
 
 //-------------------------action creator-------------------------
+const uploadServerPic = (updatedserver) => ({
+    type: UPLOAD_SERVER_PIC,
+    updatedserver
+  })
+
 const addServer = (addedServer) => {
     return {
         type: ADD_SERVER,
@@ -112,7 +118,24 @@ export const deleteServerThunk = (serverId) => async (dispatch) => {
     }
 }
 
-
+export const uploadServerPicThunk = (payload) => async (dispatch) => {
+    const {id, name, user_id, default_role, server_pic} = payload;
+    const formData = new FormData();
+    formData.append('name', name)
+    formData.append('user_id', user_id)
+    formData.append('default_role', default_role)
+    formData.append('server_pic', server_pic)
+    const response = await fetch(`/api/servers/${id}/updatePic`,{
+      method: "PUT",
+      body: formData
+    })
+    console.log("response:", response.ok)
+    if(response.ok){
+      const updateServer = await response.json()
+      dispatch(uploadServerPic(updateServer))
+      return updateServer
+    }
+  }
 //-------------------------reducer--------------------------------
 
 const initialState = {};
@@ -145,6 +168,8 @@ const serverReducer = (state = initialState, action) => {
             newState = { ...state }
             delete newState[action.deletedServerId];
             return newState;
+        case UPLOAD_SERVER_PIC:
+            return {['updatedServer']:action.updatedServer}
         default:
             return state;
     }
