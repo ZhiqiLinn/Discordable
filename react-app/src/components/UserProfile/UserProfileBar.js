@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { useHistory } from "react-router-dom";
-import { uploadProfilePicThunk } from '../../store/session';
+import { UpdateUserProfileThunk } from '../../store/session';
 import './User.css'
 
 const UserProfileBar = () => {
@@ -12,6 +12,7 @@ const UserProfileBar = () => {
     const sessionUser = useSelector(state => state.session.user);
     const [showMenu, setShowMenu] = useState(false);
     const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [userName, setUserName] = useState(sessionUser.name)
     const [image, setImage] = useState(null);
     
     const openMenu = () => {
@@ -23,10 +24,11 @@ const UserProfileBar = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
         const profilePayload = {
+            username:userName,
             profile_pic:image
         }
         // console.log(profilePayload)
-        await dispatch(uploadProfilePicThunk(profilePayload))
+        await dispatch(UpdateUserProfileThunk(profilePayload))
         // console.log("NEWPIC",newPic)
         setImage(null)
         setShowUpdateModal(false)
@@ -58,15 +60,15 @@ const UserProfileBar = () => {
                      <div className="user-profile-close" onClick={()=>setShowMenu(false)}>
                         <i className="fa-solid fa-circle-xmark fa-lg" style={{cursor:"pointer"}}></i>
                     </div>
-                    {/*<div onClick={() => setShowUpdateModal(true)}>
+                    <div onClick={() => setShowUpdateModal(true)}>
                         <div className="grey-cover"></div>
                         <div className="img-update"><i className="fa-solid fa-camera-retro" style={{cursor:"pointer"}}></i></div>
                         <img  className='user-menu-img' src={sessionUser.profile_pic} alt={sessionUser.username}></img>
-                    </div> */}
-                    <div>
+                    </div>
+                    {/* <div>
                         <img  className='user-menu-img' src={sessionUser.profile_pic} alt={sessionUser.username}></img>
 
-                    </div>
+                    </div> */}
                     <div>
                         <p className='user-menu-name'>{sessionUser.username}</p>
                     </div>
@@ -80,6 +82,12 @@ const UserProfileBar = () => {
                                 <h2>Select Your Profile Picture</h2>
                                 <div>
                                     <form className='upload-img-form' onSubmit={handleSubmit}>
+                                            <input
+                                                type='text'
+                                                value={userName}
+                                                onChange={(e) => setUserName(e.target.value)}
+                                            />
+                                            <br></br>
                                             <input
                                                 className="upload-pic-input"
                                                 type="file"

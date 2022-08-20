@@ -97,6 +97,7 @@ def update_picture():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         if 'profile_pic' in request.files:
+            print("!!!!!!!!!!!!!!!!!!!!!!!", request.files)
             image = request.files["profile_pic"]
 
             if not allowed_file(image.filename):
@@ -108,9 +109,10 @@ def update_picture():
 
             if "url" not in upload:
                 return upload, 400
-
             profile_pic = upload["url"]
+        name = form.data["username"]
         user = User.query.get(current_user.id)
+        user.username = name
         user.profile_pic = profile_pic
         # db.session.add(user)
         db.session.commit()

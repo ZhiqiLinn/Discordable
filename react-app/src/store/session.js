@@ -11,7 +11,7 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
-const uploadProfilePic = (user) => ({
+const uploadProfile = (user) => ({
   type: UPLOAD_PROFILE_PIC,
   user
 })
@@ -110,10 +110,12 @@ export const signUp = (username, email, password, repeatPassword) => async (disp
   }
 }
 
-export const uploadProfilePicThunk = (payload) => async (dispatch) => {
-  const {profile_pic} = payload;
+export const UpdateUserProfileThunk = (payload) => async (dispatch) => {
+  const {username, profile_pic} = payload;
   const formData = new FormData();
+  formData.append('username', username)
   formData.append('profile_pic', profile_pic)
+  console.log(formData)
   const response = await fetch('/api/auth/update',{
     method: "PUT",
     body: formData
@@ -121,7 +123,7 @@ export const uploadProfilePicThunk = (payload) => async (dispatch) => {
 
   if(response.ok){
     const updateUser = await response.json()
-    dispatch(uploadProfilePic(updateUser))
+    dispatch(uploadProfile(updateUser))
     return updateUser
   }
 }
