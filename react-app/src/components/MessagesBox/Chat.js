@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
 import { io } from 'socket.io-client';
-import { getAllMessagesForChannelThunk } from "../../store/messages";
+import { getAllMessagesForChannelThunk, getMessageThunk, getMessage } from "../../store/messages";
 import { addMessageThunk } from "../../store/messages";
 import './MessagesBox.css'
+import * as messagesActions from "../../store/messages";
 
 let socket;
 
@@ -30,18 +31,46 @@ const Chat = () => {
     }, [chanId]);
 
 
-    useEffect(() => {
 
+
+
+    const updateChatInput = (e) => {
+        setChatMsg(e.target.value)
+    };
+    
+    let msgPayload;
+    let newMsg;
+    const sendChat = async (e) => {
+        e.preventDefault()
+        setHasSubmitted(true)
+
+        msgPayload = {
+            user_id: user.id,
+            message: chatMsg,
+            channel_id: chanId,
+            created_at: new Date()
+        }
+
+        if (!errors.length) {
+            newMsg = await dispatch(addMessageThunk(msgPayload))
+            // emit a message
+            socket.emit("chat", { id: newMsg.id, user: user.username, msg: chatMsg, channel_id: chanId });
+            // clear the input field after the message is sent
+            setChatMsg("")
+            setHasSubmitted(false);
+        }
+        
+    }
+
+    useEffect(() => {
+ 
         // create websocket
         socket = io();
-        
-        io.connect('http://discordable.herokuapp.com/',{'connect timeout': 1000});
-
         socket.emit('join', { channel_id: chanId, username: user.username })
 
         socket.on("chat", (chat) => {
-
-            dispatch(getAllMessagesForChannelThunk(chanId))
+            dispatch(getMessageThunk(chat.id))
+            console.log("chat", chat)
         })
         // when component unmounts, disconnect
         return (() => {
@@ -49,34 +78,6 @@ const Chat = () => {
             // setMessages("")
         })
     }, [chanId, user.username])
-
-
-    const updateChatInput = (e) => {
-        setChatMsg(e.target.value)
-    };
-    
-    const sendChat = async (e) => {
-        e.preventDefault()
-        setHasSubmitted(true)
-
-        const msgPayload = {
-            user_id: user.id,
-            message: chatMsg,
-            channel_id: chanId,
-            created_at: new Date()
-        }
-
-        let newMsg;
-        if (!errors.length) {
-            newMsg = await dispatch(addMessageThunk(msgPayload))
-            // emit a message
-            socket.emit("chat", { user: user.username, msg: chatMsg, channel_id: chanId });
-            // clear the input field after the message is sent
-            setChatMsg("")
-            setHasSubmitted(false);
-        }
-        
-    }
 
     return(
         <>
