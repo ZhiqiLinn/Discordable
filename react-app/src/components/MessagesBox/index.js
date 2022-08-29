@@ -19,7 +19,6 @@ const MessagesBox = () => {
     const dispatch = useDispatch()
     const allMessagesArr = Object.values(useSelector(state => state.messageState))
     const [users, setUsers] = useState([])
-    const [showMsgMenu, setShowMsgMenu] = useState(false)
     const [currMsg, SetCurrMsg] = useState(null)
     const AllChannels = Object.values(useSelector(state => state.channelState.serverChannels))
     const sessionUser = useSelector(state => state.session.user)
@@ -47,8 +46,6 @@ const MessagesBox = () => {
         return result[0]
     }
 
-    //--------mouse over msg -----------------------
-    console.log(currMsg)
     return (
         <div className="server-page-layout">  
             <ServerSideBar />
