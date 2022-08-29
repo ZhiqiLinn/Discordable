@@ -10,10 +10,10 @@ let socket;
 
 const Chat = () => {
     const dispatch = useDispatch();
-    const {chanId} = useParams()
-    const [messages, setMessages] = useState([])
-    const [chatMsg, setChatMsg] = useState("");
     const user = useSelector(state => state.session.user)
+    const {chanId} = useParams()
+    // const [messages, setMessages] = useState([])
+    const [chatMsg, setChatMsg] = useState("");
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -34,13 +34,7 @@ const Chat = () => {
 
         // create websocket
         socket = io();
-        
-        // listen for chat events
-        socket.on("chat", (chat) => {
-            // when we recieve a chat, add it into our messages array in state
-            setMessages(messages => [...messages, chat])
-        })
-
+    
         socket.emit('join', { channel_id: chanId, username: user.username })
 
         socket.on("chat", (chat) => {
@@ -50,7 +44,7 @@ const Chat = () => {
         // when component unmounts, disconnect
         return (() => {
             socket.disconnect()
-            setMessages("")
+            // setMessages("")
         })
     }, [chanId, user.username])
 
@@ -59,7 +53,6 @@ const Chat = () => {
         setChatMsg(e.target.value)
     };
     
-
     const sendChat = async (e) => {
         e.preventDefault()
         setHasSubmitted(true)
@@ -82,8 +75,6 @@ const Chat = () => {
         }
         
     }
-
-
 
     return(
         <>
