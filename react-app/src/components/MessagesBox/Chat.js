@@ -34,7 +34,9 @@ const Chat = () => {
 
         // create websocket
         socket = io();
-    
+        
+        io.connect('http://discordable.herokuapp.com/',{'connect timeout': 1000});
+
         socket.emit('join', { channel_id: chanId, username: user.username })
 
         socket.on("chat", (chat) => {
