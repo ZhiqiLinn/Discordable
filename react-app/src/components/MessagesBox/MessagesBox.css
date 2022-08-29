@@ -37,6 +37,9 @@
     gap:10px   
 }
 
+.msg-div:hover{
+    background-color:#32353E
+}
 .create-msg-container{
     position: fixed;
     bottom: 0;

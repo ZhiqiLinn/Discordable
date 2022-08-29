@@ -58,15 +58,15 @@ const UserProfileBar = () => {
                      <div className="user-profile-close" onClick={()=>setShowMenu(false)}>
                         <i className="fa-solid fa-circle-xmark fa-lg" style={{cursor:"pointer"}}></i>
                     </div>
-                    {/*<div onClick={() => setShowUpdateModal(true)}>
+                    <div onClick={() => setShowUpdateModal(true)}>
                         <div className="grey-cover"></div>
                         <div className="img-update"><i className="fa-solid fa-camera-retro" style={{cursor:"pointer"}}></i></div>
                         <img  className='user-menu-img' src={sessionUser.profile_pic} alt={sessionUser.username}></img>
-                    </div> */}
-                    <div>
+                    </div>
+                    {/* <div>
                         <img  className='user-menu-img' src={sessionUser.profile_pic} alt={sessionUser.username}></img>
 
-                    </div>
+                    </div> */}
                     <div>
                         <p className='user-menu-name'>{sessionUser.username}</p>
                     </div>

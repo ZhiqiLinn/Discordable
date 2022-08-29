@@ -18,7 +18,7 @@ const EditMessage = ({msgId}) => {
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [showModal, setShowModal] = useState(false);
-
+    
     useEffect(() => {
         let errors = []
         let messageArr = message.split(' ').join('')
@@ -48,25 +48,25 @@ const EditMessage = ({msgId}) => {
         }
         if (!errors.length) {
             await dispatch(editMessageThunk(msgPayload))
-            reset();
             setShowModal(false)
             setHasSubmitted(false);
             history.push(`/servers/${serverId}/${chanId}`);
         }
     }
-
-    const reset = () => {
-        setMessage('');
+    const handleClose = () => {
+        setShowModal(false)
+        setMessage(currMsg.message)
     }
+
     return(
         <>
         <span  onClick={() => setShowModal(true)}> <i className="fa-solid fa-pen" style={{cursor:"pointer"}}></i> </span>
             {showModal && (
                 <div>
-                    <SmallModal onClose={() => setShowModal(false)}>
+                    <SmallModal onClose={handleClose}>
                         <div className="edit-message-modal">
                             <h2>Modify Message</h2>
-                            <form onSubmit={handleCreate}>
+                            <form >
                                 {hasSubmitted && errors &&
                                 <div id='error-msg'>
                                     {errors.map((error, ind) => (
@@ -81,9 +81,9 @@ const EditMessage = ({msgId}) => {
                                         value={message}
                                         onChange={(e) => setMessage(e.target.value)}
                                     />
-                                    <button className="btn" type="submit">Save Changes</button>
+                                    <button className="btn" type="submit" onClick={handleCreate}>Save Changes</button>
                                     <br></br>
-                                    <button className="btn" type="submit" onClick={()=> setShowModal(false)}>Cancel</button>
+                                    <button className="btn" type="submit" onClick={handleClose}>Cancel</button>
 
                                 </div>
                             </form>

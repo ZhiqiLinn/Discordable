@@ -12,12 +12,15 @@ import MemberList from "../ServerDetailPage/MemberList";
 import CreateMessageBar from "./CreateMessagesBar";
 import DeleteMessageModal from "./DeleteMessage";
 import EditMessage from "./EditMessage";
+import Chat from "./Chat";
 
 const MessagesBox = () => {
     const {serverId, chanId} = useParams()
     const dispatch = useDispatch()
     const allMessagesArr = Object.values(useSelector(state => state.messageState))
     const [users, setUsers] = useState([])
+    const [showMsgMenu, setShowMsgMenu] = useState(false)
+    const [currMsg, SetCurrMsg] = useState(null)
     const AllChannels = Object.values(useSelector(state => state.channelState.serverChannels))
     const sessionUser = useSelector(state => state.session.user)
     // console.log(users)
@@ -44,8 +47,8 @@ const MessagesBox = () => {
         return result[0]
     }
 
-  
-
+    //--------mouse over msg -----------------------
+    console.log(currMsg)
     return (
         <div className="server-page-layout">  
             <ServerSideBar />
@@ -56,7 +59,7 @@ const MessagesBox = () => {
                 </div >
                 <div className="all-msg-container">
                     { allMessagesArr && allMessagesArr.map(msg => (
-                        <div className="msg-div">
+                        <div className="msg-div" id={`msg-${msg.id}`} onMouseOver={() => {SetCurrMsg(msg.id)}}>
                             <div>
                                 <img className="msg-user-pic" src={findUserInfo(msg.user_id)?.profile_pic}></img>
                             </div>
@@ -64,11 +67,13 @@ const MessagesBox = () => {
                                 <div>
                                     <p>{findUserInfo(msg.user_id)?.username} <span style={{color:"grey", fontSize:"small"}}>{msg.created_at}</span></p>
                                 </div>
-                                {sessionUser.id === msg.user_id ? 
-                                    (<div>
-                                        <p>{msg.message} </p>
-                                        <EditMessage msgId={msg.id}/>
+                                {(currMsg === msg.id && sessionUser.id === msg.user_id) ? 
+                                    (<div className="msg-menu" >
+                                        <p>{msg.message}
+                                        <EditMessage msgId={msg.id} currentMsg={msg}/>
                                         <DeleteMessageModal msgId={msg.id}/>
+                                        </p>
+
                                     </div>)
                                     : (<p>{msg.message}</p>) 
                                 }
@@ -79,7 +84,8 @@ const MessagesBox = () => {
                     }
 
                 </div>
-                <CreateMessageBar />
+                {/* <CreateMessageBar /> */}
+                <Chat />
             </div>
             <MemberList AllChannels={AllChannels}/>
         </div>
