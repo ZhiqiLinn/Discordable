@@ -88,6 +88,7 @@ const Chat = () => {
     return(
         <>
             <div className="create-msg-container">
+            <div>
                 {hasSubmitted && errors &&
                 <div id='error-msg'>
                     {errors.map((error, ind) => (
@@ -96,11 +97,7 @@ const Chat = () => {
                 </div>
                 }
             </div>
-            <div>
-                {messages.map((message, ind) => (
-                    <div key={ind}>{`${message.user}: ${message.msg}`}</div>
-                ))}
-            </div>
+
             <form onSubmit={sendChat}>
                 <div className="input-div">
 
@@ -108,9 +105,10 @@ const Chat = () => {
                         value={chatMsg}
                         onChange={updateChatInput}
                     />
-                    <button type="submit">Send</button>
+                    <button type="submit" className="send-msg-btn" >Send</button>
                 </div>
             </form>
+            </div>
         </>
     )
 };
