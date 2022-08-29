@@ -12,6 +12,7 @@ import MemberList from "../ServerDetailPage/MemberList";
 import CreateMessageBar from "./CreateMessagesBar";
 import DeleteMessageModal from "./DeleteMessage";
 import EditMessage from "./EditMessage";
+import Chat from "./Chat";
 
 const MessagesBox = () => {
     const {serverId, chanId} = useParams()
@@ -79,7 +80,8 @@ const MessagesBox = () => {
                     }
 
                 </div>
-                <CreateMessageBar />
+                {/* <CreateMessageBar /> */}
+                <Chat />
             </div>
             <MemberList AllChannels={AllChannels}/>
         </div>
