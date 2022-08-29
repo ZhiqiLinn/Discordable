@@ -52,7 +52,7 @@ const Chat = () => {
         
         let newMsg;
         if (!errors.length) {
-            newMsg = await dispatch(addMessageThunk(msgPayload))
+            newMsg = dispatch(addMessageThunk(msgPayload))
             // emit a message
             socket.emit("chat", { id: newMsg.id, user: user.username, msg: chatMsg, channel_id: chanId });
             // clear the input field after the message is sent
