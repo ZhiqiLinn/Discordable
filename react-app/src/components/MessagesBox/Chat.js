@@ -5,7 +5,7 @@ import { io } from 'socket.io-client';
 import { getAllMessagesForChannelThunk, getMessageThunk, getMessage } from "../../store/messages";
 import { addMessageThunk } from "../../store/messages";
 import './MessagesBox.css'
-import * as messagesActions from "../../store/messages";
+import * as msgActions from "../../store/messages";
 
 let socket;
 
@@ -39,18 +39,18 @@ const Chat = () => {
     };
     
     let msgPayload;
-    let newMsg;
     const sendChat = async (e) => {
         e.preventDefault()
         setHasSubmitted(true)
-
+        
         msgPayload = {
             user_id: user.id,
             message: chatMsg,
             channel_id: chanId,
             created_at: new Date()
         }
-
+        
+        let newMsg;
         if (!errors.length) {
             newMsg = await dispatch(addMessageThunk(msgPayload))
             // emit a message
@@ -66,7 +66,7 @@ const Chat = () => {
  
         // create websocket
         socket = io();
-        socket.emit('join', { channel_id: chanId, username: user.username })
+        // socket.emit('join', { channel_id: chanId, username: user.username })
 
         socket.on("chat", (chat) => {
             dispatch(getMessageThunk(chat.id))
