@@ -25,14 +25,6 @@ const Chat = () => {
         setErrors(errors);
     }, [chatMsg]);
 
-    useEffect(() => {
-        dispatch(getAllMessagesForChannelThunk(chanId))
-        // dispatch(getAllChannelsByServerThunk(serverId))
-    }, [chanId]);
-
-
-
-
 
     const updateChatInput = (e) => {
         setChatMsg(e.target.value)

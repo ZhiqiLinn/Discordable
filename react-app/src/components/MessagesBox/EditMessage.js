@@ -26,11 +26,6 @@ const EditMessage = ({msgId}) => {
         setErrors(errors);
     }, [message]);
 
-
-    useEffect(() => {
-        dispatch(getAllChannelsByServerThunk(serverId))
-    }, [chanId, serverId]);
-
     const findChanInfo = (chanId) => {
         let result = AllChannels.filter(chan =>  chan.id === +chanId)
         return result[0]

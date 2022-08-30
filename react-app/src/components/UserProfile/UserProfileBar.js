@@ -8,7 +8,7 @@ import './User.css'
 
 const UserProfileBar = () => {
     const dispatch = useDispatch()
-    const history = useHistory();
+    // const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const [showMenu, setShowMenu] = useState(false);
     const [showUpdateModal, setShowUpdateModal] = useState(false);

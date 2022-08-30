@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
@@ -13,13 +13,6 @@ const LoginForm = () => {
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory();
-
-  // useEffect(() => {
-  //   let errors = [];
-  //   if (!email.includes("@") ) errors.push("Invalid email format, must includes @")
-  //   setErrors(errors);
-  // }, [email]);
 
   const onLogin = async (e) => {
     e.preventDefault();
