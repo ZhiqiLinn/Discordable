@@ -1,3 +1,4 @@
+from unicodedata import category
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -39,7 +40,10 @@ class User(db.Model, UserMixin):
                 "joinedServer_id" : joinedServer.id,
                 "joinedServer_name" : joinedServer.name,
                 "joinedServer_server_pic" : joinedServer.server_pic,
+                "joinedServer_explore_pic" : joinedServer.explore_pic,
                 "joinedServer_default_role" : joinedServer.default_role,
+                "joinedServer_description" : joinedServer.description,
+                "joinedServer_category" : joinedServer.category,
                 "joinedServer_user_id" : joinedServer.user_id,
             }
 
@@ -58,10 +62,12 @@ class Server(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
-    server_pic = db.Column(db.Text, nullable=True)
-    default_role = db.Column(db.String(15), nullable=True)
+    server_pic = db.Column(db.Text, nullable=False)
+    default_role = db.Column(db.String(15), nullable=False)
+    description = db.Column(db.String(200), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-
+    category = db.Column(db.String(50), nullable=False)
+    explore_pic = db.Column(db.Text, nullable=True)
     owner = db.relationship('User', back_populates='servers')
     channels = db.relationship('Channel', back_populates='server', cascade="all, delete-orphan")
 

@@ -38,7 +38,11 @@ def create_one_server():
             name=form.data['name'],
             user_id=form.data['user_id'],
             server_pic=form.data['server_pic'],
-            default_role=form.data['default_role']
+            default_role=form.data['default_role'],
+            description=form.data['description'],
+            category=form.data['category']
+
+
         )
         db.session.add(new_server)
         db.session.commit()
@@ -55,7 +59,10 @@ def update_one_server(id):
         curr_server.name=form.data['name'],
         curr_server.user_id=form.data['user_id'],
         curr_server.server_pic=form.data['server_pic'],
-        curr_server.default_role=form.data['default_role']
+        curr_server.explore_pic=form.data['explore_pic'],
+        curr_server.default_role=form.data['default_role'],
+        curr_server.description=form.data['description'],
+        curr_server.category=form.data['category']
         db.session.commit()
         return curr_server.to_dict()
 
