@@ -38,23 +38,22 @@ const Chat = () => {
         setChatMsg(e.target.value)
     };
     
-    let msgPayload;
-    const sendChat = async (e) => {
+    const sendChat = (e) => {
         e.preventDefault()
         setHasSubmitted(true)
         
-        msgPayload = {
+        let msgPayload = {
             user_id: user.id,
             message: chatMsg,
             channel_id: chanId,
             created_at: new Date()
         }
         
-        let newMsg;
+        
         if (!errors.length) {
-            newMsg = dispatch(addMessageThunk(msgPayload))
+            dispatch(addMessageThunk(msgPayload))
             // emit a message
-            socket.emit("chat", { id: newMsg.id, user: user.username, msg: chatMsg, channel_id: chanId });
+            socket.emit("chat", { user: user.username, msg: chatMsg, channel_id: chanId });
             // clear the input field after the message is sent
             setChatMsg("")
             setHasSubmitted(false);
@@ -66,11 +65,11 @@ const Chat = () => {
  
         // create websocket
         socket = io();
-        // socket.emit('join', { channel_id: chanId, username: user.username })
+        
+        socket.emit('join', { channel_id: chanId, username: user.username })
 
         socket.on("chat", (chat) => {
-            dispatch(getMessageThunk(chat.id))
-            console.log("chat", chat)
+            dispatch(getAllMessagesForChannelThunk(chanId))
         })
         // when component unmounts, disconnect
         return (() => {
