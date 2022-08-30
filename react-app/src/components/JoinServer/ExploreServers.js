@@ -31,7 +31,7 @@ const ExploreServers = () => {
 
 
     return(
-        <>
+        <div className="server-page-layout">
             <div style={{
                 width:"89vw",
                 height:"600px",
@@ -72,7 +72,7 @@ const ExploreServers = () => {
             
                  </div>
                 }
-        </>
+        </div>
     )
 }
 

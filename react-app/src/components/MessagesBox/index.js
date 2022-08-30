@@ -9,6 +9,7 @@ import ChannelsSection from "../ChannelsSection"
 import ServerSideBar from "../ServersPage/ServerSideBar"
 import './MessagesBox.css'
 import MemberList from "../ServerDetailPage/MemberList";
+import CreateMessageBar from "./CreateMessagesBar";
 import DeleteMessageModal from "./DeleteMessage";
 import EditMessage from "./EditMessage";
 import Chat from "./Chat";
@@ -47,6 +48,7 @@ const MessagesBox = () => {
 
     return (
         <div className="server-page-layout">  
+            <ServerSideBar />
             <ChannelsSection selectedChanId={chanId}/>
             <div className="message-box-layout">
                 <div className="msg-channel-name-container">
@@ -79,6 +81,7 @@ const MessagesBox = () => {
                     }
 
                 </div>
+                {/* <CreateMessageBar /> */}
                 <Chat />
             </div>
             <MemberList AllChannels={AllChannels}/>

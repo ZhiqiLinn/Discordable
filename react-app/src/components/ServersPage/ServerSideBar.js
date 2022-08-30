@@ -5,10 +5,10 @@ import { useHistory, useParams} from 'react-router-dom';
 
 import { getAllServersThunk } from "../../store/server";
 import CreateServerLiveModal from "../CreateServerLiveModal"
-import LogoutButton from "../auth/LogoutButton"
 import logo from "./logo.png"
-import { GetAllJoinedServerThunk } from "../../store/joinedServer";
 import UserJoinedServerList from "./UserJoinedServerList";
+import "./ServersPage.css"
+
 
 const ServerSideBar = () => {
     const sessionUser = useSelector(state => state.session.user);
