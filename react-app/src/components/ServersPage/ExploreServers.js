@@ -3,7 +3,9 @@ import { useEffect, useState} from "react";
 import { NavLink } from "react-router-dom"
 import { getAllServersThunk } from "../../store/server";
 import './ExploreServers.css'
-import exploreBackground from './exploreBackground.jpg'
+import exploreBackground from './images/exploreBackground.jpg'
+import SearchBar from "./SearchBar";
+import ServerSideBar from "./ServerSideBar";
 
 const ExploreServers = () => {
     const dispatch = useDispatch();
@@ -31,47 +33,54 @@ const ExploreServers = () => {
 
 
     return(
-        <div>
-            <div style={{
-                width:"89vw",
-                height:"600px",
-                marginLeft:"100px",
-                marginTop:"30px",
-                backgroundImage:`url(${exploreBackground})`,
-                backgroundSize:'cover',
-                backgroundPostion:'center center',
-                borderRadius:'10px'
+        <div className="server-page-layout">
+            <ServerSideBar />
+            <div>
+                <div classNamr="explore-background"
+                    style={{
+                        width:"89vw",
+                        height:"600px",
+                        marginLeft:"100px",
+                        marginTop:"30px",
+                        backgroundImage:`url(${exploreBackground})`,
+                        backgroundSize:'cover',
+                        backgroundPostion:'center center',
+                        borderRadius:'10px',
+                        display:'flex',
+                        justifyContent:'center',
+                        alignItems:'center'
                 }}>
-                    <h1 className="explore-server-quote">Click server to join today!</h1>
+                        <SearchBar allServers={allServers}/>
+                </div>
+                    {allServers && 
+                        <div className="server-listings-container">
+                            {
+                                allServers.map(server => (
+                                    <>
+                                        { server.user_id !== sessionUser.id && 
+                                        <NavLink to={`/servers/${server.id}/join`}
+                                            style={{textDecoration:"none"}}>
+                                            <div className="server-listing" key={server.id} >
+                                                    <img src={server.server_pic} alt={server.name}></img>
+                                                    <p className="explore-server-name"> ✅ {server.name}</p>
+                                                    <p > Server Id: {server.id}</p>
+                                                    {/* { joined?? 
+                                                        <div style={{color:"grey"}}>Already Joined!</div> 
+                                                        // : <JoinServerForm currentServerId={server.id}/>
+                                                        : <NavLink to={`/servers/${server.id}/join`}>Join</NavLink>
+
+                                                    } */}
+                                            </div>
+                                        </NavLink>}
+                                    </>
+                                ))
+
+                            }
+                        
+                
+                    </div>
+                    }
             </div>
-                {allServers && 
-                    <div className="server-listings-container">
-                        {
-                            allServers.map(server => (
-                                <>
-                                    { server.user_id !== sessionUser.id && 
-                                    <NavLink to={`/servers/${server.id}/join`}
-                                        style={{textDecoration:"none"}}>
-                                        <div className="server-listing" key={server.id} >
-                                                <img src={server.server_pic} alt={server.name}></img>
-                                                <p className="explore-server-name"> ✅ {server.name}</p>
-                                                <p > Server Id: {server.id}</p>
-                                                {/* { joined?? 
-                                                    <div style={{color:"grey"}}>Already Joined!</div> 
-                                                    // : <JoinServerForm currentServerId={server.id}/>
-                                                    : <NavLink to={`/servers/${server.id}/join`}>Join</NavLink>
-
-                                                } */}
-                                        </div>
-                                    </NavLink>}
-                                </>
-                            ))
-
-                        }
-                    
-            
-                 </div>
-                }
         </div>
     )
 }
