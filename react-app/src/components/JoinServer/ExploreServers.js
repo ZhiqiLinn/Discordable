@@ -1,14 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState} from "react";
-import { useParams, useHistory, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { getAllServersThunk } from "../../store/server";
 import './ExploreServers.css'
-import JoinServerForm from "./JoinServerForm";
 import exploreBackground from './exploreBackground.jpg'
 
 const ExploreServers = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user)
     const [users, setUsers] = useState({});
     // console.log(sessionUser)
@@ -19,7 +17,7 @@ const ExploreServers = () => {
 
     useEffect(() => {
         dispatch(getAllServersThunk())
-    }, [sessionUser.id]);
+    }, [dispatch, sessionUser.id]);
 
 
     useEffect(() => {
@@ -31,16 +29,9 @@ const ExploreServers = () => {
         fetchData();
       }, []);
 
-    console.log("THIS IS USER IN EXPLORE SERVERS", users)
-    // useEffect(() => {
-    //     if(joinedServerIds.includes(serverId) || ownedServerIds.includes(serverId)){
-    //         setJoined(true)
-    //     }
-        
-    //     },[joined])
 
     return(
-        <>
+        <div className="server-page-layout">
             <div style={{
                 width:"89vw",
                 height:"600px",
@@ -62,7 +53,7 @@ const ExploreServers = () => {
                                     <NavLink to={`/servers/${server.id}/join`}
                                         style={{textDecoration:"none"}}>
                                         <div className="server-listing" key={server.id} >
-                                                <img src={server.server_pic}></img>
+                                                <img src={server.server_pic} alt={server.name}></img>
                                                 <p className="explore-server-name"> ✅ {server.name}</p>
                                                 <p > Server Id: {server.id}</p>
                                                 {/* { joined?? 
@@ -81,7 +72,7 @@ const ExploreServers = () => {
             
                  </div>
                 }
-        </>
+        </div>
     )
 }
 

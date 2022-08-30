@@ -5,7 +5,6 @@ import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 
-import ServersPage from './components/ServersPage';
 import ServerDetailPage from './components/ServerDetailPage';
 // import ServerProfilePage from './components/ServerProfilePage';
 import HomePage from './components/HomePage';
@@ -18,7 +17,6 @@ import ExploreServers from './components/JoinServer/ExploreServers';
 import ServerSideBar from './components/ServersPage/ServerSideBar';
 import { getAllServersThunk } from './store/server';
 import { getAllChannelsThunk } from './store/channel';
-import { getAllMessagesForChannelThunk } from './store/messages';
 import Chat from './components/MessagesBox/Chat';
 
 function App() {
@@ -91,7 +89,7 @@ function App() {
 
         <ProtectedRoute path='/servers' exact={true} >
           <ServerSideBar />
-          <ServersPage />
+          <ExploreServers />
         </ProtectedRoute>
 
       </Switch>

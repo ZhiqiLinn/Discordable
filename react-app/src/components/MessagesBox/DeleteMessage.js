@@ -17,14 +17,11 @@ const DeleteMessageModal = ({msgId}) => {
 
     }
 
-    // useEffect(() => {
-    //     dispatch(getAllMessagesForChannelThunk(chanId))
-    // }, [chanId]);
 
 
     return (
         <>
-            <span  onClick={() => setShowModal(true)}> <i class="fa-solid fa-trash-can" style={{cursor:"pointer"}}></i> </span>
+            <span  onClick={() => setShowModal(true)}> <i className="fa-solid fa-trash-can" style={{cursor:"pointer"}}></i> </span>
             {showModal && (
                 <div>
                     <SmallModal onClose={() => setShowModal(false)}>

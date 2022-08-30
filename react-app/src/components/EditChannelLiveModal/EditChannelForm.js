@@ -30,17 +30,13 @@ const EditChannelForm = ({channel, hideForm}) => {
             server_id: serverId
 
         }
-        let newChannel;
         if (!errors.length) {
-            newChannel = await dispatch(editChannelThunk(channelPayload))
-            reset();
+            await dispatch(editChannelThunk(channelPayload))
+            setName('');
             setHasSubmitted(false);
             hideForm();
             history.push(`/servers/${serverId}/${channelPayload.id}`);
         }
-    }
-    const reset = () => {
-        setName('');
     }
 
     return(
