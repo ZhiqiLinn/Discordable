@@ -1,3 +1,4 @@
+from email.policy import default
 from unicodedata import category
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -67,7 +68,7 @@ class Server(db.Model):
     description = db.Column(db.String(200), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     category = db.Column(db.String(50), nullable=False)
-    explore_pic = db.Column(db.Text, nullable=True)
+    explore_pic = db.Column(db.Text, nullable=True, default='https://global-uploads.webflow.com/5e157548d6f7910beea4e2d6/62a07b53139aec4c1fd07771_discord-logo.png')
     owner = db.relationship('User', back_populates='servers')
     channels = db.relationship('Channel', back_populates='server', cascade="all, delete-orphan")
 

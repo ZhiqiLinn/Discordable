@@ -9,7 +9,7 @@ class CreateServerForm(FlaskForm):
     default_role = StringField('Default_role', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     category = SelectField('category', choices=['Gaming', 'Music', 'Education', 'Science & Tech', 'Entertainment' ],validators=[DataRequired()])
-    explore_pic = TextAreaField('Server_pic', validators=[DataRequired()])
+    explore_pic = TextAreaField('Server_pic')
 
 class UpdateServerForm(FlaskForm):
     id = IntegerField('id')
@@ -19,4 +19,4 @@ class UpdateServerForm(FlaskForm):
     default_role = StringField('Default_role', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     category = SelectField('category', choices=['Gaming', 'Music', 'Education', 'Science & Tech', 'Entertainment' ],validators=[DataRequired()])
-    explore_pic = TextAreaField('Server_pic', validators=[DataRequired()])
+    explore_pic = TextAreaField('Server_pic')

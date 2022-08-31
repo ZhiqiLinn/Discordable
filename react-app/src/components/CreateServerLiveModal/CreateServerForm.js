@@ -49,7 +49,7 @@ function CreateServerForm({hideForm}) {
             reset();
             setHasSubmitted(false)
             hideForm();
-            history.push(`/servers/${newServer.id}`)
+            history.push(`/servers`)
         }
     }
     const reset = () => {
@@ -82,9 +82,18 @@ function CreateServerForm({hideForm}) {
                     />
                 </div>
                 <div>
+                    <div>Set a Role for Your Members</div>
+                    <input
+                        placeholder='Role'
+                        type='text'
+                        value={default_role}
+                        onChange={(e) => setDefault_role(e.target.value)}
+                    />
+                </div>
+                <div>
                     <div>Upload Picture for Your Server</div>
                     <input
-                        placeholder='Image URL'
+                        placeholder='Server Logo URL'
                         type='text'
                         value={server_pic}
                         onChange={(e) => setServer_pic(e.target.value)}
@@ -93,7 +102,7 @@ function CreateServerForm({hideForm}) {
                 <div>
                     <div>Upload Background Picture for Your Server</div>
                     <input
-                        placeholder='Image URL'
+                        placeholder='Explore Page Background URL'
                         type='text'
                         value={explore_pic}
                         onChange={(e) => setExplore_pic(e.target.value)}
@@ -102,7 +111,7 @@ function CreateServerForm({hideForm}) {
                 <div>
                     <div>Add a Description in Explore Page</div>
                     <input
-                        placeholder='Role Name'
+                        placeholder='Description'
                         type='text'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}

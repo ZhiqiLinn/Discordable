@@ -46,12 +46,12 @@ const SearchBar = ({ allServers }) => {
                             setQuery(event.target.value)
                         }}
                         />
-                    <img class="search-icon" onClick={handleSearch} src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png">
-                    </img>
+                    {/* <img class="search-icon" onClick={handleSearch} src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png">
+                    </img> */}
 
                 {showMenu &&
                     <div className="search-bar-drop-down-menu">
-                        <p>Click to join...</p>
+                        <div> Search Result...</div>
                         {query && serversArr.filter(server => {
                             if (query === "" && server.user_id !== sessionUser.id) {
                                 //if query is empty
