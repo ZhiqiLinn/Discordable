@@ -6,15 +6,19 @@ import { addServerThunk } from '../../store/server';
 function CreateServerForm({hideForm}) {
     const history = useHistory();
     const dispatch = useDispatch();
-
+    
     const sessionUser = useSelector(state => state.session.user)
+    const categorySelections = ['Gaming', 'Music', 'Education', 'Science & Tech', 'Entertainment' ]
 
     const [name, setName] = useState("")
     const [server_pic, setServer_pic] = useState("")
     const [default_role, setDefault_role] = useState("")
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
-
+    const [category, setCategory] = useState(categorySelections[0])
+    const [explore_pic, setExplore_pic] = useState("")
+    const [description, setDescription]= useState("")
+    
     useEffect(() => {
         let errors = []
         let nameArr = name.split(' ').join('')
@@ -34,7 +38,10 @@ function CreateServerForm({hideForm}) {
             user_id: sessionUser.id,
             name,
             server_pic,
-            default_role
+            default_role,
+            explore_pic,
+            category,
+            description
         }
         let newServer;
         if (!errors.length) {
@@ -84,13 +91,33 @@ function CreateServerForm({hideForm}) {
                     />
                 </div>
                 <div>
-                    <div>Set a Default Role for Your Members!</div>
+                    <div>Upload Background Picture for Your Server</div>
+                    <input
+                        placeholder='Image URL'
+                        type='text'
+                        value={explore_pic}
+                        onChange={(e) => setExplore_pic(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <div>Add a Description in Explore Page</div>
                     <input
                         placeholder='Role Name'
                         type='text'
-                        value={default_role}
-                        onChange={(e) => setDefault_role(e.target.value)}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                     />
+                </div>
+                <div>
+                    <div>Select a Category for Your Server</div>
+                    <select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                    >
+                        {categorySelections.map(cate =>
+                            <option value={cate} key={cate}>{cate}</option>
+                        )}
+                    </select>
                 </div>
                 <div>
                     <button className='btn' type="submit">Create</button>

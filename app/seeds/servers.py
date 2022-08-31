@@ -10,16 +10,16 @@ def seed_servers():
         user_id=1,
         description='Welcome to League of Legends! A community-ran Discord server for all things LoL; run in collaboration with Riot Games.',
         category='Gaming',
-        explore_pic='https://cdn.discordapp.com/discovery-splashes/776821526589997056/b09baca887846c7d627c4ac1ddf7933f.jpg'
+        explore_pic='https://cdn.discordapp.com/discovery-splashes/776821526589997056/b09baca887846c7d627c4ac1ddf7933f.jpg?size=240'
     )
     server2 = Server(
-        name="Makima's", 
-        server_pic="https://i.ibb.co/jW3Vm99/412024.jpg", 
-        default_role="Hunters", 
+        name="buildapc", 
+        server_pic="https://cdn.discordapp.com/icons/286168815585198080/a_e1016a9b8d8f7c97dafef6b655e0d1b1.webp?size=40", 
+        default_role="Bouncers", 
         user_id=2,
-        description='Welcome',
-        category='Entertainment',
-        explore_pic='https://cdn.discordapp.com/discovery-splashes/840940593735270420/4632e09372c9761fa919e780b662507b.jpg'
+        description='All things PC building, part selection, and troubleshooting. Plus discussions on latest tech and games!',
+        category='Science & Tech',
+        explore_pic='https://cdn.discordapp.com/discovery-splashes/286168815585198080/478286bad48bd65638a16ac9d5b50056.jpg?size=300'
     )
     server3 = Server(
         name="Spy Family!!!", 
@@ -28,7 +28,7 @@ def seed_servers():
         user_id=1,
         description='Welcome to a community with fans of SPY X FAMILY, a heart-warming comedy series by Tatsuya Endo!',
         category='Entertainment',
-        explore_pic='https://cdn.discordapp.com/discovery-splashes/574093012620279818/93c78999d88e37ccc933b725eeec28dd.jpg'
+        explore_pic='https://cdn.discordapp.com/discovery-splashes/574093012620279818/93c78999d88e37ccc933b725eeec28dd.jpg?size=240'
     )
     server4 = Server(
         name="March '22 a/A Cohort", 
@@ -46,7 +46,7 @@ def seed_servers():
         user_id=4,
         description='The official Beluga Discord Server!',
         category='Entertainment',
-        explore_pic='https://cdn.discordapp.com/discovery-splashes/846496831533088768/84b27a1f2c8e8552e400f7048bb44853.jpg'
+        explore_pic='https://cdn.discordapp.com/discovery-splashes/846496831533088768/84b27a1f2c8e8552e400f7048bb44853.jpg?size=240'
     )
     server6 = Server(
         name="Lofi Girl", 
@@ -55,7 +55,7 @@ def seed_servers():
         user_id=5,
         description='The friendliest community on Discord 🧡 Join now to meet amazing people from all around  the world 🌎',
         category='Music',
-        explore_pic='https://cdn.discordapp.com/discovery-splashes/707230275175841915/8bf77b3c25c974afa3dfde952ba04c71.jpg'
+        explore_pic='https://cdn.discordapp.com/discovery-splashes/707230275175841915/8bf77b3c25c974afa3dfde952ba04c71.jpg?size=240'
     )
     server7 = Server(
         name="VALORANT", 
@@ -82,7 +82,7 @@ def seed_servers():
         user_id=2,
         description='The Official Minecraft Discord!',
         category='Gaming',
-        explore_pic='https://cdn.discordapp.com/discovery-splashes/302094807046684672/579507dff86d89cd5decd8e016a54706.jpg'
+        explore_pic='https://cdn.discordapp.com/discovery-splashes/302094807046684672/579507dff86d89cd5decd8e016a54706.jpg?size=240'
     )
     server10 = Server(
         name="MrBeast Gaming", 
@@ -91,7 +91,7 @@ def seed_servers():
         user_id=7,
         description='This is the Discord for MrBeast Gaming challenges!',
         category='Gaming',
-        explore_pic='https://cdn.discordapp.com/discovery-splashes/706661525439512597/1da7b334b9c3398fd2571ec37fa8e21d.jpg'
+        explore_pic='https://cdn.discordapp.com/discovery-splashes/706661525439512597/1da7b334b9c3398fd2571ec37fa8e21d.jpg?size=240'
     )
 
 

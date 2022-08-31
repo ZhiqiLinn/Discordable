@@ -5,15 +5,12 @@ import { useParams } from "react-router-dom";
 import './ServerDetail.css'
 
 const MemberList = () => {
-    const dispatch = useDispatch()
     const {serverId} = useParams()
     const [serverMembers, setServerMembers] = useState({})
     const [serverMembersArr, setServerMembersArr] = useState([])
     const servers = useSelector(state => state.serverState)
     const currentServer = servers[parseInt(serverId)]
-    // console.log("!!!!!!THIS IS CURRRENT SERVER",currentServer)
-    
-    // console.log("!!!!!!!!!tHIS IS CURRENT SERVER'S MEMBER LIST", serverMembersArr)
+
 
 
 

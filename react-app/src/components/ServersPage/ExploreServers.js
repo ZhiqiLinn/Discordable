@@ -6,6 +6,7 @@ import './ExploreServers.css'
 import exploreBackground from './images/exploreBackground.jpg'
 import SearchBar from "./SearchBar";
 import ServerSideBar from "./ServerSideBar";
+import ExploreFilterBar from "./ExploreFilterBar";
 
 const ExploreServers = () => {
     const dispatch = useDispatch();
@@ -13,9 +14,6 @@ const ExploreServers = () => {
     const [users, setUsers] = useState({});
     // console.log(sessionUser)
     const allServers = Object.values(useSelector(state => state.serverState))
-
-    
-
 
     useEffect(() => {
         dispatch(getAllServersThunk())
@@ -32,16 +30,18 @@ const ExploreServers = () => {
       }, []);
 
 
+
     return(
         <div className="server-page-layout">
             <ServerSideBar />
-            <div>
+            <ExploreFilterBar />
+            <div className="explore-container">
+
                 <div classNamr="explore-background"
                     style={{
-                        width:"89vw",
+                        width:"100%",
                         height:"600px",
-                        marginLeft:"100px",
-                        marginTop:"30px",
+                        margin:"5%",
                         backgroundImage:`url(${exploreBackground})`,
                         backgroundSize:'cover',
                         backgroundPostion:'center center',
@@ -52,34 +52,37 @@ const ExploreServers = () => {
                 }}>
                         <SearchBar allServers={allServers}/>
                 </div>
-                    {allServers && 
-                        <div className="server-listings-container">
+                <div style={{marginLeft:"5%"}}>
+                    <h3>Popular Communities</h3>
+                </div>
+                <div className="server-listings-container">
+
+                    {allServers &&
+                        <>
                             {
                                 allServers.map(server => (
                                     <>
                                         { server.user_id !== sessionUser.id && 
-                                        <NavLink to={`/servers/${server.id}/join`}
-                                            style={{textDecoration:"none"}}>
-                                            <div className="server-listing" key={server.id} >
-                                                    <img src={server.server_pic} alt={server.name}></img>
-                                                    <p className="explore-server-name"> ✅ {server.name}</p>
-                                                    <p > Server Id: {server.id}</p>
-                                                    {/* { joined?? 
-                                                        <div style={{color:"grey"}}>Already Joined!</div> 
-                                                        // : <JoinServerForm currentServerId={server.id}/>
-                                                        : <NavLink to={`/servers/${server.id}/join`}>Join</NavLink>
+                                        <div className="server-single-listing">
 
-                                                    } */}
-                                            </div>
-                                        </NavLink>}
+                                            <NavLink to={`/servers/${server.id}/join`}
+                                                style={{textDecoration:"none", color:'white'}}>
+                                                        <img className="server-listing-img" src={server.explore_pic} alt={server.name}></img>
+                                                        <div className="explore-server-intro">
+                                                            <h4 > ✅ {server.name}</h4>
+                                                            <p className="explore-server-description">{server.description}</p>
+   
+                                                        </div>
+                                            </NavLink>
+                                        </div>
+                                        }
                                     </>
                                 ))
 
                             }
-                        
-                
-                    </div>
-                    }
+                        </> 
+                        }
+                </div>
             </div>
         </div>
     )
