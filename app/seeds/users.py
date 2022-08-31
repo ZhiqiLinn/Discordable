@@ -7,24 +7,24 @@ def seed_users():
         username='Demo', email='demo@aa.io', password='password')
     rena = User(
         username='rena', email='rena@aa.io', password='password')
-    user1 = User(
+    dave = User(
         username='dave', email='dave@aa.io', password='password')
-    user2 = User(
-        username='Belu', email='belu@aa.io', password='password')
-    user3 = User(
+    Beluga = User(
+        username='Beluga', email='belu@aa.io', password='password')
+    LofiGirl = User(
         username='LofiGirl', email='lofi@aa.io', password='password')
-    user4 = User(
-        username='user4', email='user4@aa.io', password='password')
-    user5 = User(
-        username='user5', email='user5@aa.io', password='password')
-
+    Riot = User(
+        username='Riot', email='riot@aa.io', password='password')
+    mrbeast = User(
+        username='mrbeast', email='mrbeast@aa.io', password='password')
+    
     db.session.add(demo)
     db.session.add(rena)
-    db.session.add(user1)
-    db.session.add(user2)
-    db.session.add(user3)
-    db.session.add(user4)
-    db.session.add(user5)
+    db.session.add(dave)
+    db.session.add(Beluga)
+    db.session.add(LofiGirl)
+    db.session.add(Riot)
+    db.session.add(mrbeast)
     
 
     db.session.commit()

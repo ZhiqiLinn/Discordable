@@ -4,7 +4,7 @@ import { useHistory, useParams} from 'react-router-dom';
 import {joinAServerThunk} from '../../store/joinedServer';
 import { Modal } from '../../context/Modal';
 import { getAllServersThunk } from '../../store/server';
-import joinPageBackground from './joinPageBackground.jpg'
+import joinPageBackground from './images/joinPageBackground.jpg'
 
 function JoinServerForm() {
     const {serverId } = useParams();

@@ -1,5 +1,11 @@
 
-
+.server-page-layout{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    
+}
 .server-sidebar-container{
     display: flex;
     flex-direction: column;
@@ -9,6 +15,7 @@
     width: 75px;
     height:100vh;
     position: fixed;
+    margin-top: 0;
 
 }
 

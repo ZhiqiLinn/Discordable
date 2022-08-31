@@ -17,7 +17,6 @@ import ExploreServers from './components/ServersPage/ExploreServers';
 import ServerSideBar from './components/ServersPage/ServerSideBar';
 import { getAllServersThunk } from './store/server';
 import { getAllChannelsThunk } from './store/channel';
-import Chat from './components/MessagesBox/Chat';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,9 +43,6 @@ function App() {
     <BrowserRouter>
       <Switch>
 
-      <ProtectedRoute path='/servers/:serverId/:chanId/chat' exact={true} >
-          <Chat />
-        </ProtectedRoute>
 
         <ProtectedRoute path='/servers/join' exact={true} >
           <ExploreServers />
@@ -88,7 +84,6 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path='/servers' exact={true} >
-          <ServerSideBar />
           <ExploreServers />
         </ProtectedRoute>
 

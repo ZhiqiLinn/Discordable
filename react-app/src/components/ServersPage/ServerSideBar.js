@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
-import { useHistory, useParams} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 import { getAllServersThunk } from "../../store/server";
 import CreateServerLiveModal from "../CreateServerLiveModal"
-import logo from "./logo.png"
+import logo from "./images/logo.png"
 import UserJoinedServerList from "./UserJoinedServerList";
 import "./ServersPage.css"
 
@@ -25,7 +25,6 @@ const ServerSideBar = () => {
     
 
     return(
-        <div >
             <div className="server-sidebar-container">
                 <div className="server-sidebar-logo">
                     <NavLink to={`/`}>
@@ -47,9 +46,6 @@ const ServerSideBar = () => {
                 </div>
 
             </div>
-
-        </div>
-        
     )
 }
 
