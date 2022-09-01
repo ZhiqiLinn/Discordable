@@ -2,7 +2,7 @@ import LogoutButton from "../auth/LogoutButton";
 import { useDispatch, useSelector } from "react-redux"
 import React, { useState } from 'react';
 import { MsgModal } from '../../context/MsgModal';
-import { Modal } from '../../context/Modal';
+import { PicModal } from '../../context/PicModal';
 
 import { useHistory } from "react-router-dom";
 import { uploadProfilePicThunk } from '../../store/session';
@@ -35,15 +35,14 @@ const UserProfileBar = () => {
         await dispatch(uploadProfilePicThunk(profilePayload))
         // console.log("NEWPIC",newPic)
         setImage(null)
-        setShowMenu(false)
-        // history.go('/servers')
+        setShowMenu(true)
+        setShowUpdateModal(false)
     }
 
 
     const updateImage = (e) => {
         const file = e.target.files[0];
         setImage(file);
-        setShowUpdateModal(false)
     }
 
 
@@ -70,23 +69,33 @@ const UserProfileBar = () => {
                             </button>
                         </div>
                         <div className="user-profile-menu">
-                            <div>
-                                { showLogout && <UserProfileLogout/>}
-                            </div>
+                            
+                            { showLogout && 
+                                <div className="user-logout">
+                                    <UserProfileLogout/>
+                                </div>
+                            }
                             {
                                 showAccount && (
-                                    <div >
-                                        <div className="user-profile-detail" onClick={() => setShowMenu(true)}>
-                                            <img  className='user-menu-img' src={sessionUser.profile_pic} alt={sessionUser.username}></img>
-                                            <div>
-                                                <p className='user-menu-name'>{sessionUser.username}</p>
-                                                <p>🟢 Online</p>
-                                                <button onClick={()=> setShowUpdateModal(true)}>Edit Profile Pic</button>
+                                    < >
+                                        <div className="color-cover"> </div>
+                                        <div className="user-profile-detail" >
+                                            <div style={{backgroundColor:"#202225", marginTop:"-2%", zIndex:"2", borderRadius:"50%", height:"150px"}}>
+                                                <img  className='user-menu-img' src={sessionUser.profile_pic} alt={sessionUser.username}></img>
                                             </div>
+                                            <div className="user-menu-detail">
+                                                <p className='user-menu-name'>{sessionUser.username}</p>
+                                                <button className="edit-profile-btn" onClick={()=> setShowUpdateModal(true)}>Edit Profile Pic</button>
+                                            </div>
+                                        </div> 
+                                        <div className='user-menu-email'>
+                                            <p style={{fontSize:"small", color:"#787A7E", fontWeight:"bold"}}>EMAIL</p>
+                                            <p >{sessionUser.email}</p>
+                                        </div>
                                             {showUpdateModal && (
-                                                <Modal onClose={() => setShowUpdateModal(false)}>
+                                                <PicModal onClose={() => setShowUpdateModal(false)}>
                                                     <div className='upload-img-div'>
-                                                        <h2>Select Your Profile Picture</h2>
+                                                        <h2>Select An Image</h2>
                                                         <div>
                                                             <form className='upload-img-form' onSubmit={handleSubmit}>
                                                                     <input
@@ -97,18 +106,21 @@ const UserProfileBar = () => {
                                                                     />
                                                                 <br></br>
                                                                 <br></br>
-                                                                <div className='delete-biz-buttons'>
-                                                                    <button className="modal-cancel" onClick={() => setShowUpdateModal(false)}>Cancel</button>
-                                                                    <button type="submit" style={{marginRight:'10px'}}>Change</button>
+                                                                <br></br>
+                                                                <br></br>
+                                                            
+                                                                <div >
+                                                                    <button className="user-profile-uplaod-btn" onClick={() => setShowUpdateModal(false)}>Cancel</button>
+                                                                    <button className="user-profile-uplaod-btn" type="submit" style={{marginRight:'10px'}}>Change</button>
                                                                 </div>
                                                             </form>
                                                             <br></br>
                                                         </div>
                                                     </div>
-                                                </Modal>
+                                                </PicModal>
                                             )}
-                                        </div>  
-                                    </div>
+         
+                                    </>
                                 )
                             }
                         </div>

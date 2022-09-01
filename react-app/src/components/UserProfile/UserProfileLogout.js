@@ -10,9 +10,13 @@ const UserProfileLogout = () => {
 
   return (
     <> 
-        <h3>Log Out</h3>
+        <h1 >Log Out</h1>
+        <br></br>
         <p>Are you sure you want to logout?</p>
-        <button onClick={onLogout}>Logout</button>
+        <br></br>
+        <br></br>
+        <br></br>
+        <button className="user-profile-logout-btn" onClick={onLogout}>Logout</button>
     </>
     )
 };
