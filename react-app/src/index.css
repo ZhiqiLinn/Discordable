@@ -38,3 +38,11 @@ button{
     font-weight: bold;
 }
 
+/* ::-webkit-scrollbar {
+    width: 5px;
+    background-color: #2e3338;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(37, 37, 37);
+  } */

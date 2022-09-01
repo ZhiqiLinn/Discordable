@@ -26,15 +26,16 @@
     padding-top:70px;
     padding-left:2%;
     padding-bottom: 100px;
-
     display: flex;
     flex-direction: column;
-    gap:15px
+    gap:15px;
+    overflow-y: scroll;
+    height: 100%;
 }
 .msg-div{
     display: flex;
     flex-direction: row; 
-    gap:10px   
+    gap:10px;
 }
 
 .msg-div:hover{

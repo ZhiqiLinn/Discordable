@@ -3,8 +3,11 @@
     background-color: #2f3136;
     width: 250px;
     margin-left: 75px;
+    margin-bottom: 200px;
     height: 100vh;
     position: fixed;
+    overflow-y: auto;
+
 }
 .create-channel-container{
     height: 30px

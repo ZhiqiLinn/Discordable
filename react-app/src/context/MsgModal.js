@@ -27,11 +27,8 @@ export function MsgModal({ onClose, children }) {
     if (!modalNode) return null;
 
     return ReactDOM.createPortal(
-        <div id="msg-modal">
-            <div id="msg-modal-background" onClick={onClose} />
-            <div id="msg-modal-content">
-                {children}
-            </div>
+        <div id="msg-modal-content">
+            {children}
         </div>,
         modalNode
     );

@@ -1,19 +1,5 @@
-.user-profile-menu{
-    height:250px;
-    width:250px;
-    background-color: #18191c;
-    position:absolute;
-    bottom:75px;
-    padding:10%;
-    border-radius: 20px;
-}
-/* .user-profile-color-panel{
-    position: absolute;
-    z-index: 0;
-    height: 50px;
-    width:270px;
-    background-color: #484CEC;
-} */
+
+
 
 .user-bar-img{
     height:40px;
@@ -22,7 +8,7 @@
 }
 
 .user-menu-img{
-
+    margin:5%;
     height:90px;
     width:90px;
     border-radius: 50%;
@@ -44,21 +30,33 @@
     cursor: pointer;
 }
 .user-menu-name{
+    margin-top:70px;
     font-size: large;
     font-weight: bolder;
-    padding: 10px 0px 10px 10px;
-    border-bottom: 1px solid grey;
-    margin-bottom: 10%;
+    color:white;
 }
 
 .user-profile-close{
     position: absolute;
     right: 20px;
+    margin: 20px;
     
 }
 
-.upload-pic-input button{
-    background-color:red;
+
+
+::file-selector-button{
+    background: #484CEC;
+    width: 200px;
+    height: 40px;
+    border: 0;
+    margin-left:20px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 2px;
+    color:white;
+    font-weight: bold;
 }
 
 .user-profile-logout-btn button{
@@ -76,4 +74,58 @@
     border-radius: 2px;
     color:white;
     font-weight: bold;
+}
+
+.user-profile-container{
+    display: flex;
+    align-items:flex-start;
+    height: 100vh;
+
+}
+
+.user-profile-sidebar{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    background-color:#2F3136 ;
+    height:100vh;
+    width: 30%;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-right: 10px;
+    padding-top: 100px;
+}
+
+.user-profile-menu{
+    /* background-color:#242527;  */
+    width: 600px;
+    margin:2%;
+    border-radius: 10px;
+    margin-top:100px;
+
+}
+
+.user-profile-btns{
+    width: 30%;
+    background-color: #2F3136;
+    font-size: 15px;
+    border: none;
+    margin: 2%;
+    color:#afafaf;
+    padding: 2%;
+    border-radius: 5px;
+    
+}
+.user-profile-btns:hover{
+    color:#FFF8E7;
+    background-color: #4a4d56;
+}
+
+.actived-profile-btn{
+    background-color: #4a4d56;
+
+}
+
+.user-profile-detail{
+    display: flex;
 }
