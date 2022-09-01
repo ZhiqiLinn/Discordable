@@ -5,12 +5,12 @@
 
 
 .server-listings-container{
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin: 1% 5% 5% 3%;
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15%;
+    margin:5%;
+    gap:14%;
 }
+
 
 .server-single-listing{
     border-radius: 10px;
@@ -199,3 +199,35 @@
     color:white;
     border-radius: 5px;
 }
+
+
+
+
+@media only screen and (max-width: 1600px) {
+    .server-listings-container{
+        display: grid;
+        grid-template-columns: 15% 15% 15%;
+        margin:5%;
+        column-gap:20%;
+    }
+  }
+
+
+ @media only screen and (max-width: 1300px) {
+    .server-listings-container{
+        display: grid;
+        grid-template-columns: 15% 15%;
+        margin:5%;
+        column-gap:40%;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    .server-listings-container{
+        display: grid;
+        grid-template-columns: 20% ;
+        margin:5%;
+        column-gap:40%;
+        row-gap: 5%;
+    }
+  }

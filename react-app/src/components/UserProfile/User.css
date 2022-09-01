@@ -1,19 +1,5 @@
-.user-profile-menu{
-    height:250px;
-    width:250px;
-    background-color: #18191c;
-    position:absolute;
-    bottom:75px;
-    padding:10%;
-    border-radius: 20px;
-}
-/* .user-profile-color-panel{
-    position: absolute;
-    z-index: 0;
-    height: 50px;
-    width:270px;
-    background-color: #484CEC;
-} */
+
+
 
 .user-bar-img{
     height:40px;
@@ -22,10 +8,11 @@
 }
 
 .user-menu-img{
-
+    margin:-5% 5% 5% 7%;
     height:90px;
     width:90px;
     border-radius: 50%;
+    border:10px solid #202225;
     z-index: 1;
 }
 .img-update{
@@ -46,28 +33,22 @@
 .user-menu-name{
     font-size: large;
     font-weight: bolder;
-    padding: 10px 0px 10px 10px;
-    border-bottom: 1px solid grey;
-    margin-bottom: 10%;
+    color:white;
 }
 
 .user-profile-close{
     position: absolute;
     right: 20px;
+    margin: 20px;
     
 }
 
-.upload-pic-input button{
-    background-color:red;
-}
 
-.user-profile-logout-btn button{
-    position: absolute;
-    bottom: 20px;
-    outline: 0;
+
+::file-selector-button{
     background: #484CEC;
-    width: 200px;
-    height: 40px;
+    width: 100px;
+    height: 30px;
     border: 0;
     margin-left:20px;
     padding: 5px;
@@ -76,4 +57,157 @@
     border-radius: 2px;
     color:white;
     font-weight: bold;
+}
+
+.user-profile-uplaod-btn{
+    background: #484CEC;
+    width: 100px;
+    height: 30px;
+    border: 0;
+    margin-left:20px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 2px;
+    color:white;
+    font-weight: bold;
+}
+
+.user-profile-container{
+    display: flex;
+    align-items:flex-start;
+    height: 100vh;
+
+}
+
+.user-profile-sidebar{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    background-color:#2F3136 ;
+    height:100vh;
+    width: 30%;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-right: 10px;
+    padding-top: 100px;
+}
+
+.user-profile-menu{
+    /* background-color:#242527;  */
+    width: 600px;
+    margin:2%;
+    border-radius: 10px;
+    margin-top:100px;
+
+}
+
+.user-profile-btns{
+    width: 30%;
+    background-color: #2F3136;
+    font-size: 15px;
+    border: none;
+    margin: 2%;
+    color:#afafaf;
+    padding: 2%;
+    border-radius: 5px;
+    
+}
+.user-profile-btns:hover{
+    color:#FFF8E7;
+    background-color: #4a4d56;
+}
+
+.actived-profile-btn{
+    background-color: #4a4d56;
+
+}
+
+.user-profile-detail{
+    display: flex;
+    background-color: #202225;
+    width: 600px;
+    height:300px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.edit-profile-btn{
+    outline: 0;
+    background: #484CEC;
+    width: 150px;
+    height: 30px;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 2px;
+    color:white;
+    font-weight: bold;
+}
+
+.user-menu-detail{
+    display: flex;
+    margin-top: 50px;
+    margin-left: 50px;
+    justify-content: space-between;
+    width: 400px;
+    
+}
+
+.color-cover{
+    position:relative;
+    height:90px;
+    width:100%;
+    background-color: #5377e5;
+    cursor: pointer;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.user-menu-email{
+    margin-top: -25%;
+    margin-left:5%;
+    margin-right:5%;
+
+    width:85%;
+    background-color: #2F3136;
+    color:white;
+    padding: 3%;
+}
+
+.user-logout{
+    color:white;
+    margin: 10% 10% 10% 10%;
+    background-color: #36393F;
+    padding: 10%;
+}
+
+.user-profile-logout-btn{
+    outline: 0;
+    background-color: #f63e41;
+    width: 150px;
+    height: 30px;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 2px;
+    color:white;
+    font-weight: bold;
+}
+
+.user-profile-logout-btn:hover{
+    background-color:#A12D2F ;
+}
+
+
+.upload-img-div{
+    margin: 10%;
+}
+
+.upload-img-div h2{
+    margin-bottom: 10%;
 }

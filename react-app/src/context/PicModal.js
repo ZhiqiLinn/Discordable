@@ -2,9 +2,9 @@ import React, { useContext, useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css'
 
-const MsgModalContext = React.createContext();
+const PicModalContext = React.createContext();
 
-export function MsgModalProvider({ children }) {
+export function PicModalProvider({ children }) {
     const modalRef = useRef();
     const [value, setValue] = useState();
 
@@ -14,21 +14,24 @@ export function MsgModalProvider({ children }) {
     
     return (
         <>
-            <MsgModalContext.Provider value={value}>
+            <PicModalContext.Provider value={value}>
                 {children}
-            </MsgModalContext.Provider>
+            </PicModalContext.Provider>
             <div ref={modalRef} />
         </>
     );
 }
 
-export function MsgModal({ onClose, children }) {
-    const modalNode = useContext(MsgModalContext);
+export function PicModal({ onClose, children }) {
+    const modalNode = useContext(PicModalContext);
     if (!modalNode) return null;
 
     return ReactDOM.createPortal(
-        <div id="msg-modal-content">
-            {children}
+        <div id="picmodal">
+            <div id="picmodal-background" onClick={onClose} />
+            <div id="picmodal-content">
+                {children}
+            </div>
         </div>,
         modalNode
     );

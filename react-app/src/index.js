@@ -7,12 +7,14 @@ import configureStore from './store';
 import { ModalProvider } from './context/Modal';
 import { SmallModalProvider } from './context/SmallModal';
 import { MsgModalProvider } from './context/MsgModal';
+import { PicModalProvider } from './context/PicModal';
 
 
 const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
+    <PicModalProvider>
     <MsgModalProvider>
       <SmallModalProvider>
         <ModalProvider>
@@ -22,6 +24,7 @@ ReactDOM.render(
         </ModalProvider>
       </SmallModalProvider>
     </MsgModalProvider>
+    </PicModalProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
