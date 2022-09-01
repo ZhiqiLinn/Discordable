@@ -1,10 +1,8 @@
-import LogoutButton from "../auth/LogoutButton";
 import { useDispatch, useSelector } from "react-redux"
 import React, { useState } from 'react';
 import { MsgModal } from '../../context/MsgModal';
 import { PicModal } from '../../context/PicModal';
 
-import { useHistory } from "react-router-dom";
 import { uploadProfilePicThunk } from '../../store/session';
 import './User.css'
 import UserProfileLogout from "./UserProfileLogout";
@@ -24,7 +22,7 @@ const UserProfileBar = () => {
         setShowMenu(true);
       }; 
     
-      console.log(showUpdateModal)
+    //   console.log(showUpdateModal)
 
       const handleSubmit = async (e) => {
         e.preventDefault();

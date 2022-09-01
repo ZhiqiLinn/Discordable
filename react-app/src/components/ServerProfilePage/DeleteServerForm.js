@@ -16,21 +16,7 @@ const DeleteServerForm = ({serverId}) => {
     }
     return (
         <>
-            <div  onClick={() => setShowModal(true)} style={{cursor:"pointer"}}> 🗑️ </div>
-            {showModal && (
-                <div>
-                    <SmallModal onClose={() => setShowModal(false)}>
-                    <div className='delete-server-container'>
-                        <h2>Please confirm that you would like to delete your server.</h2>
-                        <div >
-                            <button className='btn' onClick={() => setShowModal(false)}>No</button>
-                            <br></br>
-                            <button className='btn' onClick={handleDeleteSubmit}>Yes</button>
-                        </div>
-                    </div>
-                    </SmallModal>
-                </div>
-            )}
+            
         </>
     )
 }
