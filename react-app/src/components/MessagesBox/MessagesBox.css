@@ -29,8 +29,7 @@
     display: flex;
     flex-direction: column;
     gap:15px;
-    overflow-y: scroll;
-    height: 100%;
+ 
 }
 .msg-div{
     display: flex;
