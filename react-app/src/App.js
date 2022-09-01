@@ -4,9 +4,7 @@ import { useDispatch, useSelector} from 'react-redux';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
-
 import ServerDetailPage from './components/ServerDetailPage';
-// import ServerProfilePage from './components/ServerProfilePage';
 import HomePage from './components/HomePage';
 import MessagesBox from './components/MessagesBox';
 import JoinServerForm from './components/ServersPage/JoinServerForm';
@@ -14,8 +12,6 @@ import LoginForm from './components/LoginLiveModal/LoginForm';
 import SignUpForm from './components/SignUpLiveModal/SignUpForm';
 import QuitServer from './components/QuitServer.js';
 import ExploreServers from './components/ServersPage/ExploreServers';
-import ServerSideBar from './components/ServersPage/ServerSideBar';
-import { getAllServersThunk } from './store/server';
 import { getAllChannelsThunk } from './store/channel';
 
 function App() {
@@ -26,7 +22,6 @@ function App() {
 
   useEffect(() => {
     dispatch(getAllChannelsThunk())
-    dispatch(getAllServersThunk())
   },[])
   useEffect(() => {
     (async() => {
@@ -80,7 +75,7 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path='/servers/:serverId' exact={true} >
-        <ServerDetailPage allServers={allServers}/>
+        <ServerDetailPage />
         </ProtectedRoute>
 
         <ProtectedRoute path='/servers' exact={true} >

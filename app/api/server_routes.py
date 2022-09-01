@@ -1,7 +1,9 @@
 from flask import Blueprint, request
-from app.forms import CreateServerForm, UpdateServerForm, JoinServerForm
+from app.forms import CreateServerForm, UpdateServerForm, JoinServerForm, ServerPicForm, ExplorePicForm
 from app.models import db, Server, User
 from flask_login import current_user, login_required
+from app.awsS3 import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 server_routes = Blueprint('servers', __name__)
 
@@ -87,3 +89,70 @@ def quit_a_server(id):
     current_user.joined_servers.remove(server)
     db.session.commit()
     return server.to_dict()
+
+
+#--------------------------UPDATE SERVER PIC-------------------------
+
+
+# @server_routes.route('/<int:id>', methods=['PUT'])
+# def update_server_picture(id):
+#     form = UpdateServerForm()
+
+#     server = Server.query.get(id)
+
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         if request.form.get('name'):
+#             server.name = request.form.get('name')
+
+#         if request.form.get('description'):
+#             server.description = request.form.get('description')
+
+#         if request.form.get('default_role'):
+#             server.default_role = request.form.get('default_role')
+
+#         if request.form.get('user_id'):
+#             server.user_id = request.form.get('user_id')  
+
+#         if request.form.get('category'):
+#             server.category = request.form.get('category') 
+
+#         if request.form.get('explore_pic'):
+#             server.explore_pic = request.form.get('explore_pic')
+
+#         if 'explore_pic' in request.files:
+#             image = request.files["explore_pic"]
+
+#             if not allowed_file(image.filename):
+#                 return { "errors": "Image file type must end with .jpg, .jpeg, or .png" }, 400
+            
+#             image.filename = get_unique_filename(image.filename)
+
+#             upload = upload_file_to_s3(image)
+
+#             if "url" not in upload:
+#                 return upload, 400
+
+#             explore_pic = upload["url"]
+#         server.explore_pic = explore_pic     
+
+#         if 'server_pic' in request.files:
+#             image = request.files["server_pic"]
+
+#             if not allowed_file(image.filename):
+#                 return { "errors": "Image file type must end with .jpg, .jpeg, or .png" }, 400
+            
+#             image.filename = get_unique_filename(image.filename)
+
+#             upload = upload_file_to_s3(image)
+
+#             if "url" not in upload:
+#                 return upload, 400
+
+#             server_pic = upload["url"]
+#         server.server_pic = server_pic
+#         # db.session.add(server)
+#         db.session.commit()
+#         print("!!!!!!!!!!!!!!!!!!!!!!", server.to_dict())
+#         return server.to_dict()
+#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

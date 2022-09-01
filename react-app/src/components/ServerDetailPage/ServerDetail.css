@@ -47,6 +47,7 @@
     padding: 15px;
 }
 .server-intro{
+    position: fixed;
     margin-left: 325px;
     color:white;
     text-align: center;

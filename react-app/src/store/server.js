@@ -5,6 +5,7 @@ const GET_SERVER = "server/GET_SERVER"
 const GET_ALL_SERVERS = "server/GET_ALL_SERVERS"
 const EDIT_SERVER = "server/EDIT_SERVER"
 const DELETE_SERVER = "server/DELETE_SERVER"
+const UPLOAD_SERVER_PIC = 'session/UPLOAD_SERVER_PIC';
 
 
 //-------------------------action creator-------------------------
@@ -44,6 +45,11 @@ const deleteServer = (deletedServerId) => {
     }
 }
 
+
+const uploadServerPic = (server) => ({
+    type: UPLOAD_SERVER_PIC,
+    server
+  })
 //-------------------------THUNK----------------------------------
 export const getAllServersThunk = () => async (dispatch) => {
     const response = await fetch(`/api/servers`);
@@ -113,6 +119,31 @@ export const deleteServerThunk = (serverId) => async (dispatch) => {
 }
 
 
+// export const uploadServerPicThunk = (payload) => async (dispatch) => {
+//     // console.log("in thunk????")
+//     const formData = new FormData();
+//     formData.append('name', payload.name)
+//     formData.append('description', payload.description)
+//     formData.append('user_id', payload.user_id)
+//     formData.append('server_pic', payload.server_pic)
+//     formData.append('explore_pic', payload.explore_pic)
+//     formData.append('default_role', payload.default_role)
+//     formData.append('category', payload.category)
+
+    
+//     // console.log("this is id", id)
+//     const response = await fetch(`/api/servers/${payload.id}/update`,{
+//       method: "PUT",
+//       headers:{"Content-Type":"multipart/form-data"},
+//       body: formData
+//     })
+//     console.log("response", response.json())
+//     if(response.ok){
+//       const updatedServer = await response.json()
+//       dispatch(uploadServerPic(updatedServer))
+//       return updatedServer
+//     }
+//   }
 //-------------------------reducer--------------------------------
 
 const initialState = {};
@@ -142,9 +173,11 @@ const serverReducer = (state = initialState, action) => {
                 [action.editedServer.id]: action.editedServer
             };
         case DELETE_SERVER:
-            newState = { ...state }
-            delete newState[action.deletedServerId];
-            return newState;
+            let deletedState = { ...state }
+            delete deletedState[action.deletedServerId];
+            return deletedState;
+        // case UPLOAD_SERVER_PIC:
+        //     return {['server']:action.server}
         default:
             return state;
     }

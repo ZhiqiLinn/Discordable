@@ -7,7 +7,7 @@ import ServerSideBar from "../ServersPage/ServerSideBar";
 import MemberList from "./MemberList";
 import './ServerDetail.css'
 
-const ServerDetailPage = ({allServers}) => {
+const ServerDetailPage = () => {
     const dispatch = useDispatch()
     const {serverId} = useParams()
     const [serverMembers, setServerMembers] = useState({})

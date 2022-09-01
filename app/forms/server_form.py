@@ -20,3 +20,12 @@ class UpdateServerForm(FlaskForm):
     description = StringField('Description', validators=[DataRequired()])
     category = SelectField('category', choices=['Gaming', 'Music', 'Education', 'Science & Tech', 'Entertainment' ],validators=[DataRequired()])
     explore_pic = TextAreaField('Server_pic')
+
+
+
+class ServerPicForm(FlaskForm):
+    server_pic = TextAreaField("server_pic")
+
+
+class ExplorePicForm(FlaskForm):
+    explore_pic = TextAreaField("explore_pic")

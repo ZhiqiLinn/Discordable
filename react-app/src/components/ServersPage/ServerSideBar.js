@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
 import { useHistory} from 'react-router-dom';
@@ -17,11 +17,16 @@ const ServerSideBar = () => {
 
     const allServersArr = Object.values(useSelector(state => state.serverState))
     const userOwnedServer = allServersArr.filter(server => server.user_id == +sessionUser.id)
-    
+    const [servers, SetServers] = useState()
 
+    const allServers = async () => {
+        let servers = await dispatch(getAllServersThunk())
+        SetServers(servers)
+    }
+    console.log("server sidebar")
     useEffect(()=> {
-        dispatch(getAllServersThunk())
-    },[])
+        allServers()
+    },[servers])
     
 
     return(

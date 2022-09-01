@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
+import { MsgModal } from '../../context/MsgModal';
 import EditServerForm from './EditServerForm';
 
 
@@ -13,9 +13,9 @@ const EditServerLiveModal = ({serverId}) => {
             <div  onClick={() => setShowModal(true)} style={{cursor:"pointer"}}> ⚙️ </div>
             {showModal && (
                 <div>
-                    <Modal onClose={() => setShowModal(false)}>
+                    <MsgModal onClose={() => setShowModal(false)}>
                         <EditServerForm hideForm={hideForm} serverId={serverId}/>
-                    </Modal>
+                    </MsgModal>
                 </div>
             )}
         </>
