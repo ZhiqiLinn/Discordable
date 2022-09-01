@@ -173,11 +173,11 @@ const serverReducer = (state = initialState, action) => {
                 [action.editedServer.id]: action.editedServer
             };
         case DELETE_SERVER:
-            newState = { ...state }
-            delete newState[action.deletedServerId];
-            return newState;
-        case UPLOAD_SERVER_PIC:
-            return {['server']:action.server}
+            let deletedState = { ...state }
+            delete deletedState[action.deletedServerId];
+            return deletedState;
+        // case UPLOAD_SERVER_PIC:
+        //     return {['server']:action.server}
         default:
             return state;
     }

@@ -9,7 +9,6 @@ import { getAllChannelsByServerThunk } from "../../store/channel";
 import UserProfileBar from "../UserProfile/UserProfileBar";
 import QuitServer from "../QuitServer.js";
 import EditServerLiveModal from "../ServerProfilePage/EditServerLiveModal";
-import DeleteServerForm from "../ServerProfilePage/DeleteServerForm";
 
 const ChannelsSection = () => {
     const {serverId} = useParams();
@@ -35,7 +34,6 @@ const ChannelsSection = () => {
                         : <p>{currentServer?.name}</p>
                     }
                     <EditServerLiveModal serverId={currentServer.id}/>
-                    <DeleteServerForm serverId={currentServer.id}/>
 
                 </div>
             </div>

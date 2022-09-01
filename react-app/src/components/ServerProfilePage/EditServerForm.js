@@ -1,5 +1,4 @@
-import { getAllServersThunk, uploadServerPicThunk, deleteServerThunk } from '../../store/server';
-import { PicModal } from '../../context/PicModal';
+import { getAllServersThunk,  deleteServerThunk } from '../../store/server';
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams  } from 'react-router-dom'
@@ -44,9 +43,10 @@ const EditServerForm = ({hideForm}) => {
         setErrors(errors);
         // console.log(default_role)
     }, [name, server_pic, default_role, description, explore_pic]);
+    console.log("explore")
 
-    useEffect(() => {
-            dispatch(getAllServersThunk())
+    useEffect(async () => {
+        await dispatch(getAllServersThunk())
     },[dispatch, serverId])
 
     const handleCreate = async (e) => {
@@ -88,7 +88,7 @@ const EditServerForm = ({hideForm}) => {
         dispatch(deleteServerThunk(serverId));
         hideForm();
         setShowDeleteServer(false)
-        history.push(`/servers/${serverId}`)
+        history.push(`/servers`)
     }
     
     // const updateImage = (e) => {
