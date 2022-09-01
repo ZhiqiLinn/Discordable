@@ -7,6 +7,8 @@ import { editServerThunk } from '../../store/server';
 
 
 const EditServerForm = ({hideForm, serverId}) => {
+    const categorySelections = ['Gaming', 'Music', 'Education', 'Science & Tech', 'Entertainment' ]
+
     // console.log(currentServer)
     const history = useHistory();
     const dispatch = useDispatch();
@@ -15,6 +17,9 @@ const EditServerForm = ({hideForm, serverId}) => {
     const [name, setName] = useState(currentServer?.name)
     const [server_pic, setServer_pic] = useState(currentServer?.server_pic)
     const [default_role, setDefault_role] = useState(currentServer?.default_role)
+    const [category, setCategory] = useState(categorySelections[0])
+    const [explore_pic, setExplore_pic] = useState("")
+    const [description, setDescription]= useState("")
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
     //------------------CALL SERVERS AGAIN------------------------
@@ -74,30 +79,61 @@ const EditServerForm = ({hideForm, serverId}) => {
                 }
             </div>
             <form onSubmit={handleCreate}>
-                <div>
-                    <div>SERVER NAME</div>
+            <div>
+                    <div>Server Name</div>
                     <input
+                        placeholder='Server Name'
                         type='text'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
                 </div>
                 <div>
+                    <div>Set a Role for Your Members</div>
+                    <input
+                        placeholder='Role'
+                        type='text'
+                        value={default_role}
+                        onChange={(e) => setDefault_role(e.target.value)}
+                    />
+                </div>
+                <div>
                     <div>Upload Picture for Your Server</div>
                     <input
+                        placeholder='Server Logo URL'
                         type='text'
                         value={server_pic}
                         onChange={(e) => setServer_pic(e.target.value)}
                     />
                 </div>
                 <div>
-                    <div>Set a Default Role for Your Members!</div>
+                    <div>Upload Background Picture for Your Server</div>
                     <input
-                        placeholder='Role Name'
+                        placeholder='Explore Page Background URL'
                         type='text'
-                        value={default_role}
-                        onChange={(e) => setDefault_role(e.target.value)}
+                        value={explore_pic}
+                        onChange={(e) => setExplore_pic(e.target.value)}
                     />
+                </div>
+                <div>
+                    <div>Add a Description in Explore Page</div>
+                    <input
+                        placeholder='Description'
+                        type='text'
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <div>Select a Category for Your Server</div>
+                    <select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                    >
+                        {categorySelections.map(cate =>
+                            <option value={cate} key={cate}>{cate}</option>
+                        )}
+                    </select>
                 </div>
                 <div>
                     <br></br>
