@@ -23,13 +23,17 @@ function CreateServerForm({hideForm}) {
         let errors = []
         let nameArr = name.split(' ').join('')
         let newRole = default_role.split(' ').join('')
+        let newDescription = description.split('').join('')
         if (nameArr.length < 3 || nameArr.length > 50) errors.push("Name should be 3 and 50 characters long, not include white space. Name shouldn't include only white spaces")
         if (!/https?:\/\/.*\.(?:png|jpg|jpeg)/.test(server_pic)) errors.push('Image URL invalid, should be ending with JPG/PNG/JPEG. ie. "https://www.exampleImage.jpg"'
         );
+        if (!/https?:\/\/.*\.(?:png|jpg|jpeg)/.test(explore_pic)) errors.push('Image URL invalid, should be ending with JPG/PNG/JPEG. ie. "https://www.exampleImage.jpg"'
+        );
+        if (newDescription.length <= 0 || newDescription.length > 200) errors.push("Description should be less than 200 characters, not include white space. Role shouldn't include only white spaces")
         if (newRole.length <= 0 || newRole.length > 15) errors.push("Role should be less than 15 characters, not include white space. Role shouldn't include only white spaces")
         setErrors(errors);
         // console.log(default_role)
-    }, [name, server_pic, default_role]);
+    }, [name, server_pic, default_role, description, explore_pic]);
 
     const handleCreate = async (e) => {
         e.preventDefault();

@@ -71,3 +71,31 @@
 .edit-server-container button{
     margin: 0 0 5% 25%
 }
+
+
+.edit-server-layout{
+    display: flex;
+}
+
+.edit-server-btns{
+    width: 40%;
+    background-color: #2F3136;
+    font-size: 15px;
+    border: none;
+    margin: 2%;
+    color:#afafaf;
+    padding: 2%;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.edit-server-btns:hover{
+    color:#FFF8E7;
+    background-color: #4a4d56;
+}
+
+.actived-profile-btn{
+    color:#FFF8E7;
+    background-color: #4a4d56;
+
+}

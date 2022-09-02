@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams  } from 'react-router-dom'
 import { editServerThunk } from '../../store/server';
-
+import './ServerProfile.css'
 
 const EditServerForm = ({hideForm}) => {
     const {serverId} = useParams()
@@ -112,15 +112,15 @@ const EditServerForm = ({hideForm}) => {
 
     return(
         <>
-            <div className="user-profile-container">
+            <div className="edit-server-layout">
                 <div className="edit-server-sidebar">
-                    <button className={showServerProfile ? `user-profile-btns actived-profile-btn`: 'user-profile-btns'} 
+                    <button className={showServerProfile ? `edit-server-btns actived-profile-btn`: 'edit-server-btns'} 
                             onClick={()=>{
                                 setShowServerProfile(true)
                                 setShowDeleteServer(false)
                         }}>Overview
                     </button>
-                    <button className={showDeleteServer ? `user-profile-btns actived-profile-btn`: 'user-profile-btns'} 
+                    <button className={showDeleteServer ? `edit-server-btns actived-profile-btn`: 'edit-server-btns'} 
                             onClick={()=>{
                                 setShowServerProfile(false)
                                 setShowDeleteServer(true)
@@ -258,7 +258,6 @@ const EditServerForm = ({hideForm}) => {
                         </div>
                     </form>
                 </div>
-                
                 }
             </div>
         </>
