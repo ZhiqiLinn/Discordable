@@ -22,16 +22,16 @@ const NavBar = () => {
         </div>
         <div className='nav-mid-part'>
             <div>
-              <a href='https://discord.com/download'>Discord Download</a>
+              <a  target="_blank" href='https://discord.com/download'>Discord Download</a>
             </div>
             <div>
-              <a href='https://github.com/ZhiqiLinn/Discordable/wiki/HOW-TO-USE-DISCORDABLE'>Features</a>
+              <a  target="_blank" href='https://github.com/ZhiqiLinn/Discordable/wiki/HOW-TO-USE-DISCORDABLE'>Features</a>
             </div>
             <div>
-              <a href='https://github.com/ZhiqiLinn'>GitHub </a>
+              <a  target="_blank" href='https://github.com/ZhiqiLinn'>GitHub </a>
             </div>
             <div>
-              <a href='https://www.linkedin.com/in/zhiqi-linn/'>LinkedIn </a>
+              <a  target="_blank" href='https://www.linkedin.com/in/zhiqi-linn/'>LinkedIn </a>
             </div>
             <div>
               <NavLink to='/servers' exact={true} activeClassName='active'>
@@ -55,16 +55,16 @@ const NavBar = () => {
           </div>
           <div className='nav-mid-part'>
             <div>
-              <a href='https://discord.com/download'>Discord Download</a>
+              <a  target="_blank" href='https://discord.com/download'>Discord Download</a>
             </div>
             <div>
-              <a href='https://github.com/ZhiqiLinn/Discordable/wiki/HOW-TO-USE-DISCORDABLE'>Features</a>
+              <a  target="_blank" href='https://github.com/ZhiqiLinn/Discordable/wiki/HOW-TO-USE-DISCORDABLE'>Features</a>
             </div>
             <div>
-              <a href='https://github.com/ZhiqiLinn'>GitHub </a>
+              <a  target="_blank" href='https://github.com/ZhiqiLinn'>GitHub </a>
             </div>
             <div>
-              <a href='https://www.linkedin.com/in/zhiqi-linn/'>LinkedIn </a>
+              <a  target="_blank" href='https://www.linkedin.com/in/zhiqi-linn/'>LinkedIn </a>
             </div>
             <div>
               <NavLink to='/login' exact={true} activeClassName='active'>
