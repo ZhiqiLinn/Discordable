@@ -42,7 +42,7 @@ const ServerDetailPage = () => {
                     <div className="server-intro">
                         <h1>Welcome to {currentServer.name}</h1>
                         <p>This is your shiny server!! Please select a channel to start the chat. For guide on how to use discordable, click below: </p>
-                        <a href='https://github.com/ZhiqiLinn/Discordable/wiki/HOW-TO-USE-DISCORDABLE'>Getting Started Guide</a>
+                        <a target="_blank" href='https://github.com/ZhiqiLinn/Discordable/wiki/HOW-TO-USE-DISCORDABLE'>Getting Started Guide</a>
                     </div>
                     <div>
                         <MemberList />
